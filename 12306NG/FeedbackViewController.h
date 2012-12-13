@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface FeedbackViewController : UIViewController
+{
+    UITextView* contentView;    
+    UITextField* mailOrphone;    
 
+}
 @end

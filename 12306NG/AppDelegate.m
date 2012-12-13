@@ -11,6 +11,8 @@
 #import "LoginViewController.h"
 
 @implementation AppDelegate
+@synthesize window=_window;
+@synthesize loginView=_loginView;
 
 - (void)dealloc
 {
@@ -21,6 +23,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    [[UINavigationBar appearance] setTintColor: [UIColor colorWithRed:0 green:0 blue:0 alpha:1]];
+
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {

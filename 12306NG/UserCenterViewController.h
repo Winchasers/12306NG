@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface UserCenterViewController : UIViewController
+{
+    NSMutableArray* tableArray;
+    UITableView* mainTableView;
+}
 
 @end

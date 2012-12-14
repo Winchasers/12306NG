@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "UserCenterViewController.h"
 
 @interface LoginViewController ()
 
@@ -26,11 +27,34 @@
     }
     return self;
 }
+-(void)loadView
+{
+    [super loadView];
+
+    
+    UIButton* btnLogin=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    btnLogin.frame=CGRectMake(0, 0, 200, 30);
+    [btnLogin setTitle:@"登录" forState:UIControlStateNormal];
+    [btnLogin addTarget:self action:@selector(btnClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btnLogin];
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+
+}
+-(void)btnClick
+{
+    
+    UserCenterViewController* userController=[[UserCenterViewController alloc] init];
+    UINavigationController* navController=[[UINavigationController alloc] initWithRootViewController:userController];
+    [userController release];    
+     
+    [self presentModalViewController:navController animated:YES];
+    [navController release];
 }
 
 - (void)didReceiveMemoryWarning

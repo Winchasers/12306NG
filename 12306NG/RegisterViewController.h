@@ -9,5 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface RegisterViewController : UIViewController
+{
+    
+    NSMutableArray* tableArray;
+    UITableView* mainTableView;
+}
 
 @end

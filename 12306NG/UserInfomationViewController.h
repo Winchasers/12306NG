@@ -8,6 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UserInfomationViewController : UIViewController
 
+
+typedef enum
+{
+    UserInfoMe,
+    UserInfoOther
+}UserInfoKey;
+
+
+@interface UserInfomationViewController : UIViewController
+{
+    UserInfoKey userInfoKey;
+}
+-(id)initWithUserInfoKey:(UserInfoKey)userInfoKey;
+@property(nonatomic,assign)UserInfoKey userInfoKey;
 @end

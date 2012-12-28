@@ -9,10 +9,13 @@
 #import "AppDelegate.h"
 
 #import "LoginViewController.h"
+#import "UserCenterViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation AppDelegate
 @synthesize window=_window;
 @synthesize loginView=_loginView;
+@synthesize userCenterViewController=_userCenterViewController;
 
 - (void)dealloc
 {
@@ -25,11 +28,18 @@
 {
     
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    self.window.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"background_black"]];
     // Override point for customization after application launch.
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        self.loginView = [[[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil] autorelease];
-    }
-    self.window.rootViewController = self.loginView;
+//if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        self.loginView = [[[LoginViewController alloc] init] autorelease];
+ //   }
+    
+    UINavigationController* navController=[[UINavigationController alloc] initWithRootViewController:self.loginView];
+    [navController.navigationBar setTintColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"banner"]]];
+    [navController setNavigationBarHidden:YES];
+    self.window.rootViewController = navController; 
+    [navController release];
+    //self.window.rootViewController = self.loginView;
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -60,5 +70,44 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+-(void)didLoginIn
+{
+    
+    self.userCenterViewController=[[UserCenterViewController alloc] init];
+    UINavigationController* navController=[[UINavigationController alloc] initWithRootViewController:self.userCenterViewController];
+    [navController.navigationBar setTintColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"banner"]]];
+     self.window.rootViewController = navController;  
+    
+    self.loginView.view.frame=CGRectOffset(self.loginView.view.frame, 0, 20);
+    [self.window.rootViewController.view addSubview:self.loginView.view];    
+    
+    
+    
+    [UIView animateWithDuration:0.8 animations:^{
+        self.loginView.view.layer.opacity=0;
+    } completion:^(BOOL finished) {
+        [self.loginView.view removeFromSuperview];
+    } ];
+    
+}
+-(void)didLoginOut
+{ 
+    self.loginView = [[[LoginViewController alloc] init]autorelease]; 
+    self.loginView.view.frame=CGRectOffset( self.loginView.view.frame, 0, -480);
+    [self.userCenterViewController.navigationController.view addSubview:self.loginView.view];  
+    
+    [UIView animateWithDuration:0.8 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        self.loginView.view.frame=CGRectOffset(self.loginView.view.frame, 0, 460);
+    } completion:^(BOOL finished) {
+        self.loginView = [[[LoginViewController alloc] init]autorelease];
+        UINavigationController* navController=[[UINavigationController alloc] initWithRootViewController:self.loginView];
+        [navController.navigationBar setTintColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"banner"]]];
+        [navController setNavigationBarHidden:YES];
+        self.window.rootViewController = navController;
+        [navController release];
+    }];    
+}
+
 
 @end

@@ -6,6 +6,8 @@
 //  Copyright (c) 2012 12306NG. All rights reserved.
 //
 
+#import "AppDelegate.h"
+
 #import "UserCenterViewController.h"
 
 
@@ -65,12 +67,20 @@
     }
     return self;
 }
+-(void)Exit
+{
+    AppDelegate* app=[UIApplication sharedApplication].delegate;
+    [app didLoginOut];
+    [self dismissModalViewControllerAnimated:YES];
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.view.backgroundColor=[UIColor clearColor];
     self.title=NSLocalizedString(@"我的抢票助手", nil);
+    self.navigationItem.leftBarButtonItem=[[[UIBarButtonItem alloc] initWithTitle:@"退出" style:UIBarButtonItemStyleBordered target:self action:@selector(Exit)] autorelease];
     
     CGRect rect=CGRectMake(0, 0, self.view.bounds.size.width,self.view.bounds.size.height-44);
     self.mainTableView=[[[UITableView alloc] initWithFrame:rect style:UITableViewStyleGrouped] autorelease]  ;    

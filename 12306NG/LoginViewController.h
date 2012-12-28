@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LoginViewController : UIViewController
+@interface LoginViewController : UIViewController<UITextFieldDelegate>
+{
+    
+    NSMutableArray* tableArray;
+    UITableView* mainTableView;
+    
+    UITextField* textName;
+    UITextField* textPwd;
+    UITextField* textCode;
+}
 
 @end

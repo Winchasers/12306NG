@@ -13,6 +13,19 @@
 @end
 
 @implementation UserInfomationViewController
+@synthesize userInfoKey;
+
+-(id)initWithUserInfoKey:(UserInfoKey)userInfoKey_
+{
+    
+    self=[super init];
+    if (self) {
+        // Custom initialization
+        self.userInfoKey=userInfoKey_;
+    }
+    return self;
+    
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,6 +44,28 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    self.title=@"个人资料管理";
+    
+    if (self.userInfoKey==UserInfoMe) {
+        self.navigationItem.rightBarButtonItem=[[[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStyleBordered target:self action:@selector(editContent)] autorelease];
+    }
+    
+    UISegmentedControl* segControl=[[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"我的资料",@"同行旅客", nil]];
+    segControl.frame=CGRectMake(10, 10, 300, 30);
+    segControl.segmentedControlStyle=UISegmentedControlStylePlain;
+
+    [self.view addSubview:segControl];
+    
+    
+    
+    
+    
+    
+}
+-(void)editContent
+{
+    
 }
 
 - (void)didReceiveMemoryWarning

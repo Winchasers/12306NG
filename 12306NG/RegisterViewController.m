@@ -28,12 +28,12 @@
         // Custom initialization
         self.tableArray=[NSMutableArray arrayWithObjects:
                          [NSMutableArray arrayWithObjects:
-                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"用 户 名",@"title",@"name",@"id",@"Sun",@"value",@"6-30位（字母、数字均可）",@"mask", nil],
-                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"密      码",@"title",@"pwd",@"id",@"Sun",@"value",@"至少6位（字母、数字均可）",@"mask" ,nil],
+                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"用  户  名",@"title",@"name",@"id",@"Sun",@"value",@"6-30位(字母、数字均可)",@"mask", nil],
+                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"密       码",@"title",@"pwd",@"id",@"Sun",@"value",@"至少6位(字母、数字均可)",@"mask" ,nil],
                           [NSMutableDictionary dictionaryWithObjectsAndKeys:@"确认密码",@"title",@"pwd2",@"id",@"Sun",@"value",@"",@"mask", nil],
                           [NSMutableDictionary dictionaryWithObjectsAndKeys:@"查询密码",@"title",@"qpwd",@"id",@"Sun",@"value",@"6位数字语音查询密码",@"mask", nil],
                           [NSMutableDictionary dictionaryWithObjectsAndKeys:@"确认密码",@"title",@"qpwd2",@"id",@"Sun",@"value",@"sss",@"mask", nil],
-                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"验 证 码",@"title",@"code",@"id",@"Sun",@"value",@"sss",@"mask", nil],
+                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"验  证  码",@"title",@"code",@"id",@"Sun",@"value",@"sss",@"mask", nil],
                           nil],
                          
                          
@@ -45,8 +45,8 @@
                          
                          
                          [NSMutableArray arrayWithObjects:
-                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"姓 名",@"title",@"idName",@"id",@"Sun",@"value",@"sss",@"mask", nil],
-                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"性 别",@"title",@"sex",@"id",@"Sun",@"value",@"sss",@"mask", nil],
+                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"姓       名",@"title",@"idName",@"id",@"Sun",@"value",@"sss",@"mask", nil],
+                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"性       别",@"title",@"sex",@"id",@"Sun",@"value",@"sss",@"mask", nil],
                           [NSMutableDictionary dictionaryWithObjectsAndKeys:@"出生日期",@"title",@"birthday",@"id",@"Sun",@"value",@"sss",@"mask", nil],
                           [NSMutableDictionary dictionaryWithObjectsAndKeys:@"证件类型",@"title",@"idType",@"id",@"Sun",@"value",@"sss",@"mask", nil],
                           [NSMutableDictionary dictionaryWithObjectsAndKeys:@"证件号码",@"title",@"idNumber",@"id",@"Sun",@"value",@"sss",@"mask", nil],
@@ -102,6 +102,7 @@
     mainTableView.backgroundView=nil;
     mainTableView.dataSource=(id<UITableViewDataSource>)self;
     mainTableView.delegate=(id<UITableViewDelegate>)self;
+    mainTableView.separatorStyle=UITableViewCellSeparatorStyleSingleLine;
     
     isKeyBoardShow=NO;
     
@@ -122,17 +123,17 @@
     static NSString *CellIdentifier = @"Cell_ABC";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier] ;
     if (cell==nil) {
-        cell=[[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell=[[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
         cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
         
         
-        if (indexPath.section==2) {
-            UISwitch* inputMethod=[[UISwitch alloc] initWithFrame:CGRectMake(210, 9, 100, 50)];
-            //[inputMethod setOn:[GlobalClass sharedClass].isEnableBaiduInput animated:YES];
-            [inputMethod addTarget:self action:@selector(swithChanged:) forControlEvents:UIControlEventValueChanged];
-            cell.accessoryView=inputMethod;
-            [inputMethod release];
-        }
+//        if (indexPath.section==2) {
+//            UISwitch* inputMethod=[[UISwitch alloc] initWithFrame:CGRectMake(210, 9, 100, 50)];
+//            //[inputMethod setOn:[GlobalClass sharedClass].isEnableBaiduInput animated:YES];
+//            [inputMethod addTarget:self action:@selector(swithChanged:) forControlEvents:UIControlEventValueChanged];
+//            cell.accessoryView=inputMethod;
+//            [inputMethod release];
+//        }
         
     } 
     NSMutableDictionary* dataDic=[[tableArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];

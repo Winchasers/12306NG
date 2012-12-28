@@ -89,6 +89,7 @@
     mainTableView.backgroundView=nil;
     mainTableView.dataSource=(id<UITableViewDataSource>)self;
     mainTableView.delegate=(id<UITableViewDelegate>)self;
+    mainTableView.separatorStyle=UITableViewCellSeparatorStyleSingleLine;
     
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

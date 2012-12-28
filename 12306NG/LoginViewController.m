@@ -43,24 +43,25 @@
     
     
     
-    
+    int OffsetY=20;
     
     
     UIImageView* logoView=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo"]];
-    logoView.frame=CGRectMake(20, 30, 280, 70);
+    logoView.frame=CGRectMake(20, OffsetY, 280, 70);
     [self.view addSubview:logoView];
     
     
-    CGRect rect=CGRectMake(10, 110, self.view.bounds.size.width-20,150);
+    CGRect rect=CGRectMake(10, OffsetY+80, self.view.bounds.size.width-20,150);
     self.mainTableView=[[[UITableView alloc] initWithFrame:rect style:UITableViewStyleGrouped] autorelease]  ;    
     [self.view addSubview:self.mainTableView];
     mainTableView.backgroundColor=[UIColor clearColor];
     mainTableView.backgroundView=nil;
     mainTableView.dataSource=(id<UITableViewDataSource>)self;
     mainTableView.delegate=(id<UITableViewDelegate>)self;
+    mainTableView.separatorStyle=UITableViewCellSeparatorStyleSingleLine;
     
     UIButton* btnLogin=[UIButton buttonWithType:UIButtonTypeRoundedRect];
-    btnLogin.frame=CGRectMake(20, 260, 280, 40);
+    btnLogin.frame=CGRectMake(20, OffsetY+230, 280, 40);
     [btnLogin setTitle:@"登  录" forState:UIControlStateNormal];
 //    [btnLogin setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"banner_bluebutton"]]];
     [btnLogin addTarget:self action:@selector(onLoginClick) forControlEvents:UIControlEventTouchUpInside];
@@ -68,7 +69,7 @@
     
     
     UIButton* btnRegist=[UIButton buttonWithType:UIButtonTypeCustom];
-    btnRegist.frame=CGRectMake(20, 310, 80, 30);
+    btnRegist.frame=CGRectMake(20, OffsetY+280, 80, 30);
     btnRegist.titleLabel.font=[UIFont boldSystemFontOfSize:15];
     [btnRegist setTitle:@"注册新用户" forState:UIControlStateNormal];
     [btnRegist addTarget:self action:@selector(onRegistClick) forControlEvents:UIControlEventTouchUpInside];
@@ -81,7 +82,7 @@
     [lineView release];
     
     UIButton* btnAutoLogin=[UIButton buttonWithType:UIButtonTypeCustom];
-    btnAutoLogin.frame=CGRectMake(220-50, 310, 130, 30);
+    btnAutoLogin.frame=CGRectMake(220-50, OffsetY+280, 130, 30);
     btnAutoLogin.titleLabel.font=[UIFont boldSystemFontOfSize:15];
     [btnAutoLogin setTitle:@"允许自动登录" forState:UIControlStateNormal];
     [btnAutoLogin setImage:[UIImage imageNamed:@"auto_login_frame"] forState:UIControlStateNormal];
@@ -102,10 +103,31 @@
     
     
     
-    
+    UITapGestureRecognizer* tapGesture=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
+    tapGesture.delegate=(id<UIGestureRecognizerDelegate>)self;
+    [self.view addGestureRecognizer:tapGesture];
     
 
 
+}
+//- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+//{
+//    
+//    if ([gestureRecognizer isKindOfClass:[UIButton class]]) {
+//        return NO;
+//    }
+//    return YES;
+//}
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+    if ([touch.view isKindOfClass:[UIButton class]]) {
+        return NO;
+    }
+    return YES;
+}
+-(void)tap:(UIGestureRecognizer*)gesture
+{
+    [self.view endEditing:YES];
 }
 -(void)onAutoLoginClick:(UIButton*)btn
 {
@@ -157,7 +179,7 @@
         cell=[[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
        // cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
-        
+        //cell.backgroundColor=[UIColor clearColor];
         
         if (indexPath.row==0) {
         cell.textLabel.text=@"用户名";

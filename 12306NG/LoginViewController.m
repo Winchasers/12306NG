@@ -81,7 +81,7 @@
     [lineView release];
     
     UIButton* btnAutoLogin=[UIButton buttonWithType:UIButtonTypeCustom];
-    btnAutoLogin.frame=CGRectMake(220-40, 310, 120, 30);
+    btnAutoLogin.frame=CGRectMake(220-50, 310, 130, 30);
     btnAutoLogin.titleLabel.font=[UIFont boldSystemFontOfSize:15];
     [btnAutoLogin setTitle:@"允许自动登录" forState:UIControlStateNormal];
     [btnAutoLogin setImage:[UIImage imageNamed:@"auto_login_frame"] forState:UIControlStateNormal];

@@ -12,6 +12,7 @@
 {
     
     NSMutableArray* tableArray;
+    NSMutableDictionary* dataDict;
     UITableView* mainTableView;
     
     UITextField* textName;

@@ -135,6 +135,7 @@
 		A408A408168D77E30059EA6A /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A408A407168D77E30059EA6A /* libxml2.2.dylib */; };
 		A408A40A168D77EC0059EA6A /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A408A409168D77EC0059EA6A /* libz.1.1.3.dylib */; };
 		A408A40C168D78420059EA6A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A408A40B168D78420059EA6A /* MobileCoreServices.framework */; };
+		A408A40F168D797F0059EA6A /* Docs in Resources */ = {isa = PBXBuildFile; fileRef = A408A40E168D797F0059EA6A /* Docs */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -309,6 +310,8 @@
 		A408A409168D77EC0059EA6A /* libz.1.1.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.1.3.dylib; path = usr/lib/libz.1.1.3.dylib; sourceTree = SDKROOT; };
 		A408A40B168D78420059EA6A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		A408A40D168D78AB0059EA6A /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "/Users/sun/Development/12306IOS/12306NG/12306NG/zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<absolute>"; };
+		A408A40E168D797F0059EA6A /* Docs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Docs; sourceTree = "<group>"; };
+		A408A411168DA6A50059EA6A /* AppDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDefine.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -335,6 +338,7 @@
 			isa = PBXGroup;
 			children = (
 				0C58010916798708006786CF /* README.md */,
+				A408A40E168D797F0059EA6A /* Docs */,
 				0C580043167963BC006786CF /* 12306NG */,
 				0C58003C167963BC006786CF /* Frameworks */,
 				0C58003A167963BC006786CF /* Products */,
@@ -371,6 +375,7 @@
 				0C58006316796401006786CF /* view */,
 				0C5800641679640E006786CF /* util */,
 				0C58006516796415006786CF /* model */,
+				A408A411168DA6A50059EA6A /* AppDefine.h */,
 				0C58004C167963BC006786CF /* AppDelegate.h */,
 				0C58004D167963BC006786CF /* AppDelegate.m */,
 				0C580044167963BC006786CF /* Supporting Files */,
@@ -803,6 +808,7 @@
 				0C58017F16799BD7006786CF /* top_button_backPressed.png in Resources */,
 				0C58018016799BD7006786CF /* triangle.png in Resources */,
 				0C58018116799BD7006786CF /* up.png in Resources */,
+				A408A40F168D797F0059EA6A /* Docs in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

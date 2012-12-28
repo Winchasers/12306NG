@@ -32,25 +32,25 @@
                           [NSMutableDictionary dictionaryWithObjectsAndKeys:@"密       码",@"title",@"pwd",@"id",@"Sun",@"value",@"至少6位(字母、数字均可)",@"mask" ,nil],
                           [NSMutableDictionary dictionaryWithObjectsAndKeys:@"确认密码",@"title",@"pwd2",@"id",@"Sun",@"value",@"",@"mask", nil],
                           [NSMutableDictionary dictionaryWithObjectsAndKeys:@"查询密码",@"title",@"qpwd",@"id",@"Sun",@"value",@"6位数字语音查询密码",@"mask", nil],
-                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"确认密码",@"title",@"qpwd2",@"id",@"Sun",@"value",@"sss",@"mask", nil],
-                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"验  证  码",@"title",@"code",@"id",@"Sun",@"value",@"sss",@"mask", nil],
+                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"确认密码",@"title",@"qpwd2",@"id",@"Sun",@"value",@"请再次输入语音查询密码",@"mask", nil],
+                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"验  证  码",@"title",@"code",@"id",@"Sun",@"value",@"验证码点击可刷新",@"mask", nil],
                           nil],
                          
                          
                          [NSMutableArray arrayWithObjects:
-                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"手机号码",@"title",@"phone",@"id",@"Sun",@"value",@"sss",@"mask", nil],
-                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"电子邮件",@"title",@"email",@"id",@"Sun",@"value",@"sss",@"mask", nil],
+                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"手机号码",@"title",@"phone",@"id",@"Sun",@"value",@"接受订票信息",@"mask", nil],
+                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"电子邮件",@"title",@"email",@"id",@"Sun",@"value",@"激活账号，接受订单信息",@"mask", nil],
                           nil],
                          
                          
                          
                          [NSMutableArray arrayWithObjects:
-                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"姓       名",@"title",@"idName",@"id",@"Sun",@"value",@"sss",@"mask", nil],
-                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"性       别",@"title",@"sex",@"id",@"Sun",@"value",@"sss",@"mask", nil],
-                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"出生日期",@"title",@"birthday",@"id",@"Sun",@"value",@"sss",@"mask", nil],
-                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"证件类型",@"title",@"idType",@"id",@"Sun",@"value",@"sss",@"mask", nil],
-                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"证件号码",@"title",@"idNumber",@"id",@"Sun",@"value",@"sss",@"mask", nil],
-                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"旅客类型",@"title",@"userType",@"id",@"Sun",@"value",@"sss",@"mask", nil],
+                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"姓       名",@"title",@"idName",@"id",@"Sun",@"value",@"",@"mask", nil],
+                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"性       别",@"title",@"sex",@"id",@"Sun",@"value",@"",@"mask", nil],
+                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"出生日期",@"title",@"birthday",@"id",@"Sun",@"value",@"",@"mask", nil],
+                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"证件类型",@"title",@"idType",@"id",@"Sun",@"value",@"",@"mask", nil],
+                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"证件号码",@"title",@"idNumber",@"id",@"Sun",@"value",@"",@"mask", nil],
+                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"旅客类型",@"title",@"userType",@"id",@"Sun",@"value",@"",@"mask", nil],
                           nil],
                          nil];
         self.dataDict=[NSMutableDictionary dictionary];
@@ -92,7 +92,7 @@
     // Do any additional setup after loading the view from its nib.
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     self.view.backgroundColor=[UIColor clearColor];
-    self.title=NSLocalizedString(@"我的抢票助手", nil);
+    self.title=NSLocalizedString(@"新用户注册", nil);
     self.navigationItem.rightBarButtonItem=[[[UIBarButtonItem alloc] initWithTitle:@"提交" style:UIBarButtonItemStyleBordered target:self action:@selector(onSubmitClick)] autorelease];
     
     CGRect rect=CGRectMake(0, 0, self.view.bounds.size.width,420);

@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "Flurry.h"
+#import "HTMLParser.h"
+#import "ASIHTTPRequest.h"
 
 #import "LoginViewController.h"
 #import "UserCenterViewController.h"
@@ -27,20 +30,56 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
+    //[Flurry startSession:@""];
+    
+//    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isAutoLogin"];
+//    [[NSUserDefaults standardUserDefaults] synchronize];
+//    [self test1];
+    
+
+    
+    
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     self.window.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"background_black"]];
-    // Override point for customization after application launch.
-//if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        self.loginView = [[[LoginViewController alloc] init] autorelease];
- //   }
     
-    UINavigationController* navController=[[UINavigationController alloc] initWithRootViewController:self.loginView];
-    [navController.navigationBar setTintColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"banner"]]];
-    [navController setNavigationBarHidden:YES];
-    self.window.rootViewController = navController; 
-    [navController release];
+    
+    //BOOL isAutoLogin= [[[NSUserDefaults standardUserDefaults] objectForKey:@"isAutoLogin"] boolValue];
+    BOOL isAutoLogin=NO;
+
+    NSString* userName= [[NSUserDefaults standardUserDefaults] objectForKey:@"userName"];
+    
+    
+    
+    if (isAutoLogin&&userName&&![userName isEqualToString:@""]) {
+        
+         self.userCenterViewController=[[[UserCenterViewController alloc] init]autorelease];   
+        UINavigationController* navController=[[UINavigationController alloc] initWithRootViewController:self.userCenterViewController];
+        [navController.navigationBar setTintColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"banner"]]];
+        //[navController setNavigationBarHidden:YES];
+        self.window.rootViewController = navController;
+        [navController release];
+    }else {
+        
+        self.loginView = [[[LoginViewController alloc] init] autorelease];    
+        UINavigationController* navController=[[UINavigationController alloc] initWithRootViewController:self.loginView];
+        [navController.navigationBar setTintColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"banner"]]];
+        [navController setNavigationBarHidden:YES];
+        self.window.rootViewController = navController;
+        [navController release];
+    }
+    
+    
+    
     //self.window.rootViewController = self.loginView;
     [self.window makeKeyAndVisible];
+    
+    
+    
+    
+    
+    
+    
+    
     return YES;
 }
 
@@ -74,10 +113,11 @@
 -(void)didLoginIn
 {
     
-    self.userCenterViewController=[[UserCenterViewController alloc] init];
+    self.userCenterViewController=[[[UserCenterViewController alloc] init]autorelease];
     UINavigationController* navController=[[UINavigationController alloc] initWithRootViewController:self.userCenterViewController];
     [navController.navigationBar setTintColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"banner"]]];
-     self.window.rootViewController = navController;  
+     self.window.rootViewController = navController;
+    [navController release];
     
     self.loginView.view.frame=CGRectOffset(self.loginView.view.frame, 0, 20);
     [self.window.rootViewController.view addSubview:self.loginView.view];    
@@ -93,6 +133,8 @@
 }
 -(void)didLoginOut
 { 
+    
+    //[ASIHTTPRequest clearSession];
     self.loginView = [[[LoginViewController alloc] init]autorelease]; 
     self.loginView.view.frame=CGRectOffset( self.loginView.view.frame, 0, -480);
     [self.userCenterViewController.navigationController.view addSubview:self.loginView.view];  
@@ -109,5 +151,40 @@
     }];    
 }
 
+-(void)test1
+{
+    
+    NSString* html=[NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"userinfo" ofType:@"html"] encoding:NSUTF8StringEncoding error:nil];;    
+    HTMLParser* parse=[[HTMLParser alloc] initWithString:html  error:nil];            
+    HTMLNode* body=parse.body;
+    
+    NSArray* arr=[body findChildrenOfClass:@"pim_font"];
+    
+    NSMutableDictionary* dict=[NSMutableDictionary dictionary];
+    for (HTMLNode* nodeTable in arr) {
+        
+        
+        HTMLNode* nodeTR =[nodeTable firstChild];
+        while (nodeTR&&nodeTR->_node) {
+            
+            NSArray* tdArray=[nodeTR findChildTags:@"td"];
+            if ([tdArray count]>1) {
+                
+                HTMLNode* nodeTD= [tdArray objectAtIndex:0]; 
+                HTMLNode* nodeTD2=[tdArray objectAtIndex:1];
+                NSString* name=[nodeTD contents];
+                NSString* value=[nodeTD2 contents];
+                if(value==nil)value=@"";
+                [dict setValue:value forKey:name];
+                
+            }
+            nodeTR=nodeTR.nextSibling;
+        }
+    }
+    
+    LogInfo(@"%@",dict);
+    
+    [[[[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"%@",dict] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] autorelease] show];
+}
 
 @end

@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ASIFormDataRequest.h"
+#import "MBProgressHUD.h"
 
 @interface LoginViewController : UIViewController<UITextFieldDelegate>
 {
@@ -18,6 +20,14 @@
     UITextField* textName;
     UITextField* textPwd;
     UITextField* textCode;
+    
+    UIButton* imgBtn;
+    
+    MBProgressHUD* HUD;
+    
+    BOOL isCodeLoaded;
+    
+    ASIHTTPRequest* requestImg;
 }
 
 @end

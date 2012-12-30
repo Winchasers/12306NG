@@ -17,9 +17,23 @@ typedef enum
 }UserInfoKey;
 
 
-@interface UserInfomationViewController : UIViewController
+@interface UserInfomationViewController : UIViewController<UITextFieldDelegate>
 {
     UserInfoKey userInfoKey;
+    NSMutableArray* tableArray;
+    UITableView* mainTableView;
+    
+    NSMutableDictionary* dataDict;
+    
+    UISegmentedControl* segControlTop;
+    
+    
+    BOOL isKeyBoardShow;
+    
+    UIView* loadingView;
+    
+    
+
 }
 -(id)initWithUserInfoKey:(UserInfoKey)userInfoKey;
 @property(nonatomic,assign)UserInfoKey userInfoKey;

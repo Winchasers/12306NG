@@ -124,7 +124,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier] ;
     if (cell==nil) {
         cell=[[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
-        cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+    cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
         
         
 //        if (indexPath.section==2) {
@@ -143,8 +143,7 @@
     // if (indexPath.section==0&&indexPath.row==0) {
     
     
-    UITextField* textName=[[UITextField alloc] initWithFrame:CGRectMake(0, 0, 200, 40)];
-    
+    UITextField* textName=[[UITextField alloc] initWithFrame:CGRectMake(0, 0, 200, 40)];    
     textName.accessibilityLabel=[dataDic valueForKey:@"id"];    
     textName.tag=tagIndex++;
     textName.placeholder=[dataDic valueForKey:@"mask"];

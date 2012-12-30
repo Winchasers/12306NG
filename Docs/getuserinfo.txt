@@ -1,0 +1,3597 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<meta name="Robots"   content="none"/>
+<meta http-equiv="Expires" content="0"/>
+<meta http-equiv="Cache-Control"  content="no-cache"/> 
+<meta http-equiv="pragma"  content="no-cache"/> 
+<title>查看个人资料</title>
+
+<link  href="/otsweb/css/style.css" rel="stylesheet"  type="text/css"/>
+<link  href="/otsweb/css/newsty.css" rel="stylesheet"  type="text/css"/>
+<link  href="/otsweb/css/contact.css" rel="stylesheet"  type="text/css"/>
+<link href="/otsweb/css/validation.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="/otsweb/css/easyui.css"/>
+<link rel="stylesheet" type="text/css" href="/otsweb/css/suggest.css"/>
+<link href="/otsweb/css/cupertino/jquery-ui-1.8.2.custom.css" rel="stylesheet" type="text/css" />
+<link href="/otsweb/css/ots_common.css" rel="stylesheet" type="text/css" />
+<link rel="shortcut icon" href="http://www.12306.cn/mormhweb/images/favicon.ico"/>
+<script type="text/javascript" src="/otsweb/js/common/iepngfix_tilebg.js?version=5.28"></script>
+<script src="/otsweb/js/common/jquery-1.4.2.min.js?version=5.28" type="text/javascript"></script>
+<script src="/otsweb/js/common/autoHeight.js?version=5.28" type="text/javascript"></script>
+<script src="/otsweb/js/common/jquery.bgiframe.min.js?version=5.28" type="text/javascript"></script>
+<script src="/otsweb/js/common/jquery.easyui.min.js?version=5.28" type="text/javascript"></script>
+<script src="/otsweb/js/common/jquery.form.js?version=5.28" type="text/javascript"></script>
+<script src="/otsweb/js/common/datepicker/WdatePicker.js?version=5.28" type="text/javascript"></script>
+<script src="/otsweb/js/common/j.suggest.js?version=5.28" type="text/javascript"></script>
+<script src="/otsweb/js/common/school_display1.js?version=5.28" type="text/javascript"></script>
+<script src="/otsweb/js/common/school_suggest1.js?version=5.28" type="text/javascript"></script>
+<script src="/otsweb/js/common/city_name_suggest.js?version=5.28" type="text/javascript"></script>
+<script src="/otsweb/js/common/trainCodeSuggest.js?version=5.28" type="text/javascript"></script>
+<script src="/otsweb/js/common/date.js?version=5.28" type="text/javascript"></script>
+<script src="/otsweb/js/common/sidetag.js?version=5.28" type="text/javascript"></script>
+
+
+<script>
+   $(document).ready(function(){
+	   if(parent.notLogin==undefined) {
+		   parent.location='/otsweb' + '/main.jsp';
+		   return;
+		   }
+	        var isHide = "";
+	        if (isHide == "true") {
+		        if(parent.hideMenu){
+		        	//parent.hideMenu();
+			    }
+		     } else {
+		    	 if(parent.showMenu){
+		    		 parent.showMenu();
+				 }
+			 }
+			 var clicktitle = '个人资料';
+			 if(parent.clickMenu&&clicktitle!==''){
+				 parent.clickMenu('个人资料');
+		     }
+
+			 
+			 var isLogin= true
+			 var u_name = '张三';
+			 if (isLogin) {
+			  parent.hasLogin(u_name);
+	  	     }else{
+	  	  	  parent.notLogin();
+	      	 }
+	 });
+</script>
+</head>
+<body>
+<style>
+.noedit{background-color:#DCDCDC}
+.right {text-align:right}
+.pim_ts2{ color:#FF0000;}
+
+</style>
+<script type="text/javascript" src="/otsweb/js/sysuser/user_info.js?version=5.28"></script>
+<script type="text/javascript">
+	
+	var notReg = "true";
+	function tab1click() {
+		document.getElementById('t1').className='current';
+		document.getElementById('t2').className='';
+		document.getElementById('tab1').style.display='block';
+		document.getElementById('tab2').style.display='none';
+		}
+	function tab2click() {
+		if (notReg == "true") {
+			alert("您还未注册常旅客会员，请先成为会员！");
+			return;
+			}
+		document.getElementById('t1').className='';
+		document.getElementById('t2').className='current';
+		document.getElementById('tab1').style.display='none';
+		document.getElementById('tab2').style.display='block';
+		}
+
+	document.body.onload=function(){
+		var needShowMemberInfoTab = '';
+		if (needShowMemberInfoTab == "true") {
+			tab2click();
+			alert("修改会员资料成功");
+		}
+	};
+</script>
+
+
+
+<!--<script type="text/javascript">
+	// 修改父页面登录用户的姓名
+	parent.document.getElementById("loginInfo").innerHTML="张三,中国铁路欢迎您! ";
+</script>
+-->
+
+<div class="conWrap">
+    <div class="text1">
+      <div class="containerWrap_left">
+       
+       
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+<div class="left_up">
+	<img style="margin-left: 10px; margin-top: 6px;"
+		src="/otsweb/images/left_upz.png" />
+	
+	
+</div>
+<div class="left_bao">
+	<div class="left_m">
+		张三
+
+	</div>
+	<div class="left_down_z" id="left_down_z">
+		<table width="100%" cellspacing="0" cellpadding="0" height="100%">
+			<tr>
+				<td class="left_12306"><img src="/otsweb/images/left_xiao.jpg" />我的订单</td>
+			</tr>
+			<tr>
+				<td class="text3"><a
+					href="/otsweb/order/myOrderAction.do?method=queryMyOrderNotComplete&leftmenu=Y">未完成订单</a>
+				</td>
+			</tr>
+			<tr>
+				<td class="text3"><a
+					href="/otsweb/order/myOrderAction.do?method=init&showMessage=Y">订单查询</a>
+				</td>
+			</tr>
+			<!-- 
+			<tr>
+                <td class="text3"><a href="/otsweb/reservation/queryReservationAction.do?method=initReservation">预约查询</a></td>
+            </tr>
+             -->
+            <!-- 
+            <tr>
+                <td class="text3"><a href="/otsweb/reservation/queryReservationAction.do?method=initShortMsgReservation">短信代查</a></td>
+            </tr>
+             -->
+			<tr>
+				<td class="text3"><a
+					href="/otsweb/order/myOrderAction.do?method=initRefund&showMessage=Y">退票</a>
+				</td>
+			</tr>
+			<tr>
+				<td class="text3"><a
+					href="/otsweb/order/myOrderAction.do?method=initResign&showMessage=Y">改签</a>
+				</td>
+			</tr>
+			<tr>
+				<td class="left_12306"><img src="/otsweb/images/left_xiao.jpg" />我的信息</td>
+			</tr>
+			<tr>
+				<td class="text3"><a
+					href="/otsweb/passengerAction.do?method=initUsualPassenger">常用联系人</a>
+				</td>
+			</tr>
+			<tr>
+				<td class="text3"><a
+					href="/otsweb/sysuser/editMemberAction.do?method=initEdit">个人资料</a>
+				</td>
+			</tr>
+			<tr>
+				<td class="text3"><a
+					href="/otsweb/sysuser/userCenterAction.do?method=initForChangePwd">密码修改</a>
+				</td>
+			</tr>
+			<!-- 
+			<tr>
+				<td class="text3"><a
+					href="/otsweb/sysuser/userCenterAction.do?method=initQueryPoints">积分账户</a>
+				</td>
+			</tr>
+			-->
+			
+		</table>
+		
+	</div>
+</div>
+<script>
+	$(function() {
+		var click_left_title = '个人资料';
+		$("#left_down_z a").each(function() {
+			if ($(this)[0].innerHTML === click_left_title) {
+				var index = $(this).attr("name");
+				$(this).css("color", "red");
+				if ("" != index) {
+					$(".ddlist").hide();
+					$(".ddlist:eq(" + index + ")").toggle();
+					$("h3 em:eq(" + index + ")").addClass("open");
+				}
+			}
+		});
+	});
+</script>
+      </div>
+      
+      
+      <!--right  -->
+      <div class="pim_right">
+        <div class="pim_title">
+          <div class="pim_titlefont">查看个人资料</div>
+        </div>
+        <ul class="int-top clearfix" style="margin-top:20px">
+            	<li id="t1" class="current"><a href="#" onclick="tab1click()">个人资料</a></li>
+                <li id="t2" ><a href="#" onclick="tab2click()">会员资料</a></li>
+            </ul>
+            <div id="tab1">
+        <div class="pim_titlef2">
+        <span  class="bule">基本信息</span> 
+        </div>
+         <table width="100%" border="0" cellspacing="0" cellpadding="0" class="pim_font">
+				<tr>
+					 <td width="110" class="font_r">用户名：</td>
+					  </th>
+					<td>iostest</td>
+				</tr>
+	
+				<tr>
+					 <td class="font_r">密码提示问题：</td>
+					<td></td>
+				</tr>
+			</table>
+        
+        <div class="pim_titlef2">
+        	<span>详细信息</span>
+        </div>
+        
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="pim_font">
+		<tr>
+			 <td width="110" class="font_r">姓名：</td>
+			<td>张三</td>
+		</tr>
+		<tr>
+			 <td class="font_r">性别：</td>
+			<td>男</td>
+		</tr>
+             
+		<tr>
+		
+			 <td class="font_r">出生日期：</td>
+			<td>1980-11-11
+			</td>
+		</tr>
+		<tr>
+			 <td class="font_r">国家或地区：</td>
+			<td>中国</td>
+		</tr>
+		
+		<tr>
+			 <td class="font_r">证件类型：</td>
+			<td>二代身份证</td>
+		</tr>
+		
+		<tr>
+			 <td class="font_r">证件号码：</td>
+			<td>110101198011111114</td>
+		</tr>
+		</table>
+        
+		  <div class="pim_titlef2">
+		  	<span>联系方式</span>
+		  </div>
+		  
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="pim_font">
+		<tr>
+			<td width="110" class="font_r">手机号：</td>
+			<td>11111111111</td>
+		</tr>
+		
+		<tr>
+			 <td class="font_r">固定电话：</td>
+			<td></td>
+		</tr>
+		
+		<tr>
+			 <td class="font_r">电子邮件：</td>
+			<td>sdfsaf@11.com</td>
+		</tr>
+		
+		<tr>
+			 <td class="font_r">地址：</td>
+			<td></td>
+		</tr>
+		
+		<tr>
+			 <td class="font_r">邮编：</td>
+			<td></td>
+		</tr>
+		</table>
+		
+		<div class="pim_titlef2">
+		  	<span>附加信息</span>
+		  </div>
+		  
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="pim_font">
+		<tr>
+			<td width="110" class="font_r">旅客类型：</td>
+			<td>成人</td>
+		</tr>
+		
+		</table>
+		
+      <div class="tj1"><a href="/otsweb/sysuser/userCenterAction.do?method=initForModify" class="button_c"><span><ins>修改</ins></span></a></div> 
+      <!--right end-->
+      
+      
+      </div><!-- tab1end -->
+      
+      
+      
+      
+      <div id="tab2" style="display:none">
+     
+      <form name="editMemberForm" id="editMemberForm" method="post" action="/otsweb/sysuser/editMemberAction.do?method=editMember"><div><input type="hidden" name="org.apache.struts.taglib.html.TOKEN" value="ffa3f384bdea39299d23635aeb1d07bc"></div>
+	<div class="i-rmain">
+    	
+		<h2>基本资料</h2>
+   	  <p id="requiredInfoId" class="tips-a" style="display:none">加<span class="colorF00">*</span>为必填内容</p>
+	<table class="table-A" width="100%" border="0">
+          <tr>
+            <td width="115" align="right" class="right">姓名：</td>
+            <td>
+            
+            <input type="hidden" name="memberInfo.cnName" value="张三">
+            <input type="hidden" name="memberInfo.memberId" value="">
+            
+            <label id="cnNameMsg" class="error" style="display:none"></label>       
+            </td>
+          </tr>
+          
+          <tr style="display:none">
+            <td width="115" align="right" class="right">英文姓名：</td>
+             <td>
+            <div id="enNameTextId">
+            
+            </div>
+            <div id="enNameAreaId" style="display:none">
+            <input type="text" name="memberInfo.enName" maxlength="100" value="" id="enNameId" class="inputtext width183 "><span class="asterisk ">*</span>
+            <label id="enNameMsg" class="error" style="display:none"></label>   
+            </div>
+            </td>
+            
+            
+          </tr>
+          <tr>
+            <td width="115" align="right" class="right">称谓：</td>
+            <td>
+             
+            <div id="titlesId" style="display:none">
+            <span class="mr15px"><input type="radio" name="memberInfo.title" value="先生" checked="checked" class="mr15px">先生</span>
+            <span class="mr15px"><input type="radio" name="memberInfo.title" value="女士" class="mr15px">女士</span>
+			
+            <span class="asterisk ">*</span>
+            <span class="pim_ts">必填</span></div>
+            <div id="titleTextId"></div>
+            
+            </td>
+          </tr>
+          <tr>
+            <td width="115" align="right" class="right">生日：</td>
+            <td>
+            <div id="birthdayTextId">
+            
+            </div>
+            <div id="birthdayAreaId" style="display:none">
+            <input type="text" name="memberInfo.birthday" value="1980-11-11" id="birthdayId" class="inputtext width100"></td>
+            </div>
+          </tr>
+          <tr>
+            <td width="115" align="right" class="right">证件类型：</td>
+            <td>
+            <input type="hidden" name="memberInfo.idType" value="1">
+            
+            
+            
+            </td>
+          </tr>
+          <tr>
+            <td width="115" align="right" class="right">证件号码：</td>
+            <td>
+            <input type="hidden" name="memberInfo.idNo" value="110101198011111114"></td>
+          </tr>
+          <tr>
+            <td width="115" align="right" class="right">学历：</td>
+            <td>
+            <div id="educationTextId">
+            
+            </div>
+            <div id="educationAreaId" style="display:none">
+            
+
+            
+             <select name="memberInfo.education" id="educationId"><option value="">请选择</option>
+            <option value="高中及以下">高中及以下</option>
+            <option value="大专">大专</option>
+            <option value="大学">大学</option>
+            
+            <option value="硕士及以上">硕士及以上</option></select>
+            </div>
+            </td>
+          </tr>
+          <tr>
+            <td width="115" align="right" class="right">工作单位：</td>
+            <td>
+            <div id="companyTextId">
+            
+            </div>
+            <div id="companyAreaId" style="display:none">
+            <input type="text" name="memberInfo.company" maxlength="100" value="" id="companyId" class="inputtext width183 ">
+            </div>
+            </td>
+          </tr>
+           <tr>
+            <td width="115" align="right" class="right">职务：</td>
+            <td>
+            <div id="jobTextId">
+            
+            </div>
+            <div id="jobAreaId" style="display:none">
+            <input type="text" name="memberInfo.job" maxlength="50" value="" id="jobId" class="inputtext width183 ">
+            </div>
+            </td>
+          </tr>
+           <tr>
+            <td width="115" align="right" class="right">职业：</td>
+            <td>
+            <div id="occupationTextId">
+            
+            </div>
+            <div id="occupationAreaId" style="display:none">
+            
+            <select name="memberInfo.occupation" id="occupationId"><option value="">请选择</option>
+            <option value="国家机关/党群组织/企业/事业单位">国家机关/党群组织/企业/事业单位</option>
+            <option value="农/林/牧/渔/水利业生产人员">农/林/牧/渔/水利业生产人员</option>
+            <option value="商业/服务性人员">商业/服务性人员</option>
+            
+            <option value="军人">军人</option>
+            <option value="生产/运输设备操作人员及有关人员">生产/运输设备操作人员及有关人员</option>
+            <option value="专业技术人员">专业技术人员</option>
+            <option value="办事人员和有关人员">办事人员和有关人员</option>
+            <option value="学生">学生</option>
+            <option value="其他从业人员">其他从业人员</option></select>
+            </div>
+            </td>
+          </tr>
+        </table>
+        
+        <h2>联系方式</h2>
+		<table class="table-A mt20px" width="100%" border="0">
+          <tr>
+            <td width="115" align="right" class="right">通讯地址：</td>
+            <td>
+            <div id="addressNameTextId">
+          null  
+            </div>
+          <div id="addressNameAreaId" style="display:none">
+            <input type="hidden" name="memberInfo.addressId" value="">
+            <select name="memberInfo.state" id="stateId" class="inputtext  "><option value="11">北京</option>
+<option value="12">天津</option>
+<option value="13">河北</option>
+<option value="14">山西</option>
+<option value="15">内蒙古</option>
+<option value="21">辽宁</option>
+<option value="22">吉林</option>
+<option value="23">黑龙江</option>
+<option value="31">上海</option>
+<option value="32">江苏</option>
+<option value="33">浙江</option>
+<option value="34">安徽</option>
+<option value="35">福建</option>
+<option value="36">江西</option>
+<option value="37">山东</option>
+<option value="41">河南</option>
+<option value="42">湖北</option>
+<option value="43">湖南</option>
+<option value="44">广东</option>
+<option value="45">广西</option>
+<option value="46">海南</option>
+<option value="50">重庆</option>
+<option value="51">四川</option>
+<option value="52">贵州</option>
+<option value="53">云南</option>
+<option value="54">西藏</option>
+<option value="61">陕西</option>
+<option value="62">甘肃</option>
+<option value="63">青海</option>
+<option value="64">宁夏</option>
+<option value="65">新疆</option>
+<option value="71">台湾</option>
+<option value="81">香港</option>
+<option value="82">澳门</option></select>
+            <span class="mr15px">省<span class="asterisk ">*</span></span>
+            <select name="memberInfo.city" id="cityId" class="inputtext  "><option value="0034">哈尔滨</option>
+<option value="0110">长春</option>
+<option value="0205">沈阳</option>
+<option value="0357">北京</option>
+<option value="0359">天津</option>
+<option value="0365">石家庄</option>
+<option value="0405">太原</option>
+<option value="0511">呼和浩特</option>
+<option value="0602">济南</option>
+<option value="0705">南京</option>
+<option value="0712">上海</option>
+<option value="0809">合肥</option>
+<option value="0904">杭州</option>
+<option value="1004">福\345\267\236</option>
+<option value="1104">南昌</option>
+<option value="1222">郑州</option>
+<option value="1314">武汉</option>
+<option value="1407">长沙</option>
+<option value="1502">广州</option>
+<option value="1607">南宁</option>
+<option value="1707">成都</option>
+<option value="1717">重庆</option>
+<option value="1803">贵阳</option>
+<option value="1902">昆明</option>
+<option value="2003">西安</option>
+<option value="2102">兰州</option>
+<option value="2201">西宁</option>
+<option value="2302">银川</option>
+<option value="2403">乌鲁木齐</option>
+<option value="2501">海口</option>
+<option value="2751">拉萨</option>
+<option value="3201">香港</option>
+<option value="3301">澳门</option>
+<option value="0003">加格达奇</option>
+<option value="0007">齐齐哈尔</option>
+<option value="0009">黑河</option>
+<option value="0015">绥化</option>
+<option value="0016">伊春</option>
+<option value="0026">鸡西</option>
+<option value="0037">大庆</option>
+<option value="0044">牡丹江</option>
+<option value="0052">佳木斯</option>
+<option value="0102">白城</option>
+<option value="0111">公主岭</option>
+<option value="0112">四平</option>
+<option value="0117">吉林</option>
+<option value="0122">辽源</option>
+<option value="0124">梅河口</option>
+<option value="0131">图们</option>
+<option value="0132">延吉</option>
+<option value="0135">通化</option>
+<option value="0204">铁岭</option>
+<option value="0206">抚顺</option>
+<option value="0208">本溪</option>
+<option value="0210">丹东</option>
+<option value="0212">辽阳</option>
+<option value="0213">鞍山</option>
+<option value="0216">营口</option>
+<option value="0220">大连</option>
+<option value="0222">盘锦</option>
+<option value="0226">阜新</option>
+<option value="0228">锦州</option>
+<option value="0301">秦皇岛</option>
+<option value="0304">唐山</option>
+<option value="0309">承德</option>
+<option value="0315">张家口</option>
+<option value="0326">保定</option>
+<option value="0334">沧州</option>
+<option value="0339">衡水</option>
+<option value="0346">邢台</option>
+<option value="0349">邯郸</option>
+<option value="0358">廊坊</option>
+<option value="0361">任丘</option>
+<option value="0364">北戴河</option>
+<option value="0401">大同</option>
+<option value="0402">朔州</option>
+<option value="0403">忻州</option>
+<option value="0404">阳泉</option>
+<option value="0407">榆次</option>
+<option value="0411">临汾</option>
+<option value="0413">运城</option>
+<option value="0414">长治</option>
+<option value="0415">晋城</option>
+<option value="0481">离石</option>
+<option value="0508">赤峰</option>
+<option value="0510">集宁</option>
+<option value="0512">包头</option>
+<option value="0515">乌海</option>
+<option value="0601">德州</option>
+<option value="0603">聊城</option>
+<option value="0605">淄博</option>
+<option value="0606">青州</option>
+<option value="0607">潍坊</option>
+<option value="0608">胶州</option>
+<option value="0611">烟台</option>
+<option value="0612">威海</option>
+<option value="0614">青岛</option>
+<option value="0615">莱芜</option>
+<option value="0620">济宁</option>
+<option value="0621">菏泽</option>
+<option value="0622">临沂</option>
+<option value="0623">日照</option>
+<option value="0636">郓城</option>
+<option value="0662">蓬莱</option>
+<option value="0701">徐州</option>
+<option value="0704">连云港</option>
+<option value="0706">镇江</option>
+<option value="0708">常州</option>
+<option value="0709">无锡</option>
+<option value="0710">苏州</option>
+<option value="0713">扬州</option>
+<option value="0739">盐城</option>
+<option value="0742">阜宁</option>
+<option value="0751">淮阴</option>
+<option value="0764">张家港</option>
+<option value="0767">泰州</option>
+<option value="0804">阜阳</option>
+<option value="0806">宿州</option>
+<option value="0807">蚌埠</option>
+<option value="0810">马鞍山</option>
+<option value="0812">芜湖</option>
+<option value="0815">黄山</option>
+<option value="0816">安庆</option>
+<option value="0902">嘉兴</option>
+<option value="0903">海宁</option>
+<option value="0906">绍兴</option>
+<option value="0910">宁波</option>
+<option value="0911">诸暨</option>
+<option value="0912">义乌</option>
+<option value="0913">金华</option>
+<option value="0916">衢州</option>
+<option value="0920">温州</option>
+<option value="1005">三明</option>
+<option value="1006">永安</option>
+<option value="1008">龙岩</option>
+<option value="1010">厦门</option>
+<option value="1012">武夷山</option>
+<option value="1014">泉州</option>
+<option value="1032">莆田</option>
+<option value="1101">九江</option>
+<option value="1102">瑞昌</option>
+<option value="1103">庐山</option>
+<option value="1105">鹰潭</option>
+<option value="1107">景德镇</option>
+<option value="1115">井冈山</option>
+<option value="1116">赣州</option>
+<option value="1121">抚州</option>
+<option value="1168">瑞金</option>
+<option value="1201">安阳</option>
+<option value="1204">新乡</option>
+<option value="1205">焦作</option>
+<option value="1206">济源</option>
+<option value="1207">三门峡</option>
+<option value="1209">洛阳</option>
+<option value="1210">巩义</option>
+<option value="1211">开封</option>
+<option value="1212">商丘</option>
+<option value="1214">许昌</option>
+<option value="1215">平顶山</option>
+<option value="1216">南阳</option>
+<option value="1218">漯河</option>
+<option value="1219">驻马店</option>
+<option value="1221">周口</option>
+<option value="1230">登封</option>
+<option value="1233">新郑</option>
+<option value="1239">汤阴</option>
+<option value="1274">汝阳</option>
+<option value="1295">郸城</option>
+<option value="1301">十堰</option>
+<option value="1304">襄樊</option>
+<option value="1305">荆门</option>
+<option value="1307">宜昌</option>
+<option value="1310">随州</option>
+<option value="1313">孝感</option>
+<option value="1315">鄂州</option>
+<option value="1316">黄石</option>
+<option value="1318">赤壁</option>
+<option value="1332">广水</option>
+<option value="1350">江陵</option>
+<option value="1402">吉首</option>
+<option value="1403">怀化</option>
+<option value="1404">岳阳</option>
+<option value="1408">株洲</option>
+<option value="1410">湘潭</option>
+<option value="1412">娄底</option>
+<option value="1416">衡阳</option>
+<option value="1418">耒阳</option>
+<option value="1419">郴州</option>
+<option value="1421">张家界</option>
+<option value="1423">益阳</option>
+<option value="1424">韶山</option>
+<option value="1426">永州</option>
+<option value="1433">浏阳</option>
+<option value="1493">东安</option>
+<option value="1501">韶关</option>
+<option value="1504">东莞</option>
+<option value="1505">深圳</option>
+<option value="1506">佛山</option>
+<option value="1507">肇庆</option>
+<option value="1509">茂名</option>
+<option value="1512">惠州</option>
+<option value="1515">潮州</option>
+<option value="1516">汕头</option>
+<option value="1567">珠海</option>
+<option value="1602">柳州</option>
+<option value="1603">桂林</option>
+<option value="1609">凭祥</option>
+<option value="1610">百色</option>
+<option value="1611">北海</option>
+<option value="1700">金城江</option>
+<option value="1701">广元</option>
+<option value="1703">绵阳</option>
+<option value="1706">都江堰</option>
+<option value="1710">西昌</option>
+<option value="1711">攀枝花</option>
+<option value="1712">内江</option>
+<option value="1713">自贡</option>
+<option value="1715">达州</option>
+<option value="1720">南充</option>
+<option value="1722">达州</option>
+<option value="1802">都匀</option>
+<option value="1805">安顺</option>
+<option value="1806">六盘水</option>
+<option value="1807">遵义</option>
+<option value="1901">曲靖</option>
+<option value="1905">楚雄</option>
+<option value="2004">咸阳</option>
+<option value="2005">宝鸡</option>
+<option value="2006">安康</option>
+<option value="2007">汉中</option>
+<option value="2008">铜川</option>
+<option value="2010">延安</option>
+<option value="2015">榆林</option>
+<option value="2062">汉阴</option>
+<option value="2090">临潼</option>
+<option value="2101">天水</option>
+<option value="2104">武威</option>
+<option value="2106">张掖</option>
+<option value="2107">酒泉</option>
+<option value="2108">嘉峪关</option>
+<option value="2203">格尔木</option>
+<option value="2301">石嘴山</option>
+<option value="2405">石河子</option>
+<option value="2436">克拉玛依</option>
+<option value="2459">柯坪</option>
+<option value="2482">伊宁</option>
+<option value="6423">石门县</option>
+<option value="6702">资阳</option>
+<option value="6907">思茅</option>
+<option value="0001">漠河</option>
+<option value="0002">塔河</option>
+<option value="0004">嫩江</option>
+<option value="0005">讷河</option>
+<option value="0006">富裕</option>
+<option value="0008">泰来</option>
+<option value="0010">杜尔伯特</option>
+<option value="0011">北安</option>
+<option value="0012">海伦</option>
+<option value="0013">绥棱</option>
+<option value="0017">铁力</option>
+<option value="0018">鹤岗</option>
+<option value="0019">富锦</option>
+<option value="0020">双鸭山</option>
+<option value="0021">汤原</option>
+<option value="0022">友谊</option>
+<option value="0023">七台河</option>
+<option value="0024">虎林</option>
+<option value="0025">密山</option>
+<option value="0027">勃利</option>
+<option value="0028">桦南</option>
+<option value="0029">孙吴</option>
+<option value="0030">林口</option>
+<option value="0031">依安</option>
+<option value="0032">克山</option>
+<option value="0033">呼兰</option>
+<option value="0035">肇东</option>
+<option value="0036">安达</option>
+<option value="0038">双城</option>
+<option value="0039">阿城</option>
+<option value="0040">五常</option>
+<option value="0041">尚志</option>
+<option value="0042">庆安</option>
+<option value="0043">集贤</option>
+<option value="0045">海林</option>
+<option value="0046">绥芬河</option>
+<option value="0047">穆棱</option>
+<option value="0048">鸡东</option>
+<option value="0049">龙江</option>
+<option value="0050">绥滨</option>
+<option value="0051">宁安</option>
+<option value="0053">肇州</option>
+<option value="0054">肇源</option>
+<option value="0055">通河</option>
+<option value="0056">方正</option>
+<option value="0057">延寿</option>
+<option value="0058">宾县</option>
+<option value="0059">木兰</option>
+<option value="0060">巴彦</option>
+<option value="0061">拜泉</option>
+<option value="0062">甘南</option>
+<option value="0063">克东</option>
+<option value="0064">东宁</option>
+<option value="0065">嘉荫</option>
+<option value="0066">依兰</option>
+<option value="0067">抚远</option>
+<option value="0068">同江</option>
+<option value="0069">桦川</option>
+<option value="0070">饶河</option>
+<option value="0071">萝北</option>
+<option value="0072">宝清</option>
+<option value="0073">明水</option>
+<option value="0075">望奎</option>
+<option value="0076">兰西</option>
+<option value="0077">青冈</option>
+<option value="0078">逊克</option>
+<option value="0079">德都</option>
+<option value="0080">五大连池</option>
+<option value="0081">呼玛</option>
+<option value="0082">林甸</option>
+<option value="0083">兰棱</option>
+<option value="0084">双城堡</option>
+<option value="0085">松北</option>
+<option value="0086">庙台子</option>
+<option value="0087">对青山</option>
+<option value="0088">里木店</option>
+<option value="0089">姜家</option>
+<option value="0090">古城</option>
+<option value="0091">龙镇</option>
+<option value="0092">康金井</option>
+<option value="0093">石人城</option>
+<option value="0094">白奎堡</option>
+<option value="0095">兴隆镇</option>
+<option value="0096">万发屯</option>
+<option value="0097">秦家</option>
+<option value="0098">四方台</option>
+<option value="0099">张维屯</option>
+<option value="0100">东边井</option>
+<option value="0101">镇赉</option>
+<option value="0103">洮南</option>
+<option value="0104">通榆</option>
+<option value="0105">克左中旗</option>
+<option value="0106">双辽</option>
+<option value="0107">大安</option>
+<option value="0108">前郭尔罗斯</option>
+<option value="0109">农安</option>
+<option value="0113">德惠</option>
+<option value="0114">榆树</option>
+<option value="0115">九台</option>
+<option value="0116">舒兰</option>
+<option value="0118">永吉</option>
+<option value="0119">磐石</option>
+<option value="0120">辉南</option>
+<option value="0121">东辽</option>
+<option value="0123">东丰</option>
+<option value="0125">柳河</option>
+<option value="0126">蛟河</option>
+<option value="0127">桦甸</option>
+<option value="0128">敦化</option>
+<option value="0129">安图</option>
+<option value="0130">汪清</option>
+<option value="0133">龙井</option>
+<option value="0134">和龙</option>
+<option value="0136">白山</option>
+<option value="0137">集安</option>
+<option value="0138">松原</option>
+<option value="0139">双阳</option>
+<option value="0140">犁树</option>
+<option value="0141">通化县</option>
+<option value="0142">扶余</option>
+<option value="0143">长岭</option>
+<option value="0144">乾安</option>
+<option value="0145">临江</option>
+<option value="0146">靖宇</option>
+<option value="0147">长白</option>
+<option value="0148">抚松</option>
+<option value="0149">江源</option>
+<option value="0150">珲春</option>
+<option value="0151">大西</option>
+<option value="0152">老公屯</option>
+<option value="0153">黎明</option>
+<option value="0154">长汀镇</option>
+<option value="0199">本溪县</option>
+<option value="0200">阜新县</option>
+<option value="0201">昌图</option>
+<option value="0202">西丰</option>
+<option value="0203">开原</option>
+<option value="0207">清原</option>
+<option value="0209">凤城</option>
+<option value="0211">宽甸</option>
+<option value="0214">海城</option>
+<option value="0215">大石桥</option>
+<option value="0217">盖州</option>
+<option value="0218">瓦房店</option>
+<option value="0219">普兰店</option>
+<option value="0221">庄河</option>
+<option value="0223">新民</option>
+<option value="0224">黑山</option>
+<option value="0225">彰武</option>
+<option value="0227">义县</option>
+<option value="0229">锦西</option>
+<option value="0230">兴城</option>
+<option value="0231">绥中</option>
+<option value="0232">北票</option>
+<option value="0233">朝阳</option>
+<option value="0234">建平</option>
+<option value="0235">凌源</option>
+<option value="0236">建昌</option>
+<option value="0237">葫芦岛</option>
+<option value="0238">辽中</option>
+<option value="0239">康平</option>
+<option value="0240">法库</option>
+<option value="0241">铁法</option>
+<option value="0243">\351\225\277海</option>
+<option value="0244">金县</option>
+<option value="0245">新金</option>
+<option value="0246">台安</option>
+<option value="0247">岫岩</option>
+<option value="0248">新宾</option>
+<option value="0249">桓仁</option>
+<option value="0250">东港</option>
+<option value="0251">凌海</option>
+<option value="0252">北宁</option>
+<option value="0253">灯塔</option>
+<option value="0254">喀喇沁左翼</option>
+<option value="0255">盘山</option>
+<option value="0256">大洼</option>
+<option value="0257">利民</option>
+<option value="0258">凤凰城</option>
+<option value="0259">鲅鱼圈</option>
+<option value="0260">通于</option>
+<option value="0261">金州</option>
+<option value="0262">抚顺县</option>
+<option value="0302">昌黎</option>
+<option value="0303">滦县</option>
+<option value="0305">丰南</option>
+<option value="0306">丰润</option>
+<option value="0307">迁西</option>
+<option value="0308">遵化</option>
+<option value="0310">兴隆</option>
+<option value="0311">隆化</option>
+<option value="0312">滦平</option>
+<option value="0313">三河</option>
+<option value="0314">怀安</option>
+<option value="0316">宣化</option>
+<option value="0317">怀来</option>
+<option value="0318">阳原</option>
+<option value="0319">涿鹿</option>
+<option value="0320">涞源</option>
+<option value="0321">涿州</option>
+<option value="0322">新城</option>
+<option value="0323">定兴</option>
+<option value="0324">徐水</option>
+<option value="0325">满城</option>
+<option value="0327">望都</option>
+<option value="0328">定州</option>
+<option value="0329">新乐</option>
+<option value="0330">正定</option>
+<option value="0331">井陉</option>
+<option value="0332">获鹿</option>
+<option value="0333">青县</option>
+<option value="0335">黄骅</option>
+<option value="0336">泊头</option>
+<option value="0337">东光</option>
+<option value="0338">吴桥</option>
+<option value="0340">辛集</option>
+<option value="0341">晋州</option>
+<option value="0342">藁城</option>
+<option value="0343">元氏</option>
+<option value="0344">高邑</option>
+<option value="0345">内丘</option>
+<option value="0347">沙河</option>
+<option value="0348">永年</option>
+<option value="0350">武安</option>
+<option value="0351">涉县</option>
+<option value="0352">瓷县</option>
+<option value="0353">肥乡</option>
+<option value="0354">曲周</option>
+<option value="0355">广平</option>
+<option value="0356">馆陶</option>
+<option value="0360">霸州</option>
+<option value="0362">河间</option>
+<option value="0363">南宫</option>
+<option value="0366">峰峰</option>
+<option value="0367">栾城</option>
+<option value="0368">无极</option>
+<option value="0369">深泽</option>
+<option value="0370">赵县</option>
+<option value="0371">赞皇</option>
+<option value="0372">平山</option>
+<option value="0373">灵寿</option>
+<option value="0374">行唐</option>
+<option value="0375">潢城</option>
+<option value="0376">清苑</option>
+<option value="0377">涞水</option>
+<option value="0378">易县</option>
+<option value="0379">唐县</option>
+<option value="0380">高碑店</option>
+<option value="0381">博野</option>
+<option value="0382">安国</option>
+<option value="0383">曲阳</option>
+<option value="0384">阜平</option>
+<option value="0385">高阳</option>
+<option value="0386">容城</option>
+<option value="0387">雄县</option>
+<option value="0388">安新</option>
+<option value="0389">蠡县</option>
+<option value="0390">顺平</option>
+<option value="0391">万全</option>
+<option value="0392">张北</option>
+<option value="0393">崇礼</option>
+<option value="0394">沽源</option>
+<option value="0395">尚义</option>
+<option value="0396">康保</option>
+<option value="0397">赤城</option>
+<option value="0398">蔚县</option>
+<option value="0399">围场</option>
+<option value="0406">古交</option>
+<option value="0408">介休</option>
+<option value="0409">孝义</option>
+<option value="0410">霍州</option>
+<option value="0412">侯马</option>
+<option value="0416">宁武</option>
+<option value="0417">五寨</option>
+<option value="0418">岢岚</option>
+<option value="0419">怀仁</option>
+<option value="0420">应县</option>
+<option value="0421">右玉</option>
+<option value="0422">山阴</option>
+<option value="0423">原平</option>
+<option value="0424">定襄</option>
+<option value="0425">五台</option>
+<option value="0426">代县</option>
+<option value="0427">繁峙</option>
+<option value="0428">神池</option>
+<option value="0429">河曲</option>
+<option value="0430">保德</option>
+<option value="0431">偏关</option>
+<option value="0432">静乐</option>
+<option value="0433">阳曲</option>
+<option value="0434">娄烦</option>
+<option value="0435">清徐</option>
+<option value="0436">天镇</option>
+<option value="0437">浑源</option>
+<option value="0438">垣曲</option>
+<option value="0439">广灵</option>
+<option value="0440">灵丘</option>
+<option value="0441">左云</option>
+<option value="0442">孟县</option>
+<option value="0443">平定</option>
+<option value="0444">灵石</option>
+<option value="0445">昔阳</option>
+<option value="0446">和顺</option>
+<option value="0447">左权</option>
+<option value="0448">榆社</option>
+<option value="0449">寿阳</option>
+<option value="0450">太谷</option>
+<option value="0451">祁县</option>
+<option value="0452">平遥</option>
+<option value="0453">壶关</option>
+<option value="0454">平顺</option>
+<option value="0455">黎城</option>
+<option value="0456">襄垣</option>
+<option value="0457">武乡</option>
+<option value="0458">沁县</option>
+<option value="0459">沁源</option>
+<option value="0460">屯留</option>
+<option value="0461">长子</option>
+<option value="0462">潞城</option>
+<option value="0463">高平</option>
+<option value="0464">阳城</option>
+<option value="0465">沁水</option>
+<option value="0466">陵川</option>
+<option value="0467">大宁</option>
+<option value="0468">曲沃</option>
+<option value="0469">翼城</option>
+<option value="0470">襄汾</option>
+<option value="0471">洪洞</option>
+<option value="0472">汾西</option>
+<option value="0473">蒲县</option>
+<option value="0474">隰县</option>
+<option value="0475">永和</option>
+<option value="0476">乡宁</option>
+<option value="0477">吉县</option>
+<option value="0478">安泽</option>
+<option value="0479">浮山</option>
+<option value="0480">古县</option>
+<option value="0482">石楼</option>
+<option value="0483">方山</option>
+<option value="0484">临县</option>
+<option value="0485">汾阳</option>
+<option value="0486">文水</option>
+<option value="0487">交城</option>
+<option value="0488">交口</option>
+<option value="0489">中阳</option>
+<option value="0490">柳林</option>
+<option value="0491">兴县</option>
+<option value="0492">岚县</option>
+<option value="0493">芮城</option>
+<option value="0494">平陆</option>
+<option value="0495">临猗</option>
+<option value="0496">万\350\215\243</option>
+<option value="0497">稷山</option>
+<option value="0498">河津</option>
+<option value="0499">新绛</option>
+<option value="0500">北营</option>
+<option value="0501">牙克石</option>
+<option value="0502">满洲里</option>
+<option value="0503">海拉尔</option>
+<option value="0504">霍林郭勒</option>
+<option value="0505">扎兰屯</option>
+<option value="0506">乌兰浩特</option>
+<option value="0507">通辽</option>
+<option value="0509">二连浩特</option>
+<option value="0513">东胜</option>
+<option value="0514">临河</option>
+<option value="0516">锡林浩特</option>
+<option value="0517">鄂尔多斯</option>
+<option value="0518">阿荣旗</option>
+<option value="0519">鄂伦春</option>
+<option value="0520">陈巴尔虎旗</option>
+<option value="0521">新巴尔虎左旗</option>
+<option value="0522">新巴尔虎右旗</option>
+<option value="0523">根河</option>
+<option value="0524">额尔古纳右旗</option>
+<option value="0525">莫力达瓦旗</option>
+<option value="0526">托克托</option>
+<option value="0527">土默特左旗</option>
+<option value="0528">和林格尔</option>
+<option value="0529">武川</option>
+<option value="0530">清水河</option>
+<option value="0531">固阳</option>
+<option value="0532">土默特右旗</option>
+<option value="0533">白云鄂博</option>
+<option value="0534">达茂旗</option>
+<option value="0535">四子王旗</option>
+<option value="0536">化德</option>
+<option value="0537">丰镇</option>
+<option value="0538">卓资</option>
+<option value="0539">商都</option>
+<option value="0540">兴和</option>
+<option value="0541">凉城</option>
+<option value="0542">察哈尔右翼前旗</option>
+<option value="0543">察哈尔右翼中旗</option>
+<option value="0544">察哈尔右翼后旗</option>
+<option value="0545">开鲁</option>
+<option value="0546">库伦旗</option>
+<option value="0547">奈曼旗</option>
+<option value="0548">扎鲁特旗</option>
+<option value="0549">科尔沁左翼中旗</option>
+<option value="0550">科尔沁左翼后旗</option>
+<option value="0551">阿鲁科尔沁</option>
+<option value="0552">敖汉旗</option>
+<option value="0553">翁牛特旗</option>
+<option value="0554">巴林左旗</option>
+<option value="0555">巴林右旗</option>
+<option value="0556">林西</option>
+<option value="0557">克什克腾旗</option>
+<option value="0558">喀喇沁旗</option>
+<option value="0559">达拉特旗</option>
+<option value="0560">伊金霍洛旗</option>
+<option value="0561">准格尔旗</option>
+<option value="0562">杭棉旗</option>
+<option value="0563">乌审</option>
+<option value="0564">鄂托克旗</option>
+<option value="0565">鄂托克前旗</option>
+<option value="0566">五原</option>
+<option value="0567">磴口</option>
+<option value="0568">乌拉特前旗</option>
+<option value="0569">乌拉特中旗</option>
+<option value="0570">乌拉特后旗</option>
+<option value="0571">杭锦后旗</option>
+<option value="0573">多伦</option>
+<option value="0574">太仆寺旗</option>
+<option value="0575">苏尼特左旗</option>
+<option value="0576">苏尼特右旗</option>
+<option value="0577">镶黄旗</option>
+<option value="0578">东乌珠穆沁旗</option>
+<option value="0579">西乌珠穆沁旗</option>
+<option value="0580">阿马嗄旗</option>
+<option value="0581">正镶白旗</option>
+<option value="0582">正蓝旗</option>
+<option value="0583">扎赉特旗</option>
+<option value="0584">突泉</option>
+<option value="0585">科右中旗</option>
+<option value="0586">阿拉善左旗</option>
+<option value="0587">阿拉善右旗</option>
+<option value="0588">额济纳旗</option>
+<option value="0589">鄂温克</option>
+<option value="0590">宁城</option>
+<option value="0591">汇流河</option>
+<option value="0592">煤田</option>
+<option value="0593">乌尔旗汗</option>
+<option value="0594">原林</option>
+<option value="0595">库都尔</option>
+<option value="0596">诺敏河</option>
+<option value="0597">新帐房</option>
+<option value="0598">图里河</option>
+<option value="0599">伊图里河</option>
+<option value="0600">哈达</option>
+<option value="0604">章丘</option>
+<option value="0609">莱西</option>
+<option value="0610">莱阳</option>
+<option value="0616">泰安</option>
+<option value="0617">肥城</option>
+<option value="0618">新泰</option>
+<option value="0619">兖州</option>
+<option value="0624">邹城</option>
+<option value="0625">滕州</option>
+<option value="0626">曲阜</option>
+<option value="0627">临清</option>
+<option value="0628">枣庄</option>
+<option value="0629">巨野</option>
+<option value="0630">定陶</option>
+<option value="0631">成武</option>
+<option value="0632">单县</option>
+<option value="0633">曹县</option>
+<option value="0634">东明</option>
+<option value="0635">鄄城</option>
+<option value="0637">长清</option>
+<option value="0638">商河</option>
+<option value="0639">济阳</option>
+<option value="0640">平阴</option>
+<option value="0641">胶南</option>
+<option value="0642">平度</option>
+<option value="0643">即墨</option>
+<option value="0644">桓台</option>
+<option value="0645">高青</option>
+<option value="0646">沂源</option>
+<option value="0647">庆云</option>
+<option value="0648">监邑</option>
+<option value="0649">夏津</option>
+<option value="0650">平原</option>
+<option value="0651">宁津</option>
+<option value="0652">晏城</option>
+<option value="0653">乐陵</option>
+<option value="0654">武城</option>
+<option value="0655">禹城</option>
+<option value="0656">陵县</option>
+<option value="0657">招远</option>
+<option value="0658">海阳</option>
+<option value="0659">长岛</option>
+<option value="0660">莱州</option>
+<option value="0661">龙口</option>
+<option value="0663">栖霞</option>
+<option value="0664">牟平</option>
+<option value="0665">寿光</option>
+<option value="0666">昌邑</option>
+<option value="0667">高密</option>
+<option value="0668">诸城</option>
+<option value="0669">安\344\270\230</option>
+<option value="0670">临朐</option>
+<option value="0671">昌乐</option>
+<option value="0672">梁山</option>
+<option value="0673">微山</option>
+<option value="0674">鱼台</option>
+<option value="0675">金乡</option>
+<option value="0676">嘉祥</option>
+<option value="0677">泗水</option>
+<option value="0678">汶上</option>
+<option value="0679">宁阳</option>
+<option value="0680">东平</option>
+<option value="0681">苍山</option>
+<option value="0682">平邑</option>
+<option value="0683">蒙阴</option>
+<option value="0684">沂水</option>
+<option value="0685">沂南</option>
+<option value="0686">莒南</option>
+<option value="0687">临沭</option>
+<option value="0688">郯城</option>
+<option value="0689">费县</option>
+<option value="0690">滨州</option>
+<option value="0691">博兴</option>
+<option value="0692">邹平</option>
+<option value="0693">惠民</option>
+<option value="0694">无棣</option>
+<option value="0695">沾化</option>
+<option value="0696">\351\230\263信</option>
+<option value="0697">东营</option>
+<option value="0698">利津</option>
+<option value="0699">广饶</option>
+<option value="0700">莒县</option>
+<option value="0702">邳州</option>
+<option value="0703">新沂</option>
+<option value="0707">丹阳</option>
+<option value="0711">昆山</option>
+<option value="0714">江浦</option>
+<option value="0715">六合</option>
+<option value="0716">江宁</option>
+<option value="0717">高淳</option>
+<option value="0718">溧水</option>
+<option value="0719">江阴</option>
+<option value="0720">宜兴</option>
+<option value="0721">锡山</option>
+<option value="0722">丹徒</option>
+<option value="0723">句容</option>
+<option value="0724">扬中</option>
+<option value="0725">吴江</option>
+<option value="0726">吴县</option>
+<option value="0727">南通</option>
+<option value="0728">如东</option>
+<option value="0729">如皋</option>
+<option value="0730">通州</option>
+<option value="0731">海门</option>
+<option value="0732">启东</option>
+<option value="0733">海安</option>
+<option value="0734">江都</option>
+<option value="0735">邗江</option>
+<option value="0736">仪征</option>
+<option value="0737">高邮</option>
+<option value="0738">宝应</option>
+<option value="0740">响水</option>
+<option value="0741">滨海</option>
+<option value="0743">射阳</option>
+<option value="0744">建湖</option>
+<option value="0745">大丰</option>
+<option value="0746">东台</option>
+<option value="0747">铜山</option>
+<option value="0748">丰县</option>
+<option value="0749">沛县</option>
+<option value="0750">睢宁</option>
+<option value="0752">淮安</option>
+<option value="0753">洪泽</option>
+<option value="0754">金湖</option>
+<option value="0755">涟水</option>
+<option value="0756">盱眙</option>
+<option value="0757">东海</option>
+<option value="0758">赣榆</option>
+<option value="0759">灌云</option>
+<option value="0760">灌南</option>
+<option value="0761">武进</option>
+<option value="0762">金坛</option>
+<option value="0763">溧阳</option>
+<option value="0765">常熟</option>
+<option value="0766">太仓</option>
+<option value="0768">靖江</option>
+<option value="0769">泰兴</option>
+<option value="0770">姜堰</option>
+<option value="0771">兴化</option>
+<option value="0772">沐阳</option>
+<option value="0773">宿迁</option>
+<option value="0774">泗阳</option>
+<option value="0775">泗洪</option>
+<option value="0801">淮北</option>
+<option value="0802">亳州</option>
+<option value="0803">界首</option>
+<option value="0805">淮南</option>
+<option value="0808">滁州</option>
+<option value="0811">巢湖</option>
+<option value="0813">铜陵</option>
+<option value="0814">宣城</option>
+<option value="0817">寿县</option>
+<option value="0818">舒城</option>
+<option value="0819">六安</option>
+<option value="0820">绩溪</option>
+<option value="0821">广德</option>
+<option value="0822">旌德</option>
+<option value="0823">宁国</option>
+<option value="0824">郎溪</option>
+<option value="0825">泾县</option>
+<option value="0826">濉溪</option>
+<option value="0827">黟县</option>
+<option value="0828">休宁</option>
+<option value="0829">祁门</option>
+<option value="0830">歙县</option>
+<option value="0831">利辛</option>
+<option value="0832">临泉</option>
+<option value="0833">太和</option>
+<option value="0834">颍上</option>
+<option value="0835">涡阳</option>
+<option value="0836">蒙城</option>
+<option value="0837">阜南</option>
+<option value="0838">泗县</option>
+<option value="0839">灵壁</option>
+<option value="0840">砀山</option>
+<option value="0841">萧县</option>
+<option value="0842">岳西</option>
+<option value="0843">怀宁</option>
+<option value="0844">宿松</option>
+<option value="0845">潜山</option>
+<option value="0846">望江</option>
+<option value="0847">桐城</option>
+<option value="0848">枞阳</option>
+<option value="0849">太湖</option>
+<option value="0850">当涂</option>
+<option value="0851">凤台</option>
+<option value="0852">南陵</option>
+<option value="0853">繁昌</option>
+<option value="0854">固镇</option>
+<option value="0855">怀远</option>
+<option value="0856">五河</option>
+<option value="0857">长丰</option>
+<option value="0858">肥西</option>
+<option value="0859">肥东</option>
+<option value="0860">明光</option>
+<option value="0861">定远</option>
+<option value="0862">来安</option>
+<option value="0863">天长</option>
+<option value="0864">凤阳</option>
+<option value="0865">全椒</option>
+<option value="0866">石台</option>
+<option value="0867">东至</option>
+<option value="0868">青阳</option>
+<option value="0869">贵池</option>
+<option value="0870">含山</option>
+<option value="0871">和县</option>
+<option value="0872">庐江</option>
+<option value="0873">无为</option>
+<option value="0874">金寨</option>
+<option value="0875">霍山</option>
+<option value="0876">霍邱</option>
+<option value="0877">砀山</option>
+<option value="0878">池州</option>
+<option value="0901">湖州</option>
+<option value="0905">萧山</option>
+<option value="0907">上虞</option>
+<option value="0908">余姚</option>
+<option value="0914">建德</option>
+<option value="0915">兰溪</option>
+<option value="0917">江山</option>
+<option value="0918">永康</option>
+<option value="0919">丽水</option>
+<option value="0921">瑞安</option>
+<option value="0922">常山</option>
+<option value="0923">开化</option>
+<option value="0924">衢县</option>
+<option value="0925">龙游</option>
+<option value="0926">余杭</option>
+<option value="0927">富阳</option>
+<option value="0928">淳安</option>
+<option value="0929">桐庐</option>
+<option value="0930">临安</option>
+<option value="0931">德清</option>
+<option value="0932">安吉</option>
+<option value="0933">长兴</option>
+<option value="0934">桐乡</option>
+<option value="0935">嘉善</option>
+<option value="0936">海盐</option>
+<option value="0937">平湖</option>
+<option value="0938">镇海</option>
+<option value="0939">慈溪</option>
+<option value="0940">鄞县</option>
+<option value="0941">奉化</option>
+<option value="0942">宁海</option>
+<option value="0943">上虞</option>
+<option value="0944">嵊县</option>
+<option value="0945">新昌</option>
+<option value="0946">台州</option>
+<option value="0947">临海</option>
+<option value="0948">黄岩</option>
+<option value="0949">椒江</option>
+<option value="0950">温岭</option>
+<option value="0951">玉环</option>
+<option value="0952">仙居</option>
+<option value="0953">天台</option>
+<option value="0954">三门</option>
+<option value="0955">瓯海</option>
+<option value="0956">永嘉</option>
+<option value="0957">乐清</option>
+<option value="0958">洞头</option>
+<option value="0959">平阳</option>
+<option value="0960">苍南</option>
+<option value="0961">泰顺</option>
+<option value="0962">文成</option>
+<option value="0963">缙云</option>
+<option value="0964">青田</option>
+<option value="0965">云和</option>
+<option value="0966">庆元</option>
+<option value="0967">龙泉</option>
+<option value="0968">遂昌</option>
+<option value="0969">松阳</option>
+<option value="0970">景宁</option>
+<option value="0971">东阳</option>
+<option value="0972">浦江</option>
+<option value="0973">兰溪</option>
+<option value="0974">磐安</option>
+<option value="0975">舟山</option>
+<option value="0976">岱山</option>
+<option value="0977">嵊泗</option>
+<option value="0978">普陀</option>
+<option value="0979">苍南</option>
+<option value="1001">邵武</option>
+<option value="1002">南平</option>
+<option value="1003">闽清</option>
+<option value="1007">漳平</option>
+<option value="1009">漳州</option>
+<option value="1011">建瓯</option>
+<option value="1013">顺昌</option>
+<option value="1015">闽候</option>
+<option value="1016">连江</option>
+<option value="1017">长乐</option>
+<option value="1018">福清</option>
+<option value="1019">平潭</option>
+<option value="1020">永泰</option>
+<option value="1021">罗源</option>
+<option value="1022">同安</option>
+<option value="1023">宁德</option>
+<option value="1024">福安</option>
+<option value="1025">柘荣</option>
+<option value="1026">福鼎</option>
+<option value="1027">霞浦</option>
+<option value="1028">寿宁</option>
+<option value="1029">古田</option>
+<option value="1030">屏南</option>
+<option value="1031">周宁</option>
+<option value="1033">仙游</option>
+<option value="1034">晋江</option>
+<option value="1035">南安</option>
+<option value="1036">安溪</option>
+<option value="1037">永春</option>
+<option value="1038">德化</option>
+<option value="1039">惠安</option>
+<option value="1040">石狮</option>
+<option value="1041">南靖</option>
+<option value="1042">华安</option>
+<option value="1043">长泰</option>
+<option value="1044">龙海</option>
+<option value="1045">漳浦</option>
+<option value="1046">云霄</option>
+<option value="1047">东山</option>
+<option value="1048">诏安</option>
+<option value="1049">平和</option>
+<option value="1050">永定</option>
+<option value="1051">上杭</option>
+<option value="1052">武平</option>
+<option value="1053">长汀</option>
+<option value="1054">连城</option>
+<option value="1055">沙县</option>
+<option value="1056">尤溪</option>
+<option value="1057">大田</option>
+<option value="1058">清流</option>
+<option value="1059">宁化</option>
+<option value="1060">明溪</option>
+<option value="1061">建宁</option>
+<option value="1062">泰宁</option>
+<option value="1063">将乐</option>
+<option value="1064">建阳</option>
+<option value="1065">浦城</option>
+<option value="1066">松溪</option>
+<option value="1067">政和</option>
+<option value="1068">光泽</option>
+<option value="1069">沙县</option>
+<option value="1070">南平南</option>
+<option value="1071">漳州东</option>
+<option value="1106">上饶</option>
+<option value="1108">乐平</option>
+<option value="1109">丰城</option>
+<option value="1110">樟树</option>
+<option value="1111">新余</option>
+<option value="1112">宜春</option>
+<option value="1113">萍乡</option>
+<option value="1114">吉安</option>
+<option value="1117">临川</option>
+<option value="1118">安福</option>
+<option value="1119">永新</option>
+<option value="1120">分宜</option>
+<option value="1122">新建</option>
+<option value="1123">进贤</option>
+<option value="1124">安义</option>
+<option value="1125">修水</option>
+<option value="1126">湖口</option>
+<option value="1127">星子</option>
+<option value="1128">德安</option>
+<option value="1129">彭泽</option>
+<option value="1130">都昌</option>
+<option value="1131">永修</option>
+<option value="1132">武宁</option>
+<option value="1133">玉山</option>
+<option value="1134">余干</option>
+<option value="1135">弋阳</option>
+<option value="1136">波阳</option>
+<option value="1137">广丰</option>
+<option value="1138">余江</option>
+<option value="1139">铅山</option>
+<option value="1140">横峰</option>
+<option value="1141">婺源</option>
+<option value="1142">德兴</option>
+<option value="1143">资溪</option>
+<option value="1144">广昌</option>
+<option value="1145">东乡</option>
+<option value="1146">金溪</option>
+<option value="1147">崇仁</option>
+<option value="1148">宜黄</option>
+<option value="1149">尔安</option>
+<option value="1150">南城</option>
+<option value="1151">南丰</option>
+<option value="1152">黎川</option>
+<option value="1153">宜丰</option>
+<option value="1154">上高</option>
+<option value="1155">奉新</option>
+<option value="1156">靖安</option>
+<option value="1157">高安</option>
+<option value="1158">万载</option>
+<option value="1159">铜鼓</option>
+<option value="1160">新干</option>
+<option value="1161">永丰</option>
+<option value="1162">吉水</option>
+<option value="1163">峡江</option>
+<option value="1164">泰和</option>
+<option value="1165">万安</option>
+<option value="1166">遂川</option>
+<option value="1167">宁冈</option>
+<option value="1169">于都</option>
+<option value="1170">兴国</option>
+<option value="1171">宁都</option>
+<option value="1172">石城</option>
+<option value="1173">寻乌</option>
+<option value="1174">南康</option>
+<option value="1175">赣县</option>
+<option value="1176">大余</option>
+<option value="1177">上犹</option>
+<option value="1178">崇义</option>
+<option value="1179">信丰</option>
+<option value="1180">龙南</option>
+<option value="1181">定南</option>
+<option value="1182">全南</option>
+<option value="1183">安远</option>
+<option value="1184">会昌</option>
+<option value="1185">浮梁</option>
+<option value="1186">莲花</option>
+<option value="1187">贵溪</option>
+<option value="1188">万年</option>
+<option value="1189">芦溪</option>
+<option value="1190">西江</option>
+<option value="1191">冠豸山</option>
+<option value="1192">长汀</option>
+<option value="1193">来舟</option>
+<option value="1194">杨\345\256\266岭</option>
+<option value="1195">共青城</option>
+<option value="1196">莲塘</option>
+<option value="1197">向塘</option>
+<option value="1198">丰城南</option>
+<option value="1199">樟树东</option>
+<option value="1200">乐平市</option>
+<option value="1202">鹤壁</option>
+<option value="1203">卫辉</option>
+<option value="1208">义马</option>
+<option value="1213">汝州</option>
+<option value="1217">邓州</option>
+<option value="1220">信阳</option>
+<option value="1223">民权</option>
+<option value="1224">宁陵</option>
+<option value="1225">夏邑</option>
+<option value="1226">永城</option>
+<option value="1227">虞城</option>
+<option value="1228">柘城</option>
+<option value="1229">睢县</option>
+<option value="1231">新密</option>
+<option value="1232">上街</option>
+<option value="1234">中矣</option>
+<option value="1235">荥阳</option>
+<option value="1236">滑县</option>
+<option value="1237">林县</option>
+<option value="1238">内黄</option>
+<option value="1240">长垣</option>
+<option value="1241">封丘</option>
+<option value="1242">辉县</option>
+<option value="1243">获嘉</option>
+<option value="1244">延津</option>
+<option value="1245">原阳</option>
+<option value="1246">长葛</option>
+<option value="1247">襄城</option>
+<option value="1248">禹州</option>
+<option value="1249">鄢陵</option>
+<option value="1250">宝丰</option>
+<option value="1251">临汝</option>
+<option value="1252">鲁山</option>
+<option value="1253">舞钢</option>
+<option value="1254">叶县</option>
+<option value="1255">郏县</option>
+<option value="1256">罗山</option>
+<option value="1257">明港</option>
+<option value="1258">方城</option>
+<option value="1259">南召</option>
+<option value="1260">内乡</option>
+<option value="1261">社旗</option>
+<option value="1262">唐河</option>
+<option value="1263">桐柏</option>
+<option value="1264">西峡</option>
+<option value="1265">新野</option>
+<option value="1266">镇平</option>
+<option value="1267">淅川</option>
+<option value="1268">兰考</option>
+<option value="1269">通许</option>
+<option value="1270">尉氏</option>
+<option value="1271">杞县</option>
+<option value="1272">洛宁</option>
+<option value="1273">孟津</option>
+<option value="1275">新安</option>
+<option value="1276">伊川</option>
+<option value="1277">宜阳</option>
+<option value="1278">偃师</option>
+<option value="1279">嵩县</option>
+<option value="1280">栾川</option>
+<option value="1281">博爱</option>
+<option value="1282">孟县</option>
+<option value="1283">沁阳</option>
+<option value="1284">温县</option>
+<option value="1285">武陟</option>
+<option value="1286">修武</option>
+<option value="1287">汲县</option>
+<option value="1288">浚县</option>
+<option value="1289">淇县</option>
+<option value="1290">范县</option>
+<option value="1291">南乐</option>
+<option value="1292">清丰</option>
+<option value="1293">台前</option>
+<option value="1294">濮阳</option>
+<option value="1296">扶沟</option>
+<option value="1297">淮阳</option>
+<option value="1298">鹿邑</option>
+<option value="1299">商水</option>
+<option value="1300">遂平</option>
+<option value="1302">丹江口</option>
+<option value="1303">老河口</option>
+<option value="1306">当阳</option>
+<option value="1308">枝城</option>
+<option value="1309">枣阳</option>
+<option value="1311">安陆</option>
+<option value="1312">应城</option>
+<option value="1317">咸宁</option>
+<option value="1319">麻城</option>
+<option value="1320">武穴</option>
+<option value="1322">蔡甸</option>
+<option value="1323">黄陂</option>
+<option value="1324">江夏</option>
+<option value="1325">新洲</option>
+<option value="1326">保康</option>
+<option value="1327">谷城</option>
+<option value="1328">南漳</option>
+<option value="1329">襄阳</option>
+<option value="1330">宜城</option>
+<option value="1331">大悟</option>
+<option value="1333">汉川</option>
+<option value="1334">云梦</option>
+<option value="1335">红安</option>
+<option value="1336">黄梅</option>
+<option value="1337">黄州</option>
+<option value="1338">罗田</option>
+<option value="1339">英山</option>
+<option value="1340">蕲春</option>
+<option value="1341">浠水</option>
+<option value="1342">大冶</option>
+<option value="1343">阳新</option>
+<option value="1344">崇阳</option>
+<option value="1345">嘉鱼</option>
+<option value="1346">通城</option>
+<option value="1347">通山</option>
+<option value="1348">公安</option>
+<option value="1349">监利</option>
+<option value="1351">沙市</option>
+<option value="1352">石首</option>
+<option value="1353">松滋</option>
+<option value="1354">长阳</option>
+<option value="1355">五峰</option>
+<option value="1356">兴山</option>
+<option value="1357">远安</option>
+<option value="1358">枝江</option>
+<option value="1359">秭归</option>
+<option value="1360">巴东</option>
+<option value="1361">恩施</option>
+<option value="1362">鹤峰</option>
+<option value="1363">建始</option>
+<option value="1364">来凤</option>
+<option value="1365">利川</option>
+<option value="1366">咸丰</option>
+<option value="1367">宣恩</option>
+<option value="1368">房县</option>
+<option value="1369">神农架</option>
+<option value="1370">郧西</option>
+<option value="1371">郧县</option>
+<option value="1372">竹山</option>
+<option value="1373">竹溪</option>
+<option value="1374">京山</option>
+<option value="1375">钟祥</option>
+<option value="1376">洪湖</option>
+<option value="1377">潜江</option>
+<option value="1378">天门</option>
+<option value="1379">仙桃</option>
+<option value="1380">孝昌</option>
+<option value="1381">陈家湖</option>
+<option value="1382">小林</option>
+<option value="1383">厉山</option>
+<option value="1384">团风</option>
+<option value="1385">丹江</option>
+<option value="1386">滠口</option>
+<option value="1387">丹水池</option>
+<option value="1388">荆州</option>
+<option value="1401">\345\244\247庸</option>
+<option value="1405">临湘</option>
+<option value="1406">汨罗</option>
+<option value="1409">醴陵</option>
+<option value="1411">湘乡</option>
+<option value="1413">涟源</option>
+<option value="1414">冷水江</option>
+<option value="1415">邵阳</option>
+<option value="1417">冷水滩</option>
+<option value="1420">资兴</option>
+<option value="1422">常德</option>
+<option value="1425">新化</option>
+<option value="1427">城陵矶</option>
+<option value="1428">华容</option>
+<option value="1429">平江</option>
+<option value="1430">湘阴</option>
+<option value="1431">宁乡</option>
+<option value="1432">望城</option>
+<option value="1435">茶陵</option>
+<option value="1437">炎陵</option>
+<option value="1438">常宁</option>
+<option value="1439">衡东</option>
+<option value="1440">衡南</option>
+<option value="1441">衡山</option>
+<option value="1442">祁东</option>
+<option value="1443">安仁</option>
+<option value="1444">桂东</option>
+<option value="1445">桂阳</option>
+<option value="1446">嘉禾</option>
+<option value="1447">临武</option>
+<option value="1448">汝城</option>
+<option value="1449">宜章</option>
+<option value="1450">永兴</option>
+<option value="1451">安乡</option>
+<option value="1452">汉寿</option>
+<option value="1453">津市</option>
+<option value="1454">临澧</option>
+<option value="1455">石门</option>
+<option value="1456">桃源</option>
+<option value="1457">澧县</option>
+<option value="1458">安化</option>
+<option value="1459">南县</option>
+<option value="1460">桃江</option>
+<option value="1461">沅江</option>
+<option value="1462">双峰</option>
+<option value="1464">城步</option>
+<option value="1465">洞口</option>
+<option value="1466">隆回</option>
+<option value="1467">邵东</option>
+<option value="1468">绥宁</option>
+<option value="1469">武冈</option>
+<option value="1470">新宁</option>
+<option value="1471">新邵</option>
+<option value="1472">保靖</option>
+<option value="1473">凤凰</option>
+<option value="1474">古丈</option>
+<option value="1475">花垣</option>
+<option value="1476">龙山</option>
+<option value="1477">永顺</option>
+<option value="1478">泸溪</option>
+<option value="1479">慈利</option>
+<option value="1480">桑植</option>
+<option value="1481">辰溪</option>
+<option value="1482">洪江</option>
+<option value="1483">会同</option>
+<option value="1484">靖州</option>
+<option value="1485">麻阳</option>
+<option value="1486">黔阳</option>
+<option value="1487">通道</option>
+<option value="1488">新晃</option>
+<option value="1489">芷江</option>
+<option value="1490">沅陵</option>
+<option value="1491">溆浦</option>
+<option value="1492">道县</option>
+<option value="1494">江华</option>
+<option value="1495">江永</option>
+<option value="1496">蓝山</option>
+<option value="1497">宁远</option>
+<option value="1498">祁阳</option>
+<option value="1499">双牌</option>
+<option value="1500">茶岭</option>
+<option value="1503">清远</option>
+<option value="1508">云浮</option>
+<option value="1510">湛江</option>
+<option value="1511">河源</option>
+<option value="1513">梅州</option>
+<option value="1514">揭阳</option>
+<option value="1517">三水</option>
+<option value="1518">从化</option>
+<option value="1519">番禺</option>
+<option value="1520">花都</option>
+<option value="1521">增城</option>
+<option value="1522">海丰</option>
+<option value="1523">陆丰</option>
+<option value="1524">陆河</option>
+<option value="1525">汕尾</option>
+<option value="1526">潮阳</option>
+<option value="1527">阳春</option>
+<option value="1528">阳东</option>
+<option value="1529">阳江</option>
+<option value="1530">阳西</option>
+<option value="1531">惠来</option>
+<option value="1532">揭东</option>
+<option value="1533">揭西</option>
+<option value="1534">普宁</option>
+<option value="1535">电白</option>
+<option value="1536">高州</option>
+<option value="1537">化州</option>
+<option value="1538">信宜</option>
+<option value="1539">恩平</option>
+<option value="1540">鹤山</option>
+<option value="1541">江门</option>
+<option value="1542">开平</option>
+<option value="1543">台山</option>
+<option value="1544">新会</option>
+<option value="1545">乐昌</option>
+<option value="1546">南雄</option>
+<option value="1547">曲江</option>
+<option value="1548">仁化</option>
+<option value="1549">乳源</option>
+<option value="1550">始兴</option>
+<option value="1551">翁源</option>
+<option value="1552">新丰</option>
+<option value="1553">博罗</option>
+<option value="1554">惠阳</option>
+<option value="1555">惠东</option>
+<option value="1556">龙门</option>
+<option value="1557">大埔</option>
+<option value="1558">丰顺</option>
+<option value="1559">蕉岭</option>
+<option value="1560">平远</option>
+<option value="1561">五华</option>
+<option value="1562">兴宁</option>
+<option value="1563">澄海</option>
+<option value="1564">南澳</option>
+<option value="1565">宝安</option>
+<option value="1566">斗门</option>
+<option value="1568">高明</option>
+<option value="1569">南海</option>
+<option value="1570">德庆</option>
+<option value="1571">封开</option>
+<option value="1572">高要</option>
+<option value="1573">广宁</option>
+<option value="1574">怀集</option>
+<option value="1575">四会</option>
+<option value="1576">海康</option>
+<option value="1577">廉江</option>
+<option value="1578">遂溪</option>
+<option value="1579">吴川</option>
+<option value="1580">徐闻</option>
+<option value="1581">中山</option>
+<option value="1582">东源</option>
+<option value="1583">和平</option>
+<option value="1584">连平</option>
+<option value="1585">龙川</option>
+<option value="1586">紫金</option>
+<option value="1587">佛冈</option>
+<option value="1588">连南</option>
+<option value="1589">连山</option>
+<option value="1590">连州</option>
+<option value="1591">清新</option>
+<option value="1592">阳山</option>
+<option value="1593">英德</option>
+<option value="1594">顺德</option>
+<option value="1595">罗定</option>
+<option value="1596">新兴</option>
+<option value="1597">郁南</option>
+<option value="1598">潮安</option>
+<option value="1599">饶平</option>
+<option value="1601">河池</option>
+<option value="1604">合山</option>
+<option value="1605">贵港</option>
+<option value="1606">玉林</option>
+<option value="1608">钦州</option>
+<option value="1612">防城港</option>
+<option value="1613">上思</option>
+<option value="1614">宾阳</option>
+<option value="1615">崇左</option>
+<option value="1616">大新</option>
+<option value="1617">扶绥</option>
+<option value="1618">横县</option>
+<option value="1619">龙州</option>
+<option value="1620">隆安</option>
+<option value="1621">马山</option>
+<option value="1622">宁明</option>
+<option value="1623">上林</option>
+<option value="1624">天等</option>
+<option value="1625">武鸣</option>
+<option value="1626">邕宁</option>
+<option value="1627">金秀</option>
+<option value="1628">来宾</option>
+<option value="1629">柳城</option>
+<option value="1630">柳江</option>
+<option value="1631">鹿寨</option>
+<option value="1632">融安</option>
+<option value="1633">融水</option>
+<option value="1634">三江</option>
+<option value="1635">武宣</option>
+<option value="1636">象州</option>
+<option value="1637">忻城</option>
+<option value="1638">恭城</option>
+<option value="1639">灌阳</option>
+<option value="1640">荔浦</option>
+<option value="1641">临桂</option>
+<option value="1642">灵川</option>
+<option value="1643">龙胜</option>
+<option value="1644">平乐</option>
+<option value="1645">全州</option>
+<option value="1646">兴安</option>
+<option value="1647">阳朔</option>
+<option value="1648">永福</option>
+<option value="1649">资源</option>
+<option value="1650">苍梧</option>
+<option value="1651">富川</option>
+<option value="1652">贺县</option>
+<option value="1653">蒙山</option>
+<option value="1654">藤县</option>
+<option value="1655">梧州</option>
+<option value="1656">昭平</option>
+<option value="1657">钟山</option>
+<option value="1658">岑溪</option>
+<option value="1659">北流</option>
+<option value="1660">零陵</option>
+<option value="1661">道州</option>
+<option value="1670">博白</option>
+<option value="1671">桂平</option>
+<option value="1672">陆川</option>
+<option value="1673">平南</option>
+<option value="1674">容县</option>
+<option value="1675">德保</option>
+<option value="1676">靖西</option>
+<option value="1677">乐业</option>
+<option value="1678">凌云</option>
+<option value="1679">隆林</option>
+<option value="1680">那坡</option>
+<option value="1681">平果</option>
+<option value="1682">田东</option>
+<option value="1683">田林</option>
+<option value="1684">田阳</option>
+<option value="1685">西林</option>
+<option value="1686">灵山</option>
+<option value="1687">浦北</option>
+<option value="1688">巴马</option>
+<option value="1689">大化</option>
+<option value="1690">东兰</option>
+<option value="1691">都安</option>
+<option value="1692">凤山</option>
+<option value="1693">环江</option>
+<option value="1694">罗城</option>
+<option value="1695">南丹</option>
+<option value="1696">天峨</option>
+<option value="1697">宜州</option>
+<option value="1698">合浦</option>
+<option value="1699">河唇</option>
+<option value="1702">江油</option>
+<option value="1704">德阳</option>
+<option value="1705">广汉</option>
+<option value="1708">乐山</option>
+<option value="1709">峨眉山</option>
+<option value="1714">宜宾</option>
+<option value="1716">华蓥</option>
+<option value="1718">永川</option>
+<option value="1719">遂宁</option>
+<option value="1721">万源</option>
+<option value="1723">崇州</option>
+<option value="1724">大邑</option>
+<option value="1725">金堂</option>
+<option value="1726">彭州</option>
+<option value="1727">蒲江</option>
+<option value="1728">双\346\265\201</option>
+<option value="1729">温江</option>
+<option value="1730">新都</option>
+<option value="1731">新津</option>
+<option value="1732">邛崃</option>
+<option value="1733">郫县</option>
+<option value="1736">米易</option>
+<option value="1737">盐边</option>
+<option value="1738">富顺</option>
+<option value="1739">荣县</option>
+<option value="1740">安县</option>
+<option value="1741">江汕</option>
+<option value="1742">平武</option>
+<option value="1743">三台</option>
+<option value="1744">盐亭</option>
+<option value="1745">梓潼</option>
+<option value="1746">南部</option>
+<option value="1747">蓬安</option>
+<option value="1748">西充</option>
+<option value="1749">仪陇</option>
+<option value="1750">营山</option>
+<option value="1751">阗中</option>
+<option value="1752">大竹</option>
+<option value="1753">开江</option>
+<option value="1754">渠县</option>
+<option value="1756">宣汉</option>
+<option value="1757">蓬溪</option>
+<option value="1758">\345\260\204洪</option>
+<option value="1759">广安</option>
+<option value="1760">邻水</option>
+<option value="1761">武胜</option>
+<option value="1762">岳池</option>
+<option value="1763">巴中</option>
+<option value="1764">南江</option>
+<option value="1765">平昌</option>
+<option value="1766">通江</option>
+<option value="1777">沙坪坝</option>
+<option value="1778">九龙坡</option>
+<option value="1779">酉阳</option>
+<option value="1780">秀山</option>
+<option value="1782">彭水</option>
+<option value="1783">古蔺</option>
+<option value="1784">合江</option>
+<option value="1785">纳溪</option>
+<option value="1786">叙永</option>
+<option value="1787">泸州</option>
+<option value="1788">长宁</option>
+<option value="1789">高县</option>
+<option value="1790">江安</option>
+<option value="1791">南溪</option>
+<option value="1792">屏山</option>
+<option value="1793">兴文</option>
+<option value="1794">珙县</option>
+<option value="1795">筠连</option>
+<option value="1796">安岳</option>
+<option value="1797">乐至</option>
+<option value="1798">隆昌</option>
+<option value="1799">筒阳</option>
+<option value="1801">凯里</option>
+<option value="1804">清镇</option>
+<option value="1808">兴义</option>
+<option value="1809">罗甸</option>
+<option value="1810">开阳</option>
+<option value="1811">息烽</option>
+<option value="1812">修文</option>
+<option value="1813">赤水</option>
+<option value="1814">道真</option>
+<option value="1815">凤冈</option>
+<option value="1816">仁怀</option>
+<option value="1817">绥阳</option>
+<option value="1818">桐梓</option>
+<option value="1819">务川</option>
+<option value="1820">习水</option>
+<option value="1821">余庆</option>
+<option value="1822">正安</option>
+<option value="1823">湄潭</option>
+<option value="1824">从江</option>
+<option value="1825">丹寨</option>
+<option value="1826">黄平</option>
+<option value="1827">剑河</option>
+<option value="1828">锦屏</option>
+<option value="1829">雷山</option>
+<option value="1830">黎平</option>
+<option value="1831">麻江</option>
+<option value="1832">三穗</option>
+<option value="1833">施秉</option>
+<option value="1834">台江</option>
+<option value="1835">天柱</option>
+<option value="1836">镇远</option>
+<option value="1837">岑巩</option>
+<option value="1838">德江</option>
+<option value="1839">江口</option>
+<option value="1840">石阡</option>
+<option value="1841">思南</option>
+<option value="1842">松桃</option>
+<option value="1843">铜仁</option>
+<option value="1844">万山</option>
+<option value="1845">沿河</option>
+<option value="1846">印江</option>
+<option value="1847">玉屏</option>
+<option value="1848">毕节</option>
+<option value="1849">大方</option>
+<option value="1850">赫章</option>
+<option value="1851">金沙</option>
+<option value="1852">纳雍</option>
+<option value="1853">黔西</option>
+<option value="1854">威宁</option>
+<option value="1855">织金</option>
+<option value="1856">六枝</option>
+<option value="1857">盘县</option>
+<option value="1858">安龙</option>
+<option value="1859">册享</option>
+<option value="1860">普安</option>
+<option value="1861">晴隆</option>
+<option value="1862">望谟</option>
+<option value="1863">兴仁</option>
+<option value="1864">贞丰</option>
+<option value="1865">平坝</option>
+<option value="1866">紫云</option>
+<option value="1867">关岭</option>
+<option value="1868">镇宁</option>
+<option value="1869">普定</option>
+<option value="1870">贵定</option>
+<option value="1871">福泉</option>
+<option value="1872">翁安</option>
+<option value="1873">三都</option>
+<option value="1874">荔波</option>
+<option value="1875">独山</option>
+<option value="1876">平塘</option>
+<option value="1877">惠水</option>
+<option value="1878">龙里</option>
+<option value="1879">榕江</option>
+<option value="1880">长顺</option>
+<option value="1890">大英</option>
+<option value="1891">简阳</option>
+<option value="1892">越西</option>
+<option value="1903">开远</option>
+<option value="1904">玉溪</option>
+<option value="1906">大理</option>
+<option value="1907">东川</option>
+<option value="1908">昭通</option>
+<option value="1909">景洪</option>
+<option value="1910">西双版纳</option>
+<option value="1911">勐海</option>
+<option value="1912">勐腊</option>
+<option value="1913">德宏</option>
+<option value="1914">梁河</option>
+<option value="1915">陇川</option>
+<option value="1916">潞西</option>
+<option value="1917">瑞丽</option>
+<option value="1918">盈江</option>
+<option value="1919">畹町</option>
+<option value="1920">大关</option>
+<option value="1921">鲁甸</option>
+<option value="1922">巧家</option>
+<option value="1923">水富</option>
+<option value="1924">绥江</option>
+<option value="1925">威信</option>
+<option value="1926">盐津</option>
+<option value="1927">彝良</option>
+<option value="1928">永善</option>
+<option value="1929">镇雄</option>
+<option value="1930">安宁</option>
+<option value="1931">呈贡</option>
+<option value="1932">富民</option>
+<option value="1933">晋宁</option>
+<option value="1934">路南</option>
+<option value="1935">禄劝</option>
+<option value="1936">宜良</option>
+<option value="1937">嵩明</option>
+<option value="1938">宾川</option>
+<option value="1939">洱源</option>
+<option value="1940">鹤庆</option>
+<option value="1941">剑川</option>
+<option value="1942">弥渡</option>
+<option value="1943">南涧</option>
+<option value="1944">巍山</option>
+<option value="1945">祥云</option>
+<option value="1946">漾濞</option>
+<option value="1947">永平</option>
+<option value="1948">元龙</option>
+<option value="1949">个旧</option>
+<option value="1950">河口</option>
+<option value="1951">红河</option>
+<option value="1952">建水</option>
+<option value="1953">金平</option>
+<option value="1954">绿春</option>
+<option value="1955">蒙自</option>
+<option value="1956">弥勒</option>
+<option value="1957">屏边</option>
+<option value="1958">石屏</option>
+<option value="1959">元阳</option>
+<option value="1960">泸西</option>
+<option value="1961">富源</option>
+<option value="1962">会泽</option>
+<option value="1963">陆良</option>
+<option value="1964">罗平</option>
+<option value="1965">马龙</option>
+<option value="1966">师宗</option>
+<option value="1967">宣威</option>
+<option value="1968">寻甸</option>
+<option value="1969">保山</option>
+<option value="1970">昌宁</option>
+<option value="1971">龙陵</option>
+<option value="1972">施甸</option>
+<option value="1973">腾冲</option>
+<option value="1974">富宁</option>
+<option value="1975">广南</option>
+<option value="1976">麻栗坡</option>
+<option value="1977">马关</option>
+<option value="1978">丘北</option>
+<option value="1979">文山</option>
+<option value="1980">西畴</option>
+<option value="1981">砚山</option>
+<option value="1982">澄江</option>
+<option value="1983">峨山</option>
+<option value="1984">华宁</option>
+<option value="1985">江川</option>
+<option value="1986">通海</option>
+<option value="1987">新平</option>
+<option value="1988">易门</option>
+<option value="1989">元江</option>
+<option value="1990">大姚</option>
+<option value="1991">禄丰</option>
+<option value="1992">牟定</option>
+<option value="1993">南华</option>
+<option value="1994">双柏</option>
+<option value="1995">武定</option>
+<option value="1996">姚安</option>
+<option value="1997">永仁</option>
+<option value="1998">元谋</option>
+<option value="1999">江城</option>
+<option value="2001">华阴</option>
+<option value="2002">渭南</option>
+<option value="2009">韩城</option>
+<option value="2011">阎良</option>
+<option value="2012">旬阳</option>
+<option value="2013">白河</option>
+<option value="2014">紫阳</option>
+<option value="2016">商洛</option>
+<option value="2017">长安</option>
+<option value="2018">高陵</option>
+<option value="2019">户县</option>
+<option value="2021">旬邑</option>
+<option value="2022">永寿</option>
+<option value="2023">泾阳</option>
+<option value="2024">安塞</option>
+<option value="2025">丹志</option>
+<option value="2026">富县</option>
+<option value="2027">甘泉</option>
+<option value="2028">黄陵</option>
+<option value="2029">黄龙</option>
+<option value="2030">洛川</option>
+<option value="2031">吴旗</option>
+<option value="2032">延长</option>
+<option value="2033">延川</option>
+<option value="2034">宜川</option>
+<option value="2035">子长</option>
+<option value="2036">定边</option>
+<option value="2037">府谷</option>
+<option value="2038">横山</option>
+<option value="2039">佳县</option>
+<option value="2040">靖边</option>
+<option value="2041">米脂</option>
+<option value="2042">清涧</option>
+<option value="2043">神木</option>
+<option value="2044">绥德</option>
+<option value="2045">吴堡</option>
+<option value="2046">子洲</option>
+<option value="2047">白水</option>
+<option value="2048">澄城</option>
+<option value="2049">大荔</option>
+<option value="2050">富平</option>
+<option value="2051">合阳</option>
+<option value="2052">华县</option>
+<option value="2053">蒲城</option>
+<option value="2054">潼关</option>
+<option value="2055">丹凤</option>
+<option value="2056">洛南</option>
+<option value="2057">山阳</option>
+<option value="2058">商南</option>
+<option value="2059">商县</option>
+<option value="2060">镇安</option>
+<option value="2061">柞水</option>
+<option value="2063">宁陕</option>
+<option value="2064">平利</option>
+<option value="2065">石泉</option>
+<option value="2066">镇坪</option>
+<option value="2067">岚皋</option>
+<option value="2068">城固</option>
+<option value="2069">佛坪</option>
+<option value="2070">留坝</option>
+<option value="2071">略阳</option>
+<option value="2072">勉县</option>
+<option value="2073">南郑</option>
+<option value="2074">宁强</option>
+<option value="2075">西\344\271\241</option>
+<option value="2076">洋县</option>
+<option value="2077">镇巴</option>
+<option value="2078">凤县</option>
+<option value="2079">凤翔</option>
+<option value="2080">扶风</option>
+<option value="2081">陇县</option>
+<option value="2082">眉县</option>
+<option value="2083">千阳</option>
+<option value="2084">太白</option>
+<option value="2085">岐山</option>
+<option value="2086">麟游</option>
+<option value="2087">耀县</option>
+<option value="2088">宜君</option>
+<option value="2089">蓝田</option>
+<option value="2091">周至</option>
+<option value="2092">彬县</option>
+<option value="2093">长武</option>
+<option value="2094">淳化</option>
+<option value="2095">礼泉</option>
+<option value="2096">乾县</option>
+<option value="2097">三原</option>
+<option value="2098">武功</option>
+<option value="2099">兴平</option>
+<option value="2100">澄城</option>
+<option value="2103">白银</option>
+<option value="2105">金昌</option>
+<option value="2109">玉门</option>
+<option value="2110">敦煌</option>
+<option value="2111">平凉</option>
+<option value="2112">东乡</option>
+<option value="2113">广河</option>
+<option value="2114">和政</option>
+<option value="2115">积石山</option>
+<option value="2116">康乐</option>
+<option value="2117">临夏</option>
+<option value="2119">永靖</option>
+<option value="2120">皋兰</option>
+<option value="2121">红古区</option>
+<option value="2122">永登</option>
+<option value="2123">榆中</option>
+<option value="2124">定西</option>
+<option value="2125">临洮</option>
+<option value="2126">陇西</option>
+<option value="2127">通渭</option>
+<option value="2128">渭源</option>
+<option value="2129">漳县</option>
+<option value="2130">岷县</option>
+<option value="2131">崇信</option>
+<option value="2132">华亭</option>
+<option value="2133">静宁</option>
+<option value="2134">灵台</option>
+<option value="2135">庄浪</option>
+<option value="2136">泾川</option>
+<option value="2137">合水</option>
+<option value="2138">华池</option>
+<option value="2139">环县</option>
+<option value="2140">宁县</option>
+<option value="2141">庆阳</option>
+<option value="2142">西峰</option>
+<option value="2143">镇原</option>
+<option value="2144">正宁</option>
+<option value="2145">古浪</option>
+<option value="2146">民勤</option>
+<option value="2147">天祝</option>
+<option value="2148">永昌</option>
+<option value="2149">高台</option>
+<option value="2150">临泽</option>
+<option value="2151">民乐</option>
+<option value="2152">山丹</option>
+<option value="2153">肃南</option>
+<option value="2154">阿克塞</option>
+<option value="2155">安西</option>
+<option value="2156">金塔</option>
+<option value="2157">肃北</option>
+<option value="2158">甘谷</option>
+<option value="2159">秦安</option>
+<option value="2160">清水</option>
+<option value="2161">张家川</option>
+<option value="2162">成县</option>
+<option value="2163">徽县</option>
+<option value="2164">康县</option>
+<option value="2165">礼县</option>
+<option value="2166">两当</option>
+<option value="2167">文县</option>
+<option value="2168">武都</option>
+<option value="2169">西和</option>
+<option value="2170">宕县</option>
+<option value="2171">迭部</option>
+<option value="2172">甘南州</option>
+<option value="2173">临潭</option>
+<option value="2174">碌曲</option>
+<option value="2175">玛曲</option>
+<option value="2176">夏河</option>
+<option value="2177">舟曲</option>
+<option value="2178">卓尼</option>
+<option value="2179">会宁</option>
+<option value="2180">景泰</option>
+<option value="2181">靖远</option>
+<option value="2182">平川</option>
+<option value="2183">武山</option>
+<option value="2184">杨陵</option>
+<option value="2185">河口南</option>
+<option value="2186">洛门</option>
+<option value="2187">长征</option>
+<option value="2188">西固城</option>
+<option value="2189">大路</option>
+<option value="2190">通安驿</option>
+<option value="2191">夏官营</option>
+<option value="2192">新阳镇</option>
+<option value="2193">渭南镇</option>
+<option value="2194">玉门镇</option>
+<option value="2195">低窝铺</option>
+<option value="2196">武威南</option>
+<option value="2197">潭家井</option>
+<option value="2198">绿化</option>
+<option value="2199">镜铁山</option>
+<option value="2200">疏勒河</option>
+<option value="2202">德令哈</option>
+<option value="2204">海晏</option>
+<option value="2205">大通</option>
+<option value="2206">海东</option>
+<option value="2207">互助</option>
+<option value="2208">化隆</option>
+<option value="2209">乐都</option>
+<option value="2210">民和</option>
+<option value="2211">平安</option>
+<option value="2212">循化</option>
+<option value="2213">湟巾</option>
+<option value="2214">湟源</option>
+<option value="2215">同仁</option>
+<option value="2216">共和</option>
+<option value="2217">兴海</option>
+<option value="2218">果洛</option>
+<option value="2219">玛沁</option>
+<option value="2220">玉树</option>
+<option value="2221">门源</option>
+<option value="2222">河南</option>
+<option value="2223">尖扎</option>
+<option value="2224">泽库</option>
+<option value="2225">李家峡</option>
+<option value="2226">乌兰</option>
+<option value="2227">都兰</option>
+<option value="2228">天峻</option>
+<option value="2229">治多</option>
+<option value="2230">海北</option>
+<option value="2231">杂多</option>
+<option value="2232">曲麻莱</option>
+<option value="2233">龙羊峡</option>
+<option value="2234">茫崖</option>
+<option value="2235">贵德</option>
+<option value="2236">贵南</option>
+<option value="2237">同德</option>
+<option value="2238">祁连</option>
+<option value="2239">刚察</option>
+<option value="2240">大柴旦</option>
+<option value="2241">冷湖</option>
+<option value="2242">达日</option>
+<option value="2243">玛多</option>
+<option value="2244">班玛</option>
+<option value="2245">甘德</option>
+<option value="2246">久治</option>
+<option value="2247">海石湾</option>
+<option value="2303">青铜峡</option>
+<option value="2304">中卫</option>
+<option value="2305">贺兰</option>
+<option value="2306">永宁</option>
+<option value="2307">惠农</option>
+<option value="2308">平罗</option>
+<option value="2309">陶乐</option>
+<option value="2310">中宁</option>
+<option value="2311">灵武</option>
+<option value="2312">同心</option>
+<option value="2313">吴忠</option>
+<option value="2314">盐池</option>
+<option value="2315">固原</option>
+<option value="2316">海原</option>
+<option value="2317">隆德</option>
+<option value="2318">彭阳</option>
+<option value="2319">西吉</option>
+<option value="2320">泾源</option>
+<option value="2397">北屯镇</option>
+<option value="2398">和什托洛盖</option>
+<option value="2399">玛纳斯湖</option>
+<option value="2400">五五新镇</option>
+<option value="2401">哈密</option>
+<option value="2402">吐鲁番</option>
+<option value="2404">昌吉</option>
+<option value="2406">奎屯</option>
+<option value="2407">博乐</option>
+<option value="2408">库尔勒</option>
+<option value="2409">阿克苏</option>
+<option value="2410">喀什</option>
+<option value="2411">阿图什</option>
+<option value="2412">额敏</option>
+<option value="2413">塔城</option>
+<option value="2414">托里</option>
+<option value="2415">裕民</option>
+<option value="2416">巴里坤</option>
+<option value="2417">伊吾</option>
+<option value="2418">策勒</option>
+<option value="2419">和田</option>
+<option value="2420">洛浦</option>
+<option value="2421">民丰</option>
+<option value="2422">皮山</option>
+<option value="2423">于田</option>
+<option value="2424">阿勒泰</option>
+<option value="2425">布尔津</option>
+<option value="2426">福海</option>
+<option value="2427">富蕴</option>
+<option value="2428">哈巴河</option>
+<option value="2429">吉木乃</option>
+<option value="2430">青河</option>
+<option value="2431">阿克陶</option>
+<option value="2432">乌恰</option>
+<option value="2433">精河</option>
+<option value="2434">温泉</option>
+<option value="2435">和布克赛尔</option>
+<option value="2437">乌苏</option>
+<option value="2438">沙湾</option>
+<option value="2439">阜康</option>
+<option value="2440">呼图壁</option>
+<option value="2441">吉木萨尔</option>
+<option value="2442">玛纳斯</option>
+<option value="2443">米泉</option>
+<option value="2444">木垒</option>
+<option value="2445">奇台</option>
+<option value="2446">托克逊</option>
+<option value="2447">鄯善</option>
+<option value="2448">博湖</option>
+<option value="2449">和静</option>
+<option value="2450">和硕</option>
+<option value="2451">轮台</option>
+<option value="2452">且末</option>
+<option value="2453">若羌</option>
+<option value="2454">尉犁</option>
+<option value="2455">焉耆</option>
+<option value="2456">阿合奇</option>
+<option value="2457">阿瓦提</option>
+<option value="2458">拜城</option>
+<option value="2460">库车</option>
+<option value="2461">沙雅</option>
+<option value="2462">温宿</option>
+<option value="2463">乌什</option>
+<option value="2465">巴楚</option>
+<option value="2466">麦盖提</option>
+<option value="2467">莎车</option>
+<option value="2468">蔬附</option>
+<option value="2469">蔬勒</option>
+<option value="2470">塔什库尔干</option>
+<option value="2471">叶城</option>
+<option value="2472">英吉沙</option>
+<option value="2473">岳普湖</option>
+<option value="2474">泽普</option>
+<option value="2475">伽师</option>
+<option value="2476">察布查尔</option>
+<option value="2477">巩留</option>
+<option value="2478">霍城</option>
+<option value="2479">尼勒克</option>
+<option value="2480">特克斯</option>
+<option value="2481">新源</option>
+<option value="2483">昭苏</option>
+<option value="2484">墨玉</option>
+<option value="2486">伊宁县</option>
+<option value="2487">布列开镇</option>
+<option value="2502">澄迈</option>
+<option value="2503">安定</option>
+<option value="2504">文昌</option>
+<option value="2505">屯昌</option>
+<option value="2506">琼海</option>
+<option value="2507">万宁</option>
+<option value="2508">琼山</option>
+<option value="2509">三亚</option>
+<option value="2510">通什</option>
+<option value="2511">乐东</option>
+<option value="2512">保亭</option>
+<option value="2513">陵水</option>
+<option value="2514">琼中</option>
+<option value="2515">儋州</option>
+<option value="2516">白沙</option>
+<option value="2517">洋浦</option>
+<option value="2518">东方</option>
+<option value="2519">昌江</option>
+<option value="2520">临高</option>
+<option value="2601">阿莲</option>
+<option value="2602">安定</option>
+<option value="2603">安平</option>
+<option value="2604">八德</option>
+<option value="2605">八里</option>
+<option value="2606">白河</option>
+<option value="2607">白沙</option>
+<option value="2608">板桥</option>
+<option value="2609">褒忠</option>
+<option value="2610">宝山</option>
+<option value="2611">卑南</option>
+<option value="2612">北斗</option>
+<option value="2613">北港</option>
+<option value="2614">北门</option>
+<option value="2615">北埔</option>
+<option value="2616">北投</option>
+<option value="2617">补子</option>
+<option value="2618">布袋</option>
+<option value="2619">草屯</option>
+<option value="2620">长宾</option>
+<option value="2621">长治</option>
+<option value="2622">潮州</option>
+<option value="2623">车城</option>
+<option value="2624">城中区</option>
+<option value="2625">成功</option>
+<option value="2626">池上</option>
+<option value="2627">春日</option>
+<option value="2628">刺桐</option>
+<option value="2664">新和</option>
+<option value="2701">堆龙德庆</option>
+<option value="2702">曲水</option>
+<option value="2703">尼木</option>
+<option value="2704">仁布</option>
+<option value="2705">萨嘎</option>
+<option value="2706">岗\345\267\264</option>
+<option value="2707">萨迦</option>
+<option value="2708">定结</option>
+<option value="2709">定日</option>
+<option value="2710">聂拉木</option>
+<option value="2711">吉隆</option>
+<option value="2712">仲巴</option>
+<option value="2713">错那</option>
+<option value="2714">昂仁</option>
+<option value="2715">拉孜</option>
+<option value="2716">谢通门</option>
+<option value="2717">南木林</option>
+<option value="2718">隆子</option>
+<option value="2719">扎囊</option>
+<option value="2720">墨脱</option>
+<option value="2721">洛扎</option>
+<option value="2722">浪卡子</option>
+<option value="2723">贡嘎</option>
+<option value="2724">类乌齐</option>
+<option value="2725">江达</option>
+<option value="2726">贡觉</option>
+<option value="2727">芒康</option>
+<option value="2728">左贡</option>
+<option value="2729">八宿</option>
+<option value="2730">洛隆</option>
+<option value="2731">边坝</option>
+<option value="2732">丁青</option>
+<option value="2733">普兰</option>
+<option value="2734">巴青</option>
+<option value="2735">比如</option>
+<option value="2736">嘉黎</option>
+<option value="2737">聂荣</option>
+<option value="2738">班戈</option>
+<option value="2739">申扎</option>
+<option value="2740">措勤</option>
+<option value="2741">双湖</option>
+<option value="2742">扎达</option>
+<option value="2743">革吉</option>
+<option value="2744">樟木</option>
+<option value="2745">日土</option>
+<option value="2746">改则</option>
+<option value="2747">措美</option>
+<option value="2748">索县</option>
+<option value="2749">尼玛</option>
+<option value="2750">盐井</option>
+<option value="2752">日咯则</option>
+<option value="2753">山南</option>
+<option value="2754">林芝</option>
+<option value="2755">昌都</option>
+<option value="2756">那曲</option>
+<option value="2757">阿里</option>
+<option value="2802">通州</option>
+<option value="2803">昌平</option>
+<option value="2804">大兴</option>
+<option value="2805">密云</option>
+<option value="2806">延庆</option>
+<option value="2807">顺义</option>
+<option value="2808">怀柔</option>
+<option value="2809">平谷</option>
+<option value="2902">嘉定</option>
+<option value="2903">松江</option>
+<option value="2904">南汇</option>
+<option value="2905">奉贤</option>
+<option value="2906">川沙</option>
+<option value="2907">青浦</option>
+<option value="2908">崇明</option>
+<option value="2909">金山</option>
+<option value="2910">金华南</option>
+<option value="2911">武义</option>
+<option value="3002">蓟县</option>
+<option value="3003">宝坻</option>
+<option value="3004">武清</option>
+<option value="3005">静海</option>
+<option value="3006">宁河</option>
+<option value="3102">万州</option>
+<option value="3103">永川</option>
+<option value="3104">北碚</option>
+<option value="3105">巴县</option>
+<option value="3106">江北</option>
+<option value="3107">涪陵</option>
+<option value="3108">石柱</option>
+<option value="3109">丰都</option>
+<option value="3110">南川</option>
+<option value="3111">城口</option>
+<option value="3112">巫溪</option>
+<option value="3113">奉节</option>
+<option value="3114">云阳</option>
+<option value="3115">忠县</option>
+<option value="3116">梁平</option>
+<option value="3117">开县</option>
+<option value="3118">大足</option>
+<option value="3119">荣昌</option>
+<option value="3120">壁山</option>
+<option value="3121">铜梁</option>
+<option value="3122">潼南</option>
+<option value="3123">合川</option>
+<option value="3124">江津</option>
+<option value="3125">双桥</option>
+<option value="3126">南桐</option>
+<option value="3127">长寿</option>
+<option value="3128">綦江</option>
+<option value="3129">黔江</option>
+<option value="3130">武隆</option>
+<option value="3131">垫江</option>
+<option value="3132">巫山</option>
+<option value="3133">渝北</option>
+<option value="5301">平泉</option>
+<option value="5302">宽城</option>
+<option value="5303">丰宁</option>
+<option value="5304">玉田</option>
+<option value="5305">滦南</option>
+<option value="5306">唐海</option>
+<option value="5307">乐亭</option>
+<option value="5308">迁安</option>
+<option value="5309">永清</option>
+<option value="5310">大城</option>
+<option value="5311">文安</option>
+<option value="5312">固安</option>
+<option value="5313">香河</option>
+<option value="5314">大厂</option>
+<option value="5315">海兴</option>
+<option value="5316">盐山</option>
+<option value="5317">孟村</option>
+<option value="5318">南皮</option>
+<option value="5319">肃宁</option>
+<option value="5320">献县</option>
+<option value="5321">铙阳</option>
+<option value="5322">武强</option>
+<option value="5323">武邑</option>
+<option value="5324">阜城</option>
+<option value="5325">景县</option>
+<option value="5326">故城</option>
+<option value="5327">枣强</option>
+<option value="5328">冀县</option>
+<option value="5329">深州</option>
+<option value="5330">安平</option>
+<option value="5331">临西</option>
+<option value="5332">临城</option>
+<option value="5333">柏乡</option>
+<option value="5334">宁晋</option>
+<option value="5335">隆尧</option>
+<option value="5336">巨鹿</option>
+<option value="5337">新河</option>
+<option value="5338">威县</option>
+<option value="5340">广宗</option>
+<option value="5341">平乡</option>
+<option value="5342">南和</option>
+<option value="5343">任县</option>
+<option value="5344">临漳</option>
+<option value="5345">成安</option>
+<option value="5346">鸡泽</option>
+<option value="5347">丘县</option>
+<option value="5348">大名</option>
+<option value="5349">魏县</option>
+<option value="5350">卢龙</option>
+<option value="5351">抚宁</option>
+<option value="5352">青龙</option>
+<option value="5353">清河</option>
+<option value="5354">磁县</option>
+<option value="5355">内邱</option>
+<option value="5356">饶阳</option>
+<option value="5357">深县</option>
+<option value="5358">完县</option>
+<option value="5401">闻喜</option>
+<option value="5402">夏县</option>
+<option value="5403">永剂</option>
+<option value="5404">绛县</option>
+<option value="5405">阳高</option>
+<option value="5406">轩岗</option>
+<option value="5407">繁峙</option>
+<option value="5408">永济</option>
+<option value="5601">垦利</option>
+<option value="5602">荣城</option>
+<option value="5603">文登</option>
+<option value="5604">乳山</option>
+<option value="5605">五莲</option>
+<option value="5606">河口</option>
+<option value="5607">茌平</option>
+<option value="5608">高唐</option>
+<option value="5609">东阿</option>
+<option value="5610">阳谷</option>
+<option value="5611">莘县</option>
+<option value="5612">冠县</option>
+<option value="5613">东明县</option>
+<option value="5614">算王庄</option>
+<option value="5615">磁窑</option>
+<option value="5616">黄口</option>
+<option value="5617">蓝村</option>
+<option value="5618">\346\241\203村</option>
+<option value="5619">夏邑县</option>
+<option value="6101">弋阳东</option>
+<option value="6102">临江镇</option>
+<option value="6103">黄土岗</option>
+<option value="6104">罗坊</option>
+<option value="6105">大岗</option>
+<option value="6106">抚州北</option>
+<option value="6107">江边村</option>
+<option value="6108">麦园</option>
+<option value="6109">东乡</option>
+<option value="6201">沈丘</option>
+<option value="6202">太康</option>
+<option value="6203">西华</option>
+<option value="6204">项城</option>
+<option value="6205">临颖</option>
+<option value="6206">舞阳</option>
+<option value="6207">郾城</option>
+<option value="6208">泌阳</option>
+<option value="6209">平舆</option>
+<option value="6210">确山</option>
+<option value="6211">汝南</option>
+<option value="6212">上蔡</option>
+<option value="6214">遂平</option>
+<option value="6215">西平</option>
+<option value="6216">新蔡</option>
+<option value="6217">正阳</option>
+<option value="6218">固始</option>
+<option value="6219">光山</option>
+<option value="6220">淮滨</option>
+<option value="6221">商城</option>
+<option value="6222">息县</option>
+<option value="6223">新县</option>
+<option value="6224">潢川</option>
+<option value="6225">灵宝</option>
+<option value="6226">卢氏</option>
+<option value="6227">渑池</option>
+<option value="6228">嘉峰</option>
+<option value="6229">王庄</option>
+<option value="6401">新田</option>
+<option value="6402">布吉</option>
+<option value="6403">春湾</option>
+<option value="6404">东莞东</option>
+<option value="6405">西丽</option>
+<option value="6406">郭塘</option>
+<option value="6407">马坝</option>
+<option value="6408">茂名东</option>
+<option value="6409">平湖</option>
+<option value="6410">坪石</option>
+<option value="6411">石龙</option>
+<option value="6412">塘头厦</option>
+<option value="6413">广州北</option>
+<option value="6414">石门县南</option>
+<option value="6415">新兴县</option>
+<option value="6416">樟木头</option>
+<option value="6417">霞洞</option>
+<option value="6418">云溪</option>
+<option value="6419">路口铺</option>
+<option value="6420">沙琅</option>
+<option value="6421">天堂</option>
+<option value="6422">华城</option>
+<option value="6424">马田墟</option>
+<option value="6425">猛洞河</option>
+<option value="6426">芷江西</option>
+<option value="6427">古丈</option>
+<option value="6428">烟溪</option>
+<option value="6429">大江口</option>
+<option value="6430">湛江西</option>
+<option value="6431">龙门镇</option>
+<option value="6432">海安南</option>
+<option value="6433">雷州</option>
+<option value="6434">攸县</option>
+<option value="6435">黄阳司</option>
+<option value="6436">平湖</option>
+<option value="6437">锦和</option>
+<option value="6438">桃映</option>
+<option value="6439">孟溪</option>
+<option value="6601">井头墟</option>
+<option value="6602">蓝家村</option>
+<option value="6603">洛满</option>
+<option value="6604">黎塘</option>
+<option value="6605">濑湍</option>
+<option value="6606">渠旧</option>
+<option value="6607">渠黎</option>
+<option value="6608">三岔</option>
+<option value="6609">兴业</option>
+<option value="6610">亭亮</option>
+<option value="6611">天西</option>
+<option value="6612">文地</option>
+<option value="6613">夏石</option>
+<option value="6614">牙屯堡</option>
+<option value="6615">三江县</option>
+<option value="6617">册亨</option>
+<option value="6618">贺州</option>
+<option value="6629">莲东</option>
+<option value="6630">留庄</option>
+<option value="6631">捏掌</option>
+<option value="6632">待王</option>
+<option value="6633">月山</option>
+<option value="6634">中牟</option>
+<option value="6635">满村</option>
+<option value="6636">宁陵县</option>
+<option value="6637">滑县南</option>
+<option value="6638">文庄村</option>
+<option value="6639">新安县</option>
+<option value="6640">皇路店</option>
+<option value="6641">临颍</option>
+<option value="6701">威远</option>
+<option value="6703">资中</option>
+<option value="6704">丹棱</option>
+<option value="6705">峨边</option>
+<option value="6706">洪雅</option>
+<option value="6707">夹江</option>
+<option value="6708">金口河</option>
+<option value="6709">井研</option>
+<option value="6710">马边</option>
+<option value="6711">眉山</option>
+<option value="6712">彭山</option>
+<option value="6713">青神</option>
+<option value="6714">仁寿</option>
+<option value="6715">沐川</option>
+<option value="6716">犍为</option>
+<option value="6717">布拖</option>
+<option value="6718">德昌</option>
+<option value="6719">甘洛</option>
+<option value="6720">会东</option>
+<option value="6721">会理</option>
+<option value="6722">金阳</option>
+<option value="6723">雷波</option>
+<option value="6724">美姑</option>
+<option value="6725">冕宁</option>
+<option value="6726">木里</option>
+<option value="6727">宁南</option>
+<option value="6728">普格</option>
+<option value="6729">喜德</option>
+<option value="6730">盐源</option>
+<option value="6731">越西</option>
+<option value="6732">昭觉</option>
+<option value="6733">宝兴</option>
+<option value="6734">汉源</option>
+<option value="6735">芦山</option>
+<option value="6736">名山</option>
+<option value="6737">荣经</option>
+<option value="6738">石棉</option>
+<option value="6739">天全</option>
+<option value="6740">雅安</option>
+<option value="6741">康定</option>
+<option value="6742">绵竹</option>
+<option value="6743">什邡</option>
+<option value="6744">中江</option>
+<option value="6745">苍溪</option>
+<option value="6746">剑阁</option>
+<option value="6747">青川</option>
+<option value="6748">旺苍</option>
+<option value="6749">理县</option>
+<option value="6750">汶川</option>
+<option value="6751">茂县</option>
+<option value="6752">松潘</option>
+<option value="6753">南坪</option>
+<option value="6754">小\351\207\221</option>
+<option value="6755">马尔康</option>
+<option value="6756">荣昌</option>
+<option value="6757">万盛</option>
+<option value="6901">景东</option>
+<option value="6902">景谷</option>
+<option value="6903">澜沧</option>
+<option value="6904">孟连</option>
+<option value="6905">墨江</option>
+<option value="6906">普洱</option>
+<option value="6908">西盟</option>
+<option value="6909">镇沅</option>
+<option value="6910">沧源</option>
+<option value="6911">凤庆</option>
+<option value="6912">耿马</option>
+<option value="6913">临沧</option>
+<option value="6914">双江</option>
+<option value="6915">永德</option>
+<option value="6916">元县</option>
+<option value="6917">镇康</option>
+<option value="6918">福贡</option>
+<option value="6919">贡山</option>
+<option value="6920">兰坪</option>
+<option value="6921">六库</option>
+<option value="6922">泸水</option>
+<option value="6923">德钦</option>
+<option value="6924">维西</option>
+<option value="6925">中甸</option>
+<option value="6926">华坪</option>
+<option value="6927">丽江</option>
+<option value="6928">宁蒗</option>
+<option value="6929">永胜</option>
+<option value="6931">祥云</option>
+<option value="6932">沾益</option>
+<option value="6933">石林</option>
+<option value="7001">扎音河</option>
+<option value="7002">通北</option>
+<option value="7003">兴福</option>
+<option value="7004">东津</option>
+<option value="7005">全胜</option>
+<option value="7006">龙船</option>
+<option value="7007">王杨</option>
+<option value="7008">桃山</option>
+<option value="7009">石长</option>
+<option value="7010">神树</option>
+<option value="7012">成高子</option>
+<option value="7013">玉泉</option>
+<option value="7014">小平山</option>
+<option value="7015">东平山</option>
+<option value="7016">帽儿山</option>
+<option value="7017">老山</option>
+<option value="7018">周家</option>
+<option value="7019">牛家</option>
+<option value="7020">拉林</option>
+<option value="7021">安家</option>
+<option value="7022">宋</option>
+<option value="7023">新泉</option>
+<option value="7024">双丰</option>
+<option value="7025">小岭</option>
+<option value="7026">铃兰</option>
+<option value="7027">背荫河</option>
+<option value="7028">高老</option>
+<option value="7029">万乐</option>
+<option value="7030">富江镇</option>
+<option value="7031">八达沟</option>
+<option value="7032">桦林</option>
+<option value="7033">柴河</option>
+<option value="7034">五林</option>
+<option value="7035">朱家沟</option>
+<option value="7036">新五星</option>
+<option value="7037">宝林</option>
+<option value="7038">楚山</option>
+<option value="7039">向阳</option>
+<option value="7040">古城镇</option>
+<option value="7041">亚河</option>
+<option value="7042">虎山</option>
+<option value="7043">佛岭</option>
+<option value="7044">通天屯</option>
+<option value="7045">奎山</option>
+<option value="7046">西麻山</option>
+<option value="7047">麻山</option>
+<option value="7048">兰岭</option>
+<option value="7049">滴道</option>
+<option value="7050">永安乡</option>
+<option value="7051">黑台</option>
+<option value="7052">连珠山</option>
+<option value="7053">裴德</option>
+<option value="7054">兴凯</option>
+<option value="7055">杨岗</option>
+<option value="7056">卫星</option>
+<option value="7057">红岗</option>
+<option value="7058">迎春</option>
+<option value="7059">东方红</option>
+<option value="7060">八面通</option>
+<option value="7061">梨树镇</option>
+<option value="7062">柳毛</option>
+<option value="7063">恒山</option>
+<option value="7064">一面坡</option>
+<option value="7065">苇河</option>
+<option value="7066">亚布力</option>
+<option value="7067">开道</option>
+<option value="7068">虎峰</option>
+<option value="7069">治山</option>
+<option value="7070">横道河子</option>
+<option value="7071">山市</option>
+<option value="7072">敖头</option>
+<option value="7073">黄花</option>
+<option value="7074">爱河</option>
+<option value="7075">磨刀石</option>
+<option value="7076">大观岭</option>
+<option value="7077">代马沟</option>
+<option value="7078">北林</option>
+<option value="7079">伊林</option>
+<option value="7080">下城子</option>
+<option value="7081">马桥河</option>
+<option value="7082">红房子</option>
+<option value="7083">太岭</option>
+<option value="7084">绥西</option>
+<option value="7085">宽沟</option>
+<option value="7086">斗沟子</option>
+<option value="7087">马莲河</option>
+<option value="7088">石头</option>
+<option value="7089">兰岗</option>
+<option value="7090">温春</option>
+<option value="7091">海浪</option>
+<option value="7092">卡路屯</option>
+<option value="7093">青山</option>
+<option value="7094">杨木</option>
+<option value="7095">凯北</option>
+<option value="7096">富荣</option>
+<option value="7097">石磷</option>
+<option value="7098">筒子沟</option>
+<option value="7099">青岭子</option>
+<option value="7100">拉古</option>
+<option value="7101">东京城</option>
+<option value="7102">南岔</option>
+<option value="7103">绿潭</option>
+<option value="7104">晨明</option>
+<option value="7105">威岭</option>
+<option value="7106">浩良河</option>
+<option value="7107">香兰</option>
+<option value="7108">兴莲</option>
+<option value="7109">柳树</option>
+<option value="7110">金山屯</option>
+<option value="7111">白林</option>
+<option value="7112">苔青</option>
+<option value="7113">美溪</option>
+<option value="7114">双子河</option>
+<option value="7115">红山</option>
+<option value="7116">卫国</option>
+<option value="7117">五营</option>
+<option value="7118">五星</option>
+<option value="7119">红星</option>
+<option value="7120">汤旺河</option>
+<option value="7121">东汤</option>
+<option value="7122">乌伊岭</option>
+<option value="7123">乌马河</option>
+<option value="7124">锦山</option>
+<option value="7125">鹤立</option>
+<option value="7126">新华</option>
+<option value="7127">峻德</option>
+<option value="7128">北大岭</option>
+<option value="7129">鹤北</option>
+<option value="7130">四马架</option>
+<option value="7131">太平镇</option>
+<option value="7132">丰乐镇</option>
+<option value="7133">笔架山</option>
+<option value="7134">金沙岗</option>
+<option value="7135">升昌</option>
+<option value="7136">红兴隆</option>
+<option value="7137">新友谊</option>
+<option value="7138">二道岗</option>
+<option value="7139">向阳川</option>
+<option value="7140">建三江</option>
+<option value="7141">前进镇</option>
+<option value="7142">杏树</option>
+<option value="7143">阎家</option>
+<option value="7144">八虎力</option>
+<option value="7145">长发屯</option>
+<option value="7147">东佳木斯</option>
+<option value="7148">孟家岗</option>
+<option value="7149">双龙山</option>
+<option value="7150">圣浪</option>
+<option value="7151">带岭</option>
+<option value="7152">莲江\345\217\243</option>
+<option value="7153">友好</option>
+<option value="7154">新青</option>
+<option value="7155">半截河</option>
+<option value="7156">宝泉岭</option>
+<option value="7157">福利屯</option>
+<option value="7158">换新天</option>
+<option value="7159">倭肯</option>
+<option value="7160">翠峦</option>
+<option value="7161">申家店</option>
+<option value="7162">九营</option>
+<option value="7163">乌兰昭</option>
+<option value="7164">平洋</option>
+<option value="7165">豆海</option>
+<option value="7166">江桥</option>
+<option value="7167">汤池</option>
+<option value="7168">榆树屯</option>
+<option value="7169">大民屯</option>
+<option value="7170">立志</option>
+<option value="7171">向阳村</option>
+<option value="7172">新华屯</option>
+<option value="7173">八村</option>
+<option value="7174">林源</option>
+<option value="7175">创业村</option>
+<option value="7176">银浪</option>
+<option value="7177">独立屯</option>
+<option value="7178">壮\345\277\227</option>
+<option value="7179">卧里屯</option>
+<option value="7180">龙凤</option>
+<option value="7181">让湖路</option>
+<option value="7182">喇嘛甸</option>
+<option value="7183">高家</option>
+<option value="7184">泰康</option>
+<option value="7185">红旗营</option>
+<option value="7186">富拉尔基</option>
+<option value="7187">黑岗</option>
+<option value="7188">白山乡</option>
+<option value="7189">碾子山</option>
+<option value="7190">吉新河</option>
+<option value="7191">二道湾</option>
+<option value="7192">团结</option>
+<option value="7193">拉哈</option>
+<option value="7194">光明</option>
+<option value="7195">六合镇</option>
+<option value="7196">恒地营</option>
+<option value="7197">伊拉哈</option>
+<option value="7198">九三</option>
+<option value="7199">新高峰</option>
+<option value="7200">高头</option>
+<option value="7201">冯屯</option>
+<option value="7202">塔哈</option>
+<option value="7203">中和</option>
+<option value="7204">哈川</option>
+<option value="7205">树林</option>
+<option value="7206">富海</option>
+<option value="7207">八方</option>
+<option value="7208">弯道</option>
+<option value="7209">克利</option>
+<option value="7210">三间房</option>
+<option value="7211">烟筒屯</option>
+<option value="7212">虎尔虎拉</option>
+<option value="7213">鲁河</option>
+<option value="7214">青水山</option>
+<option value="7215">老莱</option>
+<option value="7216">新彦</option>
+<option value="7217">群力</option>
+<option value="7218">哈达阳</option>
+<option value="7219">哈力图</option>
+<option value="7220">小黑山</option>
+<option value="7221">红彦</option>
+<option value="7222">大杨树东</option>
+<option value="7223">大杨树</option>
+<option value="7224">春亭阁</option>
+<option value="7225">乌鲁布铁</option>
+<option value="7226">朝阳村</option>
+<option value="7227">白桦排</option>
+<option value="7228">加南</option>
+<option value="7229">松树林</option>
+<option value="7230">小扬气</option>
+<option value="7231">古源</option>
+<option value="7232">劲松</option>
+<option value="7233">新天</option>
+<option value="7234">太阳沟</option>
+<option value="7235">塔源</option>
+<option value="7236">新林</option>
+<option value="7237">碧州</option>
+<option value="7238">翠岗</option>
+<option value="7239">富乐</option>
+<option value="7240">塔尔根</option>
+<option value="7241">绣峰</option>
+<option value="7242">瓦拉干</option>
+<option value="7243">蒙克山</option>
+<option value="7244">盘古</option>
+<option value="7245">长缨</option>
+<option value="7246">劲涛</option>
+<option value="7247">图强</option>
+<option value="7248">育英</option>
+<option value="7249">翠峰</option>
+<option value="7250">宏图</option>
+<option value="7251">雄关</option>
+<option value="7252">呼源</option>
+<option value="7253">呼中</option>
+<option value="7254">碧水</option>
+<option value="7255">古莲</option>
+<option value="7256">林\346\265\267</option>
+<option value="7257">达拉滨</option>
+<option value="7258">讷尔克气</option>
+<option value="7259">大扬气</option>
+<option value="7260">大乌苏</option>
+<option value="7261">龙门河</option>
+<option value="7262">辰清</option>
+<option value="7263">西岗子</option>
+<option value="7264">锦河</option>
+<option value="7265">清溪</option>
+<option value="7266">西佳木斯</option>
+<option value="7267">昂昂溪</option>
+<option value="7268">潮水</option>
+<option value="7270">沾河</option>
+<option value="7271">襄河</option>
+<option value="7273">山河</option>
+<option value="7274">五龙</option>
+<option value="7275">新忠</option>
+<option value="7276">查班河</option>
+<option value="7277">韩家园</option>
+<option value="7278">十八站</option>
+<option value="7279">永庆</option>
+<option value="7280">小榆树</option>
+<option value="7281">朗乡</option>
+<option value="7282">沙园</option>
+<option value="7283">沈家</option>
+<option value="7285">平房</option>
+<option value="7286">孙家</option>
+<option value="7287">王兆屯</option>
+<option value="7288">王岗</option>
+<option value="7289">东门</option>
+<option value="7290">新香坊</option>
+<option value="7291">新松浦</option>
+<option value="7292">徐家</option>
+<option value="7293">漠河县</option>
+<option value="7294">平山</option>
+<option value="7295">亚沟</option>
+<option value="7296">羊草</option>
+<option value="7297">赵光</option>
+<option value="7298">李家</option>
+<option value="7299">杨家</option>
+<option value="7300">阿尔山</option>
+<option value="7301">朝查</option>
+<option value="7302">朝中</option>
+<option value="7303">朝原</option>
+<option value="7304">静岭</option>
+<option value="7305">金林</option>
+<option value="7306">金河</option>
+<option value="7307">嘎拉牙</option>
+<option value="7308">牛耳河</option>
+<option value="7309">阿龙山</option>
+<option value="7310">塔朗空</option>
+<option value="7311">阿乌\345\260\274</option>
+<option value="7312">大其拉哈</option>
+<option value="7313">喀喇其</option>
+<option value="7314">克一河</option>
+<option value="7315">索图罕</option>
+<option value="7316">甘河</option>
+<option value="7317">阿里河</option>
+<option value="7318">莫尔道嘎</option>
+<option value="7319">牧原</option>
+<option value="7320">岭北</option>
+<option value="7321">达赖沟</option>
+<option value="7322">满归</option>
+<option value="7323">银阿</option>
+<option value="7324">吉文</option>
+<option value="7325">得耳布尔</option>
+<option value="7326">成吉思汗</option>
+<option value="7327">古里金</option>
+<option value="7328">高台子</option>
+<option value="7329">卧牛河</option>
+<option value="7330">三道桥</option>
+<option value="7331">哈拉苏</option>
+<option value="7332">南木</option>
+<option value="7333">富林</option>
+<option value="7334">喇嘛山</option>
+<option value="7335">紫沟</option>
+<option value="7336">雅鲁</option>
+<option value="7337">旗山</option>
+<option value="7338">沟口</option>
+<option value="7339">沙力</option>
+<option value="7340">新南沟</option>
+<option value="7341">兴安岭</option>
+<option value="7342">伊列克得</option>
+<option value="7343">西岭口</option>
+<option value="7344">乌奴耳</option>
+<option value="7345">北头河</option>
+<option value="7346">免渡河</option>
+<option value="7347">小北</option>
+<option value="7348">海满</option>
+<option value="7349">大雁</option>
+<option value="7350">扎罗木得</option>
+<option value="7351">哈克</option>
+<option value="7352">海拉尔东</option>
+<option value="7353">大良</option>
+<option value="7354">乌固诺尔</option>
+<option value="7355">乌兰丘</option>
+<option value="7356">东宫</option>
+<option value="7357">都伦</option>
+<option value="7358">陵丘</option>
+<option value="7359">赫尔洪得</option>
+<option value="7360">皇德</option>
+<option value="7361">豪门</option>
+<option value="7362">湖北</option>
+<option value="7363">扎赉诺尔</option>
+<option value="7364">东壕</option>
+<option value="7365">胪滨</option>
+<option value="7366">忠工屯</option>
+<option value="7367">石门子</option>
+<option value="7368">源泉</option>
+<option value="7369">新绰源</option>
+<option value="7370">塔尔气</option>
+<option value="7371">扎赉诺尔西</option>
+<option value="7372">巴林</option>
+<option value="7373">博克图</option>
+<option value="7374">完工</option>
+<option value="7375">嵯岗</option>
+<option value="7376">梨子山</option>
+<option value="7377">卓山</option>
+<option value="7378">哈拉沟</option>
+<option value="7379">大武口</option>
+<option value="7380">柳沟</option>
+<option value="7381">瓜州</option>
+<option value="7382">平湖南</option>
+<option value="7383">塘渡口</option>
+<option value="7384">芦洪市</option>
+<option value="7777">低庄</option>
+<option value="9000">临淄</option>
+<option value="9001">二龙山屯</option>
+<option value="9002">五家</option>
+<option value="9003">尚家</option>
+<option value="9004">杨家</option>
+<option value="9005">大兴</option>
+<option value="9007">磴口县</option>
+<option value="9008">阿拉善旗</option>
+<option value="9009">巴彦浩特</option>
+<option value="9010">吕梁</option></select>
+            <span class="mr15px">市<span class="asterisk ">*</span></span>
+            <input type="text" name="memberInfo.addressName" maxlength="100" value="" id="addressNameId" style="width:170" class="inputtext "><span class="asterisk ">*</span>
+            <span id="addressMsg2" class="pim_ts">省、市、详细地址均为必填</span>
+            <label id="addressMsg" class="error" style="display:none"></label></td>
+            </div>
+            
+          </tr>
+          <tr>
+            <td width="115" align="right" class="right">邮编：</td>
+            <td>
+             <div id="postalCodeTextId">
+            
+            </div>
+            <div id="postalCodeAreaId" style="display:none">
+            <input type="text" name="memberInfo.postalCode" maxlength="6" value="" id="postalCodeId" class="inputtext width183 "><span class="asterisk ">*</span>
+            <span id="postalCodeMsg2" class="pim_ts">必填</span>
+            <label id="postalCodeMsg" class="error" style="display:none"></label></td>
+            </div>
+          </tr>
+          <tr>
+            <td width="115" align="right" class="right">手机号码：</td>
+            <td>
+            <div id="cellPhoneTextId">
+            
+            </div>
+            <div id="cellPhoneAreaId" style="display:none">
+            <input type="text" name="memberInfo.cellPhone" maxlength="11" value="11111111111" id="cellPhoneId" class="inputtext width183 "><span class="asterisk ">*</span>
+            <span id="cellPhoneMsg2" class="pim_ts">必填</span>
+            <label id="cellPhoneMsg" class="error" style="display:none"></label></td>
+            </div>
+          </tr>
+          <tr>
+            <td width="115" align="right" class="right">电子邮件：</td>
+            <td>
+            <div id="emailAddressTextId">
+            
+            </div>
+            <div id="emailAddressAreaId" style="display:none">
+            <input type="hidden"  name="oldEmail" value="" ></input>
+            <input type="text" name="memberInfo.emailAddress" maxlength="50" value="sdfsaf@11.com" id="emailAddressId" class="inputtext width183 "><span class="asterisk ">*</span>
+            <span id="emailAddressMsg2" class="pim_ts">必填,请输入正确格式的电子邮件地址</span>
+            <label id="emailAddressMsg" class="error" style="display:none"></label></td>
+            </div>
+          </tr>
+          <tr>
+            <td width="115" align="right" class="right">固定电话：</td>
+            <td>
+            <div id="homePhoneTextId">
+            
+            </div>
+            <div id="homePhoneAreaId" style="display:none">
+            <input type="text" name="memberInfo.homePhone" maxlength="20" value="" id="homePhoneId" class="inputtext width183 "></td>
+            </div>
+          </tr>
+          <tr>
+            <td width="115" align="right" class="right">传真号码：</td>
+            <td>
+            <div id="faxNoTextId">
+            
+            </div>
+            <div id="faxNoAreaId" style="display:none">
+            <input type="text" name="memberInfo.faxNo" maxlength="20" value="" id="faxNoId" class="inputtext width183 "></td>
+            </div>
+          </tr>
+          <tr>
+            <td width="115" align="right" class="right">接收积分帐单方式：</td>
+            <td>
+            <div id="isEmailAreaId" style="display:none">
+            <label class="mr15px" >电子邮件</label>
+            <label id="isEmailMsg" class="error" style="display:none"></label>
+            </div>
+             <div id="isEmailTextId">
+             
+             
+             </div></td>
+          </tr>
+        </table>
+        
+        <div class="tc"><a href="#" id="regBtn" class="button_c"><span id="regBtnLabelId">修改</span></a></div>
+  </div><!--i-main end-->
+    <div class="clear"></div>
+</form>
+     
+     
+     
+      </div><!--tab2 end-->
+      
+      
+      
+      
+      
+      
+      </div>
+  
+    </div>
+ 
+</div>
+<script>
+if (notReg == "true") {
+	document.getElementById('t2').style.display="none";
+	}
+</script>
+</body>
+</html>
+
+<script language="javascript">
+var f = function() {
+		var message = "";
+        var messageShow ="";
+        var flag ='null';
+        if(messageShow != ""){
+			if(flag == 'u'){
+				$("#messageUp").css({display:"inline"});
+				document.getElementById("messageUp").innerHTML = message;
+			}else{
+				$("#messageDown").css({display:"inline"});
+				document.getElementById("messageDown").innerHTML = message;
+			}
+         }else{
+     		if ( message != ""){ 
+    			alert(message);
+
+    		}
+
+         } }
+         window.setTimeout(f, 500);
+</script>
+

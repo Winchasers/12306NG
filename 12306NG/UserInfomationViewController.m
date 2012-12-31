@@ -175,6 +175,7 @@
             
             //[self loadMainTableView];
         }else if(self.dataDict) {
+            [loadingView removeFromSuperview];
             [self.view addSubview:mainTableView];
             [mainTableView reloadData];
         }else {
@@ -212,6 +213,7 @@
             //[self loadUserListTableView];
         }
         else if(self.userListArray){
+            [loadingView removeFromSuperview];
             [self.view addSubview:mainTableView];
             [mainTableView reloadData];
         }
@@ -252,7 +254,7 @@
 }
 -(void)loadUserListTableView
 {
-    dispatch_async(dispatch_queue_create("getListWithUsers", nil), ^{
+    dispatch_async(dispatch_queue_create("loadUserListTableView", nil), ^{
         self.userListArray=[[NGUserService sharedService] getListWithUsers];
         dispatch_async(dispatch_get_main_queue(),^{
             
@@ -370,6 +372,9 @@
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (userInfoKey==UserInfoOther&&indexPath.section==0) {
+        return UITableViewCellEditingStyleDelete;
+    }
     return UITableViewCellEditingStyleNone;
 }
 //- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0);
@@ -497,8 +502,8 @@
             
             cell.accessoryType=UITableViewCellAccessoryNone;
             cell.textLabel.text=@"";
-            cell.backgroundColor=[UIColor whiteColor];
-            cell.backgroundView=nil;
+            //cell.backgroundColor=[UIColor whiteColor];
+            //cell.backgroundView=nil;
             
             UILabel* labelValue=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width-20, 30)];     
             labelValue.textAlignment=UITextAlignmentCenter;

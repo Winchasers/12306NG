@@ -457,7 +457,7 @@
         cell.textLabel.text=@"用户名";
             textName=[[UITextField alloc] initWithFrame:CGRectMake(0, 0, 200, 40)];
             textName.placeholder=@"请输入12306注册账号";
-            textName.text=@"iostest";
+            textName.text=@"iphonetest";
             textName.autocapitalizationType=UITextAutocapitalizationTypeNone;
             textName.autocorrectionType=UITextAutocorrectionTypeNo;
             textName.contentVerticalAlignment=UIControlContentVerticalAlignmentCenter;
@@ -473,7 +473,7 @@
             textPwd=[[UITextField alloc] initWithFrame:CGRectMake(0, 0, 200, 40)];
             textPwd.contentVerticalAlignment=UIControlContentVerticalAlignmentCenter;
             textPwd.placeholder=@"请输入12306密码";
-            textPwd.text=@"ios123";
+            textPwd.text=@"iphone123";
             textPwd.secureTextEntry=YES;
             textPwd.delegate=self;
             textPwd.returnKeyType=UIReturnKeyNext;

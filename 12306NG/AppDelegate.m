@@ -134,7 +134,7 @@
 -(void)didLoginOut
 { 
     
-    //[ASIHTTPRequest clearSession];
+    [ASIHTTPRequest clearSession];
     self.loginView = [[[LoginViewController alloc] init]autorelease]; 
     self.loginView.view.frame=CGRectOffset( self.loginView.view.frame, 0, -480);
     [self.userCenterViewController.navigationController.view addSubview:self.loginView.view];  

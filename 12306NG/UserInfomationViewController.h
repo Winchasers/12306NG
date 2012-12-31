@@ -20,8 +20,17 @@ typedef enum
 @interface UserInfomationViewController : UIViewController<UITextFieldDelegate>
 {
     UserInfoKey userInfoKey;
+    
+    UIScrollView* mainScrollView;
+    
     NSMutableArray* tableArray;
     UITableView* mainTableView;
+    BOOL isMainTableLoaded;
+    
+    
+    NSMutableArray* userListArray;
+    UITableView* userListTableView;
+    BOOL isUserListTableLoaded;
     
     NSMutableDictionary* dataDict;
     
@@ -31,6 +40,8 @@ typedef enum
     BOOL isKeyBoardShow;
     
     UIView* loadingView;
+    
+    UITextField* activeField;
     
     
 

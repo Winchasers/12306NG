@@ -186,6 +186,9 @@
 /***********************************************************************/ 
     if (indexPath.section==3&&indexPath.row==0) 
     {
+        
+        
+        
         FeedbackViewController* controller=[[FeedbackViewController alloc] init];
         [self.navigationController pushViewController:controller animated:YES];
         [controller release];

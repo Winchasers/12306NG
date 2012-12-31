@@ -40,8 +40,7 @@
     
     
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    self.window.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"background_black"]];
-    
+    self.window.backgroundColor=MAIN_BG_COLOR;
     
     //BOOL isAutoLogin= [[[NSUserDefaults standardUserDefaults] objectForKey:@"isAutoLogin"] boolValue];
     BOOL isAutoLogin=NO;
@@ -54,7 +53,8 @@
         
          self.userCenterViewController=[[[UserCenterViewController alloc] init]autorelease];   
         UINavigationController* navController=[[UINavigationController alloc] initWithRootViewController:self.userCenterViewController];
-        [navController.navigationBar setTintColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"banner"]]];
+        //[navController.navigationBar setTintColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"banner"]]];
+        [navController.navigationBar setTintColor:([UIColor colorWithPatternImage:[UIImage imageNamed:@"bluebutton"]])];
         //[navController setNavigationBarHidden:YES];
         self.window.rootViewController = navController;
         [navController release];
@@ -62,8 +62,8 @@
         
         self.loginView = [[[LoginViewController alloc] init] autorelease];    
         UINavigationController* navController=[[UINavigationController alloc] initWithRootViewController:self.loginView];
-        [navController.navigationBar setTintColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"banner"]]];
-        [navController setNavigationBarHidden:YES];
+        [navController.navigationBar setTintColor:MAIN_NAV_COLOR];
+         [navController setNavigationBarHidden:YES];
         self.window.rootViewController = navController;
         [navController release];
     }
@@ -115,7 +115,7 @@
     
     self.userCenterViewController=[[[UserCenterViewController alloc] init]autorelease];
     UINavigationController* navController=[[UINavigationController alloc] initWithRootViewController:self.userCenterViewController];
-    [navController.navigationBar setTintColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"banner"]]];
+    [navController.navigationBar setTintColor:MAIN_NAV_COLOR];
      self.window.rootViewController = navController;
     [navController release];
     
@@ -144,7 +144,7 @@
     } completion:^(BOOL finished) {
         self.loginView = [[[LoginViewController alloc] init]autorelease];
         UINavigationController* navController=[[UINavigationController alloc] initWithRootViewController:self.loginView];
-        [navController.navigationBar setTintColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"banner"]]];
+        [navController.navigationBar setTintColor:MAIN_NAV_COLOR];
         [navController setNavigationBarHidden:YES];
         self.window.rootViewController = navController;
         [navController release];

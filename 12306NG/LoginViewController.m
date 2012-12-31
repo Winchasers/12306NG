@@ -78,22 +78,26 @@
     
     
     UIButton* btnRegist=[UIButton buttonWithType:UIButtonTypeCustom];
-    btnRegist.frame=CGRectMake(20, OffsetY+280, 80, 30);
+    btnRegist.frame=CGRectMake(20, OffsetY+280, 80, 40);
     btnRegist.titleLabel.font=[UIFont boldSystemFontOfSize:15];
     [btnRegist setTitle:@"注册新用户" forState:UIControlStateNormal];
+    btnRegist.showsTouchWhenHighlighted=YES;
     [btnRegist addTarget:self action:@selector(onRegistClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btnRegist];
     
     
-    UIView* lineView=[[UIView alloc] initWithFrame:CGRectMake(0, 30-1, 80, 1)];
+    
+    UIView* lineView=[[UIView alloc] initWithFrame:CGRectMake(0, 35-3, 80, 1)];
     lineView.backgroundColor=[UIColor whiteColor];
     [btnRegist addSubview:lineView];
     [lineView release];
     
     UIButton* btnAutoLogin=[UIButton buttonWithType:UIButtonTypeCustom];
-    btnAutoLogin.frame=CGRectMake(220-50, OffsetY+280, 130, 30);
+    btnAutoLogin.frame=CGRectMake(220-50, OffsetY+280, 130, 40);
     btnAutoLogin.titleLabel.font=[UIFont boldSystemFontOfSize:15];
     [btnAutoLogin setTitle:@"允许自动登录" forState:UIControlStateNormal];
+    [btnAutoLogin setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
+    //btnAutoLogin.showsTouchWhenHighlighted=YES;
     [btnAutoLogin setImage:[UIImage imageNamed:@"auto_login_frame"] forState:UIControlStateNormal];
     [btnAutoLogin setImage:[UIImage imageNamed:@"auto_login2"] forState:UIControlStateSelected];
     BOOL b=[[[NSUserDefaults standardUserDefaults] objectForKey:@"isAutoLogin"] boolValue];
@@ -234,9 +238,9 @@
     [self.view endEditing:YES];
     HUD=[[MBProgressHUD alloc] initWithView:self.view];
     HUD.mode = MBProgressHUDModeIndeterminate;
-    HUD.labelText = @"  亲，正在登录，请稍后...    ";
-    HUD.margin = 20.f;
-    HUD.yOffset = -50.f;
+    HUD.labelText = @"  亲，正在登录中，请稍后...    ";
+    HUD.margin = 30.f;
+    HUD.yOffset = -45.f;
     [self.view addSubview:HUD];
     [HUD showWhileExecuting:@selector(doRequestData) onTarget:self withObject:nil animated:YES];
 
@@ -522,6 +526,15 @@
      requestImg.delegate=(id<ASIHTTPRequestDelegate>)self;
     [requestImg startAsynchronous];
     
+    [imgBtn setImage:nil forState:UIControlStateNormal];
+    
+    UIActivityIndicatorView* activity=[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    activity.tag=1231;
+    activity.center=CGPointMake(30, 20);    
+    [activity startAnimating];
+     [imgBtn addSubview:activity];
+    [activity release];
+    
     
     
     
@@ -532,6 +545,8 @@
         
         [request_ applyCookieHeader];
         UIImage* img=[UIImage imageWithData:request_.responseData]; 
+        
+        [[imgBtn viewWithTag:1231] removeFromSuperview];
         [imgBtn setImage:img forState:UIControlStateNormal];
         
         isCodeLoaded=YES;
@@ -547,6 +562,7 @@
 }
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
+    [[imgBtn viewWithTag:1231] removeFromSuperview];
     UIAlertView* alert=[[UIAlertView alloc] initWithTitle:nil message:request.error.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     [alert show];
     [alert release];

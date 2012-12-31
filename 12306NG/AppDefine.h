@@ -14,6 +14,17 @@
 #define DEBUG_MODE 0
 
 
+#define NAV_BG_IMAGE [UIImage imageNamed:@"banner.png"]
+
+
+//#define MAIN_NAV_COLOR ([UIColor colorWithPatternImage:[UIImage imageNamed:@""]])
+//#define MAIN_NAV_COLOR ([UIColor colorWithPatternImage:[UIImage imageNamed:@"bluebutton"]])
+#define MAIN_NAV_COLOR ([UIColor blackColor])
+
+
+#define MAIN_BG_COLOR ([UIColor colorWithPatternImage:[UIImage imageNamed:@"background_black"]])
+//#define MAIN_BG_COLOR ([UIColor whiteColor])
+
 #define DEFAULT_SERVER_IP @"127.0.0.1" 
 #define DEFAULT_SERVER_PORT @"88"
 

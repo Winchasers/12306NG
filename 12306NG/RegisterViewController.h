@@ -19,6 +19,8 @@
     
     NSInteger tagIndex;
     
+    UITextField* activeField;
+    
 }
 
 @end

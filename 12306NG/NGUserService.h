@@ -17,5 +17,6 @@
 -(UIImage*)getValidateCodeImage;
 -(BOOL)LoginInWithName:(NSString*)userName andPwd:(NSString*)userPwd andCode:(NSString*)code;
 -(void)LoginOut;
+-(NSMutableArray*)getListWithUsers;
 -(NSMutableDictionary*)getUserInfo;
 @end

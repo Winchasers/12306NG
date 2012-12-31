@@ -54,6 +54,14 @@ static NGUserService* _sharedNGUserServiceIntance;
 {
     
 }
+-(NSMutableArray*)getListWithUsers
+{
+    sleep(2);
+    NSMutableArray* returnArray=[[NSMutableArray alloc] initWithObjects:@"李   四",@"王五五", nil];
+    return [returnArray autorelease];;
+    
+    
+}
 -(NSMutableDictionary*)getUserInfo 
 {
 //    sleep(3);

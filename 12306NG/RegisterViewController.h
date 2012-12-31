@@ -8,6 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RegisterViewController : UIViewController
+@interface RegisterViewController : UIViewController<UITextFieldDelegate>
+{
+    
+    NSMutableArray* tableArray;
+    NSMutableDictionary* dataDict;
+    UITableView* mainTableView;
+    
+    BOOL isKeyBoardShow;
+    
+    NSInteger tagIndex;
+    
+    UITextField* activeField;
+    
+}
 
 @end

@@ -1,0 +1,113 @@
+GET /otsweb/order/querySingleAction.do?method=queryLeftTicket&orderRequest.train_date=2012-10-05&orderRequest.from_station_telecode=BJP&orderRequest.to_station_telecode=WHN&orderRequest.train_no=&trainPassType=QB&trainClass=QB%23D%23Z%23T%23K%23QT%23&includeStudent=00&seatTypeAndNum=&orderRequest.start_time_str=00%3A00--24%3A00 HTTP/1.1
+x-requested-with: XMLHttpRequest
+Accept-Language: zh-cn
+Referer: https://dynamic.12306.cn/otsweb/order/querySingleAction.do?method=init
+Accept: text/plain, */*
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)
+Host: dynamic.12306.cn
+Connection: Keep-Alive
+Cookie: JSESSIONID=CC6B4E505456091A3919E9B4BFF4E7D5; BIGipServerotsweb=2748580106.36895.0000
+
+
+
+
+
+
+
+
+POST /TrainQuery/iframeLeftTicketByStation.jsp HTTP/1.1
+Accept: text/html, application/xhtml+xml, */*
+Referer: http://dynamic.12306.cn/TrainQuery/leftTicketByStation.jsp
+Accept-Language: zh-CN
+User-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip, deflate
+Host: dynamic.12306.cn
+Content-Length: 402
+Connection: Keep-Alive
+Cache-Control: no-cache
+Cookie: JSESSIONID=51CC9DA915980331A5AB131851B19CE2; BIGipServerotsweb=2748580106.36895.0000; BIGipServertrainquery=1626800394.64543.0000
+
+ictQ=8015&fdl=&lx=00&nmonth3=10&nmonth3_new_value=true&nday3=05&nday3_new_value=false&startStation_ticketLeft=53174e150037eeb7&startStation_ticketLeft_new_value=false&arriveStation_ticketLeft=6b666cf6024bc31b&arriveStation_ticketLeft_new_value=false&trainCode=&trainCode_new_value=true&rFlag=1&name_ckball=value_ckball&tFlagDC=DC&tFlagZ=Z&tFlagT=T&tFlagK=K&tFlagPK=PK&tFlagPKE=PKE&tFlagLK=LK&randCode=1
+
+
+HTTP/1.1 200 OK
+Date: Fri, 05 Oct 2012 06:04:39 GMT
+Server: Apache-Coyote/1.1
+Content-Type: text/html;charset=utf-8
+Content-Length: 7042
+X-Cache: MISS from cache.51cdn.com
+X-Via: 1.1 hbbd214:84 (Cdn Cache Server V2.0)
+Connection: keep-alive
+
+<script>
+parent.document.getElementById("ictQ").value="8015"
+
+parent.mygrid.clearAll();
+parent.document.getElementById("randCode").value="";
+parent.document.getElementById("img_rrand_code").src="passCodeActi0n.do?rand=rrand"+'?'+Math.random();
+parent.mygrid.startFastOperations();
+
+parent.document.getElementById("stationDIV").innerHTML="日期�?strong>20121005</strong>�?strong>北京</strong>�?strong>武汉</strong>列车全部余票信息<strong>16</strong>条：";
+
+if(parent.document.getElementById("ckb1").checked &&
+	!parent.document.getElementById("ckb2").checked &&
+	!parent.document.getElementById("ckb3").checked &&
+	!parent.document.getElementById("ckb4").checked &&
+	!parent.document.getElementById("ckb5").checked &&
+	!parent.document.getElementById("ckb6").checked &&
+	!parent.document.getElementById("ckb7").checked &&
+	parent.cc.getComboText().length == 0){
+
+//parent.mygrid.setColumnHidden(7,"true");
+//parent.mygrid.setColumnHidden(8,"true");
+//parent.mygrid.setColumnHidden(9,"true");
+}else{
+var string = parent.cc.getComboText();
+if(string.length != 0 && (string.charAt(0) == 'C' || string.charAt(0) == 'D' || string.charAt(0) == 'G')){
+//parent.mygrid.setColumnHidden(7,"true");
+//parent.mygrid.setColumnHidden(8,"true");
+//parent.mygrid.setColumnHidden(9,"true");
+}else{
+//parent.mygrid.setColumnHidden(7,"false");
+//parent.mygrid.setColumnHidden(8,"false");
+//parent.mygrid.setColumnHidden(9,"false");
+}
+}
+
+parent.mygrid.addRow(0,"1,T167(北京�?>南昌)^skbcx.jsp?cxlx=cc&date=20121005&trainCode=T167,北京西^skbcx.jsp?cxlx=czjgcc&zm=&date=20121005&stationName_passTrain=%E5%8C%97%E4%BA%AC%E8%A5%BF,武昌^skbcx.jsp?cxlx=czjgcc&zm=&date=20121005&stationName_passTrain=%E6%AD%A6%E6%98%8C,14:54,03:31,12:37,--,--,--,--,--,0,0,--,0,�?特快",0);
+
+parent.mygrid.addRow(1,"2,T13(沈阳�?>广州�?^skbcx.jsp?cxlx=cc&date=20121005&trainCode=T13,北京^skbcx.jsp?cxlx=czjgcc&zm=&date=20121005&stationName_passTrain=%E5%8C%97%E4%BA%AC,武昌^skbcx.jsp?cxlx=czjgcc&zm=&date=20121005&stationName_passTrain=%E6%AD%A6%E6%98%8C,15:00,01:38,10:38,--,--,--,--,--,0,0,--,0,�?特快",1);
+
+parent.mygrid.addRow(2,"3,T5(北京�?>南宁)^skbcx.jsp?cxlx=cc&date=20121005&trainCode=T5,北京西^skbcx.jsp?cxlx=czjgcc&zm=&date=20121005&stationName_passTrain=%E5%8C%97%E4%BA%AC%E8%A5%BF,汉口^skbcx.jsp?cxlx=czjgcc&zm=&date=20121005&stationName_passTrain=%E6%B1%89%E5%8F%A3,15:44,02:57,11:13,--,--,--,--,--,0,0,--,0,�?特快",2);
+
+parent.mygrid.addRow(3,"4,T87(北京�?>贵阳)^skbcx.jsp?cxlx=cc&date=20121005&trainCode=T87,北京西^skbcx.jsp?cxlx=czjgcc&zm=&date=20121005&stationName_passTrain=%E5%8C%97%E4%BA%AC%E8%A5%BF,武昌^skbcx.jsp?cxlx=czjgcc&zm=&date=20121005&stationName_passTrain=%E6%AD%A6%E6%98%8C,15:57,04:48,12:51,--,--,--,--,0,4,0,--,0,�?特快",3);
+
+parent.mygrid.addRow(4,"5,T1(北京�?>长沙)^skbcx.jsp?cxlx=cc&date=20121005&trainCode=T1,北京西^skbcx.jsp?cxlx=czjgcc&zm=&date=20121005&stationName_passTrain=%E5%8C%97%E4%BA%AC%E8%A5%BF,武昌^skbcx.jsp?cxlx=czjgcc&zm=&date=20121005&stationName_passTrain=%E6%AD%A6%E6%98%8C,16:03,03:48,11:45,--,--,--,--,--,3,1,--,0,�?特快",4);
+
+parent.mygrid.addRow(5,"6,T61(北京�?>昆明)^skbcx.jsp?cxlx=cc&date=20121005&trainCode=T61,北京西^skbcx.jsp?cxlx=czjgcc&zm=&date=20121005&stationName_passTrain=%E5%8C%97%E4%BA%AC%E8%A5%BF,武昌^skbcx.jsp?cxlx=czjgcc&zm=&date=20121005&stationName_passTrain=%E6%AD%A6%E6%98%8C,16:36,04:55,12:19,--,--,--,--,--,0,0,--,0,�?特快",5);
+
+parent.mygrid.addRow(6,"7,T201(北京�?>三亚)^skbcx.jsp?cxlx=cc&date=20121005&trainCode=T201,北京西^skbcx.jsp?cxlx=czjgcc&zm=&date=20121005&stationName_passTrain=%E5%8C%97%E4%BA%AC%E8%A5%BF,武昌^skbcx.jsp?cxlx=czjgcc&zm=&date=20121005&stationName_passTrain=%E6%AD%A6%E6%98%8C,18:09,04:23,10:14,--,--,--,--,0,0,0,--,0,�?特快",6);
+
+parent.mygrid.addRow(7,"8,T189(北京�?>南宁)^skbcx.jsp?cxlx=cc&date=20121005&trainCode=T189,北京西^skbcx.jsp?cxlx=czjgcc&zm=&date=20121005&stationName_passTrain=%E5%8C%97%E4%BA%AC%E8%A5%BF,武昌^skbcx.jsp?cxlx=czjgcc&zm=&date=20121005&stationName_passTrain=%E6%AD%A6%E6%98%8C,18:50,06:30,11:40,--,--,--,--,0,0,0,--,0,�?特快",7);
+
+parent.mygrid.addRow(8,"9,K157(北京�?>湛江)^skbcx.jsp?cxlx=cc&date=20121005&trainCode=K157,北京西^skbcx.jsp?cxlx=czjgcc&zm=&date=20121005&stationName_passTrain=%E5%8C%97%E4%BA%AC%E8%A5%BF,武昌^skbcx.jsp?cxlx=czjgcc&zm=&date=20121005&stationName_passTrain=%E6%AD%A6%E6%98%8C,19:16,10:27,15:11,--,--,--,--,--,0,0,--,0,�?快�?,8);
+
+parent.mygrid.addRow(9,"10,K471(北京�?>昆明)^skbcx.jsp?cxlx=cc&date=20121005&trainCode=K471,北京西^skbcx.jsp?cxlx=czjgcc&zm=&date=20121005&stationName_passTrain=%E5%8C%97%E4%BA%AC%E8%A5%BF,武昌^skbcx.jsp?cxlx=czjgcc&zm=&date=20121005&stationName_passTrain=%E6%AD%A6%E6%98%8C,19:30,10:43,15:13,--,--,--,--,--,0,0,--,0,�?快�?,9);
+
+parent.mygrid.addRow(10,"11,Z3(北京�?>宜昌�?^skbcx.jsp?cxlx=cc&date=20121005&trainCode=Z3,北京西^skbcx.jsp?cxlx=czjgcc&zm=&date=20121005&stationName_passTrain=%E5%8C%97%E4%BA%AC%E8%A5%BF,汉口^skbcx.jsp?cxlx=czjgcc&zm=&date=20121005&stationName_passTrain=%E6%B1%89%E5%8F%A3,20:53,06:34,09:41,--,--,--,--,--,0,--,0,--,--,直特",10);
+
+parent.mygrid.addRow(11,"12,Z37(北京�?>武昌)^skbcx.jsp?cxlx=cc&date=20121005&trainCode=Z37,北京西^skbcx.jsp?cxlx=czjgcc&zm=&date=20121005&stationName_passTrain=%E5%8C%97%E4%BA%AC%E8%A5%BF,武昌^skbcx.jsp?cxlx=czjgcc&zm=&date=20121005&stationName_passTrain=%E6%AD%A6%E6%98%8C,20:59,06:55,09:56,--,--,--,--,0,0,0,--,--,--,直特",11);
+
+parent.mygrid.addRow(12,"13,Z11(北京�?>武昌)^skbcx.jsp?cxlx=cc&date=20121005&trainCode=Z11,北京西^skbcx.jsp?cxlx=czjgcc&zm=&date=20121005&stationName_passTrain=%E5%8C%97%E4%BA%AC%E8%A5%BF,武昌^skbcx.jsp?cxlx=czjgcc&zm=&date=20121005&stationName_passTrain=%E6%AD%A6%E6%98%8C,21:05,07:01,09:56,--,--,--,--,0,1,0,--,--,--,直特",12);
+
+parent.mygrid.addRow(13,"14,Z77(北京�?>汉口)^skbcx.jsp?cxlx=cc&date=20121005&trainCode=Z77,北京西^skbcx.jsp?cxlx=czjgcc&zm=&date=20121005&stationName_passTrain=%E5%8C%97%E4%BA%AC%E8%A5%BF,汉口^skbcx.jsp?cxlx=czjgcc&zm=&date=20121005&stationName_passTrain=%E6%B1%89%E5%8F%A3,21:11,07:08,09:57,--,--,--,--,--,0,0,--,--,--,直特",13);
+
+parent.mygrid.addRow(14,"15,K619(北京�?>重庆�?^skbcx.jsp?cxlx=cc&date=20121005&trainCode=K619,北京西^skbcx.jsp?cxlx=czjgcc&zm=&date=20121005&stationName_passTrain=%E5%8C%97%E4%BA%AC%E8%A5%BF,汉口^skbcx.jsp?cxlx=czjgcc&zm=&date=20121005&stationName_passTrain=%E6%B1%89%E5%8F%A3,23:11,15:31,16:20,--,--,--,--,--,0,0,--,0,�?快�?,14);
+
+parent.mygrid.addRow(15,"16,T319(北京�?>武昌)^skbcx.jsp?cxlx=cc&date=20121005&trainCode=T319,北京西^skbcx.jsp?cxlx=czjgcc&zm=&date=20121005&stationName_passTrain=%E5%8C%97%E4%BA%AC%E8%A5%BF,武昌^skbcx.jsp?cxlx=czjgcc&zm=&date=20121005&stationName_passTrain=%E6%AD%A6%E6%98%8C,23:50,12:12,12:22,--,--,--,--,--,0,--,0,--,--,特快",15);
+
+parent.mygrid.stopFastOperations();
+</script>

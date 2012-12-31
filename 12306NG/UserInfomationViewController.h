@@ -8,6 +8,44 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UserInfomationViewController : UIViewController
 
+
+typedef enum
+{
+    UserInfoMe,
+    UserInfoOther
+}UserInfoKey;
+
+
+@interface UserInfomationViewController : UIViewController<UITextFieldDelegate>
+{
+    UserInfoKey userInfoKey;
+    
+    UIScrollView* mainScrollView;
+    
+    NSMutableArray* tableArray;
+    UITableView* mainTableView;
+    BOOL isMainTableLoaded;
+    
+    
+    NSMutableArray* userListArray;
+    UITableView* userListTableView;
+    BOOL isUserListTableLoaded;
+    
+    NSMutableDictionary* dataDict;
+    
+    UISegmentedControl* segControlTop;
+    
+    
+    BOOL isKeyBoardShow;
+    
+    UIView* loadingView;
+    
+    UITextField* activeField;
+    
+    
+
+}
+-(id)initWithUserInfoKey:(UserInfoKey)userInfoKey;
+@property(nonatomic,assign)UserInfoKey userInfoKey;
 @end

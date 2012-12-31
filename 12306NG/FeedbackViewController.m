@@ -70,9 +70,10 @@
 -(void)sendClick
 {  
     
-//    NSString *urlString = @"mailto:920043287@qq.com?subject=aaa&body=aaa";
-//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
-//[self.navigationController popViewControllerAnimated:YES];
+    NSString *formatString = @"mailto:920043287@qq.com?subject=12306NG&body=%@";
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:formatString,contentView.text]]];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)textViewDidChange:(UITextView *)textView
 {

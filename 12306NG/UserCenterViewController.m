@@ -6,6 +6,8 @@
 //  Copyright (c) 2012 12306NG. All rights reserved.
 //
 
+#import "AppDelegate.h"
+
 #import "UserCenterViewController.h"
 
 
@@ -65,12 +67,29 @@
     }
     return self;
 }
+-(void)Exit
+{
+    AppDelegate* app=[UIApplication sharedApplication].delegate;
+    [app didLoginOut];
+    [self dismissModalViewControllerAnimated:YES];
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.title=NSLocalizedString(@"我的抢票助手", nil);
+    self.view.backgroundColor=[UIColor clearColor];
+    self.title=@"我的抢票助手";
+    self.navigationItem.leftBarButtonItem=[[[UIBarButtonItem alloc] initWithTitle:@"注销" style:UIBarButtonItemStyleBordered target:self action:@selector(Exit)] autorelease];
+    
+    UILabel* lbl=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
+    [lbl setText:[NSString stringWithFormat:@"[%@]",[[NSUserDefaults standardUserDefaults] objectForKey:@"userName"]]];
+    lbl.textColor=[UIColor whiteColor];
+    lbl.textAlignment=UITextAlignmentRight;
+    lbl.backgroundColor=[UIColor clearColor];
+//    [[UIBarButtonItem alloc] initWithCustomView:lbl]
+    
+    self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithCustomView:lbl];
     
     CGRect rect=CGRectMake(0, 0, self.view.bounds.size.width,self.view.bounds.size.height-44);
     self.mainTableView=[[[UITableView alloc] initWithFrame:rect style:UITableViewStyleGrouped] autorelease]  ;    
@@ -79,6 +98,7 @@
     mainTableView.backgroundView=nil;
     mainTableView.dataSource=(id<UITableViewDataSource>)self;
     mainTableView.delegate=(id<UITableViewDelegate>)self;
+    mainTableView.separatorStyle=UITableViewCellSeparatorStyleSingleLine;
     
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -131,6 +151,10 @@
     }
     else if (indexPath.section==0&&indexPath.row==1)
     {
+        UserInfomationViewController* controller=[[UserInfomationViewController alloc] init];
+        controller.userInfoKey=UserInfoOther;
+        [self.navigationController pushViewController:controller animated:YES];
+        [controller release];
  
     }
 /***********************************************************************/   
@@ -162,6 +186,9 @@
 /***********************************************************************/ 
     if (indexPath.section==3&&indexPath.row==0) 
     {
+        
+        
+        
         FeedbackViewController* controller=[[FeedbackViewController alloc] init];
         [self.navigationController pushViewController:controller animated:YES];
         [controller release];

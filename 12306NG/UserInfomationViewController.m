@@ -10,6 +10,10 @@
 #import "NGUserService.h"
 #import <QuartzCore/QuartzCore.h>
 
+#import "AddTravelCompanionViewController.h"
+#import "TravelCompanionInfoViewController.h"
+#import "RegisterViewController.h"
+
 @interface UserInfomationViewController ()
 @property(nonatomic,retain)NSMutableArray* tableArray;
 @property(nonatomic,retain)UITableView* mainTableView;
@@ -19,9 +23,12 @@
 @property(nonatomic,retain)UITableView* userListTableView;
 
 @property(nonatomic,retain)UIView* loadingView;
+
 @end
 
 @implementation UserInfomationViewController
+
+@synthesize isNeedsToReLoadWhileViewWillAppear;
 @synthesize userInfoKey;
 
 @synthesize tableArray,mainTableView;
@@ -46,17 +53,13 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    if ([[UIScreen mainScreen] bounds].size.height == 568.0) {
-        self = [super initWithNibName:@"UserInfomationViewController_ip5" bundle:nibBundleOrNil];
-    }else{
-        self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    }
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
         self.tableArray=[NSMutableArray arrayWithObjects:
                          [NSMutableArray arrayWithObjects:
-                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"姓    名",@"title",@"name",@"id",@"",@"value",@"",@"mask",nil],
-                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"性别",@"title",@"sex",@"id",@"",@"value",@"",@"mask", nil],
+                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"姓    名",@"title",@"idName",@"id",@"",@"value",@"",@"mask",nil],
+                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"性    别",@"title",@"sex",@"id",@"",@"value",@"",@"mask", nil],
                           [NSMutableDictionary dictionaryWithObjectsAndKeys:@"出生日期",@"title",@"birthday",@"id",@"",@"value",@"",@"mask", nil],
                           [NSMutableDictionary dictionaryWithObjectsAndKeys:@"证件类型",@"title",@"idType",@"id",@"",@"value",@"",@"mask", nil],
                           [NSMutableDictionary dictionaryWithObjectsAndKeys:@"证件号码",@"title",@"idNumber",@"id",@"",@"value",@"",@"mask", nil],
@@ -68,7 +71,7 @@
         
         
         self.dataDict=[NSMutableDictionary dictionaryWithObjectsAndKeys:
-                       @"张三",@"name",
+                       @"张三",@"idName",
                        @"M",@"sex",
                        @"1980-11-11",@"birthday",
                        @"1",@"idType",
@@ -89,12 +92,9 @@
     
     self.title=@"个人资料管理";
     
+    [self showCustomBackButton];
     
     
-    
-    if (self.userInfoKey==UserInfoMe) {
-        self.navigationItem.rightBarButtonItem=[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editContent)] autorelease];
-    }
     
     segControlTop=[[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"我的资料",@"同行旅客", nil]];
     segControlTop.frame=CGRectMake(10, 15, 300, 30);
@@ -107,9 +107,9 @@
     [self.view addSubview:segControlTop];
     
     
-    CGRect rect=CGRectMake(0, 50, self.view.bounds.size.width,420-50);
+    CGRect rect=CGRectMake(0, 50, self.view.bounds.size.width,self.view.bounds.size.height-44-50);
     
-    self.mainTableView=[[[UITableView alloc] initWithFrame:rect style:UITableViewStyleGrouped] autorelease]  ;    
+    self.mainTableView=[[[UITableView alloc] initWithFrame:rect style:UITableViewStyleGrouped] autorelease]  ;
     //[self.view addSubview:self.mainTableView];
     mainTableView.backgroundColor=[UIColor clearColor];
     mainTableView.backgroundView=nil;
@@ -118,7 +118,7 @@
     mainTableView.separatorStyle=UITableViewCellSeparatorStyleSingleLine;
     
     [self registerForKeyboardNotifications];
-    //    self.userListTableView=[[[UITableView alloc] initWithFrame:CGRectMake(rect.size.width, 0, rect.size.width, rect.size.height) style:UITableViewStyleGrouped] autorelease]  ;    
+    //    self.userListTableView=[[[UITableView alloc] initWithFrame:CGRectMake(rect.size.width, 0, rect.size.width, rect.size.height) style:UITableViewStyleGrouped] autorelease]  ;
     //    //[self.view addSubview:self.mainTableView];
     //    userListTableView.backgroundColor=[UIColor clearColor];
     //    userListTableView.backgroundView=nil;
@@ -126,8 +126,8 @@
     //    userListTableView.delegate=(id<UITableViewDelegate>)self;
     //    userListTableView.separatorStyle=UITableViewCellSeparatorStyleSingleLine;
     //
-    //    
-    //    
+    //
+    //
     //    mainScrollView=[[UIScrollView alloc] initWithFrame:rect];
     //    mainScrollView.contentSize=CGSizeMake(rect.size.width*2, rect.size.height);
     //    mainScrollView.pagingEnabled=YES;
@@ -135,28 +135,30 @@
     
     
     self.loadingView=[[UIView alloc] initWithFrame:CGRectInset(rect, 10, 10)];
-    [self.view addSubview:loadingView];
     loadingView.backgroundColor=[UIColor whiteColor];
     loadingView.layer.cornerRadius=8;
     
-    UIActivityIndicatorView* activity=[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    activity.center=CGPointMake(loadingView.frame.size.width/2, loadingView.frame.size.height/2);
-    [loadingView addSubview:activity];
-    [activity startAnimating];
+    
+    isNeedsToReLoadWhileViewWillAppear=YES;
+    
+    //    UIActivityIndicatorView* activity=[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    //    activity.center=CGPointMake(loadingView.frame.size.width/2, loadingView.frame.size.height/2);
+    //    [loadingView addSubview:activity];
+    //    [activity startAnimating];
     
     
 }
 -(void)changUserInfoKey:(UISegmentedControl*)seg
 {
     
+    [mainTableView setEditing:NO animated:YES];
+    
+//    [UIView transitionWithView:mainTableView duration:0.6 options:UIViewAnimationOptionTransitionCrossDissolve animations:nil completion:nil];
+//    
     if (seg.selectedSegmentIndex==0) {
         
         userInfoKey=UserInfoMe;
-        if (mainTableView.isEditing) {
-        self.navigationItem.rightBarButtonItem=[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(editContent)] autorelease];
-        }else {
-            self.navigationItem.rightBarButtonItem=[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editContent)] autorelease];
-        }
+        
         
         if (!isMainTableLoaded) {
             
@@ -175,9 +177,19 @@
             
             //[self loadMainTableView];
         }else if(self.dataDict) {
+            
+            self.navigationItem.rightBarButtonItem=[self myEditButtonItem];
+            
+            
+            
+            [loadingView removeFromSuperview];
             [self.view addSubview:mainTableView];
             [mainTableView reloadData];
         }else {
+            
+            self.navigationItem.rightBarButtonItem=nil;
+            
+            
             [mainTableView removeFromSuperview];
             [self.view addSubview:loadingView];
             loadingView.layer.opacity=1;
@@ -191,11 +203,13 @@
             [loadingView addSubview:lable];
         }
         
+        
         //[mainScrollView scrollRectToVisible:mainTableView.frame animated:YES];
     }else {
         userInfoKey=UserInfoOther;
-        self.navigationItem.rightBarButtonItem=nil;
+        
         if (!isUserListTableLoaded) {
+            self.navigationItem.rightBarButtonItem=nil;
             [mainTableView removeFromSuperview];
             [self.view addSubview:loadingView];
             loadingView.layer.opacity=1;
@@ -211,82 +225,152 @@
             
             //[self loadUserListTableView];
         }
-        else if(self.userListArray){
-            [self.view addSubview:mainTableView];
-            [mainTableView reloadData];
-        }
-        else {
-            [mainTableView removeFromSuperview];
-            [self.view addSubview:loadingView];
-            loadingView.layer.opacity=1;
-            for (UIView* v in [loadingView subviews]) {
-                [v removeFromSuperview];
+        else
+            
+            
+            if(self.userListArray){
+                
+                
+                if ([self.userListArray count]>0) {
+                    self.navigationItem.rightBarButtonItem=[self myEditButtonItem];
+                }else
+                {
+                    self.navigationItem.rightBarButtonItem=nil;
+                }
+                
+                
+                [loadingView removeFromSuperview];
+                [self.view addSubview:mainTableView];
+                [mainTableView reloadData];
             }
-            UILabel* lable=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 40)];
-            lable.center=CGPointMake(loadingView.frame.size.width/2, loadingView.frame.size.height/2);
-            lable.text=@"暂无数据";
-            lable.textAlignment=UITextAlignmentCenter;
-            [loadingView addSubview:lable];
-        }
+            else {
+                
+                self.navigationItem.rightBarButtonItem=nil;
+                [mainTableView removeFromSuperview];
+                [self.view addSubview:loadingView];
+                loadingView.layer.opacity=1;
+                for (UIView* v in [loadingView subviews]) {
+                    [v removeFromSuperview];
+                }
+                UILabel* lable=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 40)];
+                lable.center=CGPointMake(loadingView.frame.size.width/2, loadingView.frame.size.height/2);
+                lable.text=@"暂无数据";
+                lable.textAlignment=UITextAlignmentCenter;
+                [loadingView addSubview:lable];
+            }
         //[mainScrollView scrollRectToVisible:userListTableView.frame animated:YES];
     }
     //
     //[self.view setNeedsLayout];
     
 }
--(void)viewDidAppear:(BOOL)animated
+-(void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     
     
-    if (self.userInfoKey==UserInfoMe) {
-        [self loadMainTableView];
+    if (isNeedsToReLoadWhileViewWillAppear) {
         
-    }else if(self.userInfoKey==UserInfoOther){  
-        [self loadUserListTableView];
         
-    }
-    
-    
-    
-    
-}
--(void)loadUserListTableView
-{
-    dispatch_async(dispatch_queue_create("getListWithUsers", nil), ^{
-        self.userListArray=[[NGUserService sharedService] getListWithUsers];
-        dispatch_async(dispatch_get_main_queue(),^{
-            
-        
-    
-    if (self.userListArray) {
-        
-        loadingView.layer.opacity=1;
-        mainTableView.layer.opacity=0;
-        [mainTableView reloadData];
-        [self.view addSubview:mainTableView];
-        
-        [UIView animateWithDuration:0.5 animations:^{
-            loadingView.layer.opacity=0;
-            mainTableView.layer.opacity=1;
-        } completion:^(BOOL finished) {
-            [loadingView removeFromSuperview];
-        }];
-        
-    }else {
+        [mainTableView removeFromSuperview];
+        [mainTableView setContentOffset:CGPointMake(0, 0)];
         
         for (UIView* v in [loadingView subviews]) {
             [v removeFromSuperview];
         }
-        UILabel* lable=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 40)];
-        lable.center=CGPointMake(loadingView.frame.size.width/2, loadingView.frame.size.height/2);
-        lable.text=@"暂无数据";
-        lable.textAlignment=UITextAlignmentCenter;
-        [loadingView addSubview:lable];
+        UIActivityIndicatorView* activity=[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        activity.center=CGPointMake(loadingView.frame.size.width/2, loadingView.frame.size.height/2);
+        [loadingView addSubview:activity];
+        [activity startAnimating];
+        
+        [self.view addSubview:loadingView];
+        loadingView.layer.opacity=1;
+        
+        self.navigationItem.rightBarButtonItem=nil;
     }
-    isUserListTableLoaded=YES;
+    
+    //    if (self.userInfoKey==UserInfoMe) {
+    //        self.navigationItem.rightBarButtonItem=[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editContent)] autorelease];
+    //    }
+    
+    
+    
+    //    if (self.userInfoKey==UserInfoMe) {
+    //        [self.view addSubview:loadingView];
+    //        [self loadMainTableView];
+    //
+    //    }else if(self.userInfoKey==UserInfoOther){
+    //        [self.view addSubview:loadingView];
+    //        loadingView.layer.opacity=1;
+    //        [self loadUserListTableView];
+    //
+    //    }
+    
+}
+-(void)viewDidAppear:(BOOL)animated
+{
+    
+    if (isNeedsToReLoadWhileViewWillAppear) {
+        
+        isNeedsToReLoadWhileViewWillAppear=NO;
+        if (self.userInfoKey==UserInfoMe) {
+            [self.view addSubview:loadingView];
+            [self loadMainTableView];
+            
+        }else if(self.userInfoKey==UserInfoOther){
+            [self.view addSubview:loadingView];
+            loadingView.layer.opacity=1;
+            [self loadUserListTableView];
+            
+        }
+    }
+    
+}
+-(void)loadUserListTableView
+{
+    dispatch_async(dispatch_queue_create("loadUserListTableView", nil), ^{
+        self.userListArray=[[NGUserService sharedService] getListWithUsers];
+        dispatch_async(dispatch_get_main_queue(),^{
+            
+            
+            isUserListTableLoaded=YES;
+            if (userInfoKey==UserInfoMe) {
+                return ;
+            }
+            
+            
+            if (self.userListArray) {
+                
+                if ([self.userListArray count]>0) {
+                    self.navigationItem.rightBarButtonItem=[self myEditButtonItem];
+                }
+                
+                loadingView.layer.opacity=1;
+                mainTableView.layer.opacity=0;
+                [mainTableView reloadData];
+                [self.view addSubview:mainTableView];
+                
+                [UIView animateWithDuration:0.5 animations:^{
+                    loadingView.layer.opacity=0;
+                    mainTableView.layer.opacity=1;
+                } completion:^(BOOL finished) {
+                    [loadingView removeFromSuperview];
+                }];
+                
+            }else {
+                
+                for (UIView* v in [loadingView subviews]) {
+                    [v removeFromSuperview];
+                }
+                UILabel* lable=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 40)];
+                lable.center=CGPointMake(loadingView.frame.size.width/2, loadingView.frame.size.height/2);
+                lable.text=@"暂无数据";
+                lable.textAlignment=UITextAlignmentCenter;
+                [loadingView addSubview:lable];
+            }
         });
     });
-
+    
     
 }
 
@@ -294,66 +378,113 @@
 -(void)loadMainTableView
 {
     dispatch_async(dispatch_queue_create("getListWithUsers", nil), ^{
-         self.dataDict=[[NGUserService sharedService] getUserInfo];
+        self.dataDict=[[NGUserService sharedService] getUserInfo];
         dispatch_async(dispatch_get_main_queue(),^{
-
-    
-    
-    
-   
-    
-    if (self.dataDict) {
-        
-        loadingView.layer.opacity=1;
-        mainTableView.layer.opacity=0;
-        [mainTableView reloadData];
-        [self.view addSubview:mainTableView];
-        
-        [UIView animateWithDuration:0.5 animations:^{
-            loadingView.layer.opacity=0;
-            mainTableView.layer.opacity=1;
-        } completion:^(BOOL finished) {
-            [loadingView removeFromSuperview];
-        }];
-        
-    }else {
-        
-        for (UIView* v in [loadingView subviews]) {
-            [v removeFromSuperview];
-        }
-        UILabel* lable=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 40)];
-        lable.center=CGPointMake(loadingView.frame.size.width/2, loadingView.frame.size.height/2);
-        lable.text=@"暂无数据";
-        lable.textAlignment=UITextAlignmentCenter;
-        [loadingView addSubview:lable];
-    }
-    isMainTableLoaded=YES;
+            
+            
+            isMainTableLoaded=YES;
+            if (userInfoKey==UserInfoOther) {
+                return ;
+            }
+            
+            
+            
+            if (self.dataDict) {
+                
+                self.navigationItem.rightBarButtonItem=[self myEditButtonItem];
+                loadingView.layer.opacity=1;
+                mainTableView.layer.opacity=0;
+                [mainTableView reloadData];
+                [self.view addSubview:mainTableView];
+                
+                [UIView animateWithDuration:0.5 animations:^{
+                    loadingView.layer.opacity=0;
+                    mainTableView.layer.opacity=1;
+                } completion:^(BOOL finished) {
+                    [loadingView removeFromSuperview];
+                }];
+                
+            }else {
+                
+                for (UIView* v in [loadingView subviews]) {
+                    [v removeFromSuperview];
+                }
+                UILabel* lable=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 40)];
+                lable.center=CGPointMake(loadingView.frame.size.width/2, loadingView.frame.size.height/2);
+                lable.text=@"暂无数据";
+                lable.textAlignment=UITextAlignmentCenter;
+                [loadingView addSubview:lable];
+            }
         });
     });
-
+    
 }
 
 
 -(void)editContent
 {
     
-    [mainTableView setEditing:!mainTableView.isEditing];
+    [mainTableView setEditing:!mainTableView.isEditing animated:userInfoKey==UserInfoOther ];
     //selectedSegmentIndex
     if (mainTableView.isEditing) {
         //[segControlTop setEnabled:NO];
-        self.navigationItem.rightBarButtonItem=[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(editContent)] autorelease];
+        self.navigationItem.rightBarButtonItem=[self myEditButtonItem];
         
-        [UIView transitionWithView:self.view duration:0.6 options:UIViewAnimationOptionTransitionFlipFromRight animations:nil completion:nil];
+        
+        
+        if (userInfoKey==UserInfoMe) {
+            
+            segControlTop.hidden=YES;
+            
+           
+            
+            NGCustomButton* subButton=[[NGCustomButton alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
+            [subButton addTarget:self action:@selector(editCancle) forControlEvents:UIControlEventTouchUpInside];
+            subButton.titleLabel.text=@"取消";
+             self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc] initWithCustomView:subButton];
+            [subButton release];
+            [UIView transitionWithView:self.view duration:0.6 options:UIViewAnimationOptionTransitionFlipFromRight animations:^
+             {
+                 
+             }completion:nil];
+            mainTableView.frame=CGRectMake(0, 0, mainTableView.frame.size.width, mainTableView.frame.size.height+50);
+        }
+        else {
+            [UIView animateWithDuration:0.3 animations:^{
+                segControlTop.hidden=YES;
+                mainTableView.frame=CGRectMake(0, 0, mainTableView.frame.size.width, mainTableView.frame.size.height+50);
+            }];
+        }
         
     }else {
         //[segControlTop setEnabled:YES];
-        self.navigationItem.rightBarButtonItem=[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editContent)] autorelease];
-        [self.view endEditing:YES];
-        [mainTableView reloadData];
-        [UIView transitionWithView:self.view duration:0.6 options:UIViewAnimationOptionTransitionFlipFromLeft animations:nil  completion:nil];
+        
+        
+        self.navigationItem.rightBarButtonItem=[self myEditButtonItem];
+        if (userInfoKey==UserInfoMe) {
+            segControlTop.hidden=NO;
+            
+            [self showCustomBackButton];
+            
+            
+            [self.view endEditing:YES];
+            [mainTableView reloadData];
+            
+            
+            [UIView transitionWithView:self.view duration:0.6 options:UIViewAnimationOptionTransitionFlipFromLeft animations:^
+             {
+                 
+             }completion:nil];
+            mainTableView.frame=CGRectMake(0, 50, mainTableView.frame.size.width, mainTableView.frame.size.height-50);
+        }else {
+            [UIView animateWithDuration:0.3 animations:^{
+                segControlTop.hidden=NO;
+                mainTableView.frame=CGRectMake(0, 50, mainTableView.frame.size.width, mainTableView.frame.size.height-50);
+            }];
         }
-    
-    //   
+        
+    }
+    //
 }
 //- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 //{
@@ -370,11 +501,14 @@
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (userInfoKey==UserInfoOther&&indexPath.section==0) {
+        return UITableViewCellEditingStyleDelete;
+    }
     return UITableViewCellEditingStyleNone;
 }
 //- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0);
 //{
-//    
+//
 //}
 
 // Controls whether the background is indented while editing.  If not implemented, the default is YES.  This is unrelated to the indentation level below.  This method only applies to grouped style table views.
@@ -397,7 +531,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{   
+{
     if (userInfoKey==UserInfoMe) {
         return [[tableArray objectAtIndex:section]  count];
     }else {
@@ -416,7 +550,7 @@
         cell=[[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
         cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
         cell.selectionStyle=UITableViewCellSelectionStyleGray;
-    } 
+    }
     if (userInfoKey==UserInfoMe) {
         
         
@@ -425,7 +559,7 @@
         cell.textLabel.backgroundColor=[UIColor clearColor];
         //cell.detailTextLabel.text=[self.dataDict objectForKey:[cellDict objectForKey:@"id"]];;
         
-        UILabel* labelValue=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 180, 30)];     
+        UILabel* labelValue=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 180, 30)];
         //labelName.textAlignment=UITextAlignmentCenter;
         labelValue.text=[self.dataDict objectForKey:[cellDict objectForKey:@"id"]];
         labelValue.backgroundColor=[UIColor clearColor];
@@ -453,7 +587,7 @@
             
             UIView* v=[[UIView alloc] initWithFrame:CGRectMake(0, 0,200, 30)];
             
-            UILabel* labelValue=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 160, 30)];     
+            UILabel* labelValue=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 160, 30)];
             labelValue.textAlignment=UITextAlignmentRight;
             labelValue.textColor=[UIColor greenColor];
             labelValue.text=[self.dataDict objectForKey:[cellDict objectForKey:@"id"]];
@@ -476,7 +610,7 @@
             
             
             
-            UITextField* textName=[[UITextField alloc] initWithFrame:CGRectMake(0, 0, 200, 30)]; 
+            UITextField* textName=[[UITextField alloc] initWithFrame:CGRectMake(0, 0, 200, 30)];
             //textName.borderStyle=UITextBorderStyleLine;
             textName.borderStyle=UITextBorderStyleBezel;
             textName.textColor=[UIColor greenColor];
@@ -497,28 +631,30 @@
             
             cell.accessoryType=UITableViewCellAccessoryNone;
             cell.textLabel.text=@"";
-            cell.backgroundColor=[UIColor whiteColor];
-            cell.backgroundView=nil;
+            //cell.backgroundColor=[UIColor whiteColor];
+            //cell.backgroundView=nil;
             
-            UILabel* labelValue=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width-20, 30)];     
-            labelValue.textAlignment=UITextAlignmentCenter;
-            //labelValue.textColor=[UIColor greenColor];
-            labelValue.text=@"✚添加同行旅客";
+            UIButton* labelValue=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+            [labelValue addTarget:self action:@selector(onAddNewCustomClick) forControlEvents:UIControlEventTouchUpInside];
+            labelValue.frame=CGRectMake(0, 0, cell.frame.size.width-20, 44);
             labelValue.backgroundColor=[UIColor clearColor];
+            [labelValue setTitle:@"✚添加同行旅客" forState:UIControlStateNormal];
+            //                     labelValue sett=@"";
+            //            labelValue.backgroundColor=[UIColor clearColor];
             cell.accessoryView=labelValue;
-             cell.editingAccessoryView=labelValue;
-            [labelValue release];
+            cell.editingAccessoryView=labelValue;
+            //[labelValue release];
             
         }else {
             
-            cell.textLabel.text=[userListArray objectAtIndex:indexPath.row];
+            cell.textLabel.text=[[userListArray objectAtIndex:indexPath.row] objectForKey:@"passenger_name"];
             cell.textLabel.backgroundColor=[UIColor clearColor];
             cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
             cell.accessoryView=nil;
             cell.editingAccessoryView=nil;
         }
         
-       
+        
         
     }
     
@@ -575,7 +711,7 @@
     mainTableView.contentInset = contentInsets;
     mainTableView.scrollIndicatorInsets = contentInsets;
     
-    NSIndexPath* indexPath=   [mainTableView indexPathForRowAtPoint:[activeField convertPoint:CGPointMake(10, 10) toView:self.mainTableView]];        
+    NSIndexPath* indexPath=   [mainTableView indexPathForRowAtPoint:[activeField convertPoint:CGPointMake(10, 10) toView:self.mainTableView]];
     [self.mainTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
 }
 
@@ -594,10 +730,10 @@
 }
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    activeField = textField;    
+    activeField = textField;
     if (isKeyBoardShow) {
         
-        NSIndexPath* indexPath=   [mainTableView indexPathForRowAtPoint:[activeField convertPoint:CGPointMake(10, 10) toView:self.mainTableView]];        
+        NSIndexPath* indexPath=   [mainTableView indexPathForRowAtPoint:[activeField convertPoint:CGPointMake(10, 10) toView:self.mainTableView]];
         [self.mainTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
         
     }
@@ -624,5 +760,52 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (userInfoKey==UserInfoOther) {
+        TravelCompanionInfoViewController* controller=[[TravelCompanionInfoViewController alloc] init];
+        controller.userDataDict=[self.userListArray objectAtIndex:indexPath.row];
+       // controller.title=[self.userListArray
+        [self.navigationController pushViewController:controller animated:YES];
+        [controller release];
+    }
+}
+
+-(void)onAddNewCustomClick
+{
+    
+    if (mainTableView.isEditing) {
+        [self editContent];
+    }
+    
+    
+    AddTravelCompanionViewController* controller=[[AddTravelCompanionViewController alloc] init];
+    [self.navigationController pushViewController:controller animated:YES];
+    [controller release];
+}
+
+-(UIBarButtonItem*)myEditButtonItem
+{
+    NGCustomButton* subButton=[[NGCustomButton alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
+    [subButton addTarget:self action:@selector(editContent) forControlEvents:UIControlEventTouchUpInside];
+    subButton.titleLabel.text=mainTableView.isEditing?@"完成":@"编辑";
+    UIBarButtonItem* btn=[[UIBarButtonItem alloc] initWithCustomView:subButton];
+    return [btn autorelease];
+}
+
+-(void)editCancle
+{
+    [mainTableView setEditing:!mainTableView.isEditing animated:NO ];
+    
+    [UIView transitionWithView:self.view duration:0.6 options:UIViewAnimationOptionTransitionFlipFromLeft animations:^
+     {
+         
+     }completion:nil];
+    segControlTop.hidden=NO;
+    mainTableView.frame=CGRectMake(0, 50, mainTableView.frame.size.width, mainTableView.frame.size.height-50);
+
+    
+    [self showCustomBackButton];
+    self.navigationItem.rightBarButtonItem=[self myEditButtonItem];
+
 }
 @end

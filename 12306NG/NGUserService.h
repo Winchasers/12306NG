@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "ASIHTTPRequest.h"
+#import "ASIFormDataRequest.h"
 
 @interface NGUserService : NSObject
 {
@@ -17,6 +18,14 @@
 -(UIImage*)getValidateCodeImage;
 -(BOOL)LoginInWithName:(NSString*)userName andPwd:(NSString*)userPwd andCode:(NSString*)code;
 -(void)LoginOut;
+
+
+
 -(NSMutableArray*)getListWithUsers;
 -(NSMutableDictionary*)getUserInfo;
+
+-(NSString*)addPassenger:(NSMutableDictionary*)info;
+
+-(NSString*)modifyPassengerInfo:(NSMutableDictionary*)info;
+-(NSString*)getAddPassengerToken;//For rest;
 @end

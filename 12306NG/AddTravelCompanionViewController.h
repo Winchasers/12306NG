@@ -8,6 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddTravelCompanionViewController : UIViewController
+@interface AddTravelCompanionViewController : UIViewController<UITextFieldDelegate>
+{
+    
+    NSMutableArray* tableArray;
+    NSMutableDictionary* dataDict;
+    UITableView* mainTableView;
+    
+    BOOL isKeyBoardShow;
+    
+    NSInteger tagIndex;
+    
+    UITextField* activeField;
+    
+}
 
 @end

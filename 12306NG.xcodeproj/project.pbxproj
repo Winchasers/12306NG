@@ -16,7 +16,6 @@
 		0C580050167963BC006786CF /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C58004F167963BC006786CF /* Default.png */; };
 		0C580052167963BC006786CF /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C580051167963BC006786CF /* Default@2x.png */; };
 		0C580054167963BC006786CF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C580053167963BC006786CF /* Default-568h@2x.png */; };
-		0C58007A16796699006786CF /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C58007816796699006786CF /* LoginViewController.m */; };
 		0C58008116796C05006786CF /* UserCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C58007F16796C05006786CF /* UserCenterViewController.m */; };
 		0C58008816796D9C006786CF /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C58008616796D9B006786CF /* RegisterViewController.m */; };
 		0C58008F16796DF8006786CF /* UserInfomationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C58008D16796DF7006786CF /* UserInfomationViewController.m */; };
@@ -134,6 +133,12 @@
 		A408A408168D77E30059EA6A /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A408A407168D77E30059EA6A /* libxml2.2.dylib */; };
 		A408A40A168D77EC0059EA6A /* libz.1.1.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A408A409168D77EC0059EA6A /* libz.1.1.3.dylib */; };
 		A408A40C168D78420059EA6A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A408A40B168D78420059EA6A /* MobileCoreServices.framework */; };
+		A41D86DF169293E30053FC41 /* UIViewController+backButtonAction.m in Sources */ = {isa = PBXBuildFile; fileRef = A41D86DE169293E30053FC41 /* UIViewController+backButtonAction.m */; };
+		A443230916928D5A009A32C4 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A443230816928D5A009A32C4 /* LoginViewController.m */; };
+		A443231216928ED7009A32C4 /* NGBackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A443231116928ED7009A32C4 /* NGBackButton.m */; };
+		A452987F16953DA000E1F81B /* blue_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A452987E16953DA000E1F81B /* blue_btn@2x.png */; };
+		A452988B1695CBA300E1F81B /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A45298891695CBA300E1F81B /* Icon.png */; };
+		A452988C1695CBA300E1F81B /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A452988A1695CBA300E1F81B /* Icon@2x.png */; };
 		A459D18916906E9100604A61 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A459D18B16906E9100604A61 /* Localizable.strings */; };
 		A459D1AF16907B4C00604A61 /* UINavigationController+CustomBackgroundColor.m in Sources */ = {isa = PBXBuildFile; fileRef = A459D1AE16907B4C00604A61 /* UINavigationController+CustomBackgroundColor.m */; };
 		A459D1B116907D2C00604A61 /* banner@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A459D1B016907D2C00604A61 /* banner@2x.png */; };
@@ -151,6 +156,8 @@
 		A4E9116B168F2FEB0081E66E /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E91168168F2FEB0081E66E /* HTMLParser.m */; };
 		A4E9116C168F2FEB0081E66E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A4E91169168F2FEB0081E66E /* README.md */; };
 		A4E9116E168F4FAD0081E66E /* userinfo.html in Resources */ = {isa = PBXBuildFile; fileRef = A4E9116D168F4FAD0081E66E /* userinfo.html */; };
+		A4E99C381692A78300DBE5EF /* NGCustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = A4E99C371692A78200DBE5EF /* NGCustomButton.m */; };
+		A4F86FB21691D2C4000BC05F /* TravelCompanionInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4F86FB11691D2C4000BC05F /* TravelCompanionInfoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -167,7 +174,6 @@
 		0C580051167963BC006786CF /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		0C580053167963BC006786CF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		0C58007716796699006786CF /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		0C58007816796699006786CF /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		0C58007E16796C05006786CF /* UserCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCenterViewController.h; sourceTree = "<group>"; };
 		0C58007F16796C05006786CF /* UserCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCenterViewController.m; sourceTree = "<group>"; };
 		0C58008516796D9B006786CF /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
@@ -326,6 +332,14 @@
 		A408A40D168D78AB0059EA6A /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "/Users/sun/Development/12306IOS/12306NG/12306NG/zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<absolute>"; };
 		A408A40E168D797F0059EA6A /* Docs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Docs; sourceTree = "<group>"; };
 		A408A411168DA6A50059EA6A /* AppDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDefine.h; sourceTree = "<group>"; };
+		A41D86DD169293E30053FC41 /* UIViewController+backButtonAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+backButtonAction.h"; sourceTree = "<group>"; };
+		A41D86DE169293E30053FC41 /* UIViewController+backButtonAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+backButtonAction.m"; sourceTree = "<group>"; };
+		A443230816928D5A009A32C4 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		A443231016928ED7009A32C4 /* NGBackButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGBackButton.h; sourceTree = "<group>"; };
+		A443231116928ED7009A32C4 /* NGBackButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGBackButton.m; sourceTree = "<group>"; };
+		A452987E16953DA000E1F81B /* blue_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "blue_btn@2x.png"; path = "img/blue_btn@2x.png"; sourceTree = "<group>"; };
+		A45298891695CBA300E1F81B /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = img/Icon.png; sourceTree = "<group>"; };
+		A452988A1695CBA300E1F81B /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "img/Icon@2x.png"; sourceTree = "<group>"; };
 		A459D18A16906E9100604A61 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A459D18C16906EA300604A61 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		A459D1AD16907B4C00604A61 /* UINavigationController+CustomBackgroundColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+CustomBackgroundColor.h"; sourceTree = "<group>"; };
@@ -370,6 +384,10 @@
 		A4E91168168F2FEB0081E66E /* HTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLParser.m; sourceTree = "<group>"; };
 		A4E91169168F2FEB0081E66E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		A4E9116D168F4FAD0081E66E /* userinfo.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = userinfo.html; sourceTree = "<group>"; };
+		A4E99C361692A78200DBE5EF /* NGCustomButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NGCustomButton.h; sourceTree = "<group>"; };
+		A4E99C371692A78200DBE5EF /* NGCustomButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NGCustomButton.m; sourceTree = "<group>"; };
+		A4F86FB01691D2C4000BC05F /* TravelCompanionInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TravelCompanionInfoViewController.h; sourceTree = "<group>"; };
+		A4F86FB11691D2C4000BC05F /* TravelCompanionInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TravelCompanionInfoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -581,7 +599,7 @@
 			isa = PBXGroup;
 			children = (
 				0C58007716796699006786CF /* LoginViewController.h */,
-				0C58007816796699006786CF /* LoginViewController.m */,
+				A443230816928D5A009A32C4 /* LoginViewController.m */,
 				0C58008516796D9B006786CF /* RegisterViewController.h */,
 				0C58008616796D9B006786CF /* RegisterViewController.m */,
 				0C58007E16796C05006786CF /* UserCenterViewController.h */,
@@ -590,6 +608,8 @@
 				0C58008D16796DF7006786CF /* UserInfomationViewController.m */,
 				0C58009316796F65006786CF /* AddTravelCompanionViewController.h */,
 				0C58009416796F65006786CF /* AddTravelCompanionViewController.m */,
+				A4F86FB01691D2C4000BC05F /* TravelCompanionInfoViewController.h */,
+				A4F86FB11691D2C4000BC05F /* TravelCompanionInfoViewController.m */,
 			);
 			name = user;
 			sourceTree = "<group>";
@@ -597,6 +617,8 @@
 		0C58006B1679653E006786CF /* img */ = {
 			isa = PBXGroup;
 			children = (
+				A45298891695CBA300E1F81B /* Icon.png */,
+				A452988A1695CBA300E1F81B /* Icon@2x.png */,
 				0C58011E16799BD7006786CF /* add_passenger_box.png */,
 				0C58011F16799BD7006786CF /* address_switch_button_pressed.png */,
 				0C58012016799BD7006786CF /* address_switch_button.png */,
@@ -613,6 +635,7 @@
 				0C58012B16799BD7006786CF /* banner_buttonn_presssed.png */,
 				0C58012C16799BD7006786CF /* banner.png */,
 				A459D1B016907D2C00604A61 /* banner@2x.png */,
+				A452987E16953DA000E1F81B /* blue_btn@2x.png */,
 				0C58012D16799BD7006786CF /* bluebutton.png */,
 				0C58012E16799BD7006786CF /* ccb.png */,
 				0C58012F16799BD7006786CF /* child_ticket.png */,
@@ -664,6 +687,12 @@
 			children = (
 				0C58010216797E7C006786CF /* Constants.h */,
 				0C58010316797E7C006786CF /* Constants.m */,
+				A443231016928ED7009A32C4 /* NGBackButton.h */,
+				A443231116928ED7009A32C4 /* NGBackButton.m */,
+				A4E99C361692A78200DBE5EF /* NGCustomButton.h */,
+				A4E99C371692A78200DBE5EF /* NGCustomButton.m */,
+				A41D86DD169293E30053FC41 /* UIViewController+backButtonAction.h */,
+				A41D86DE169293E30053FC41 /* UIViewController+backButtonAction.m */,
 			);
 			name = common;
 			sourceTree = "<group>";
@@ -983,6 +1012,9 @@
 				A4E9116E168F4FAD0081E66E /* userinfo.html in Resources */,
 				A459D18916906E9100604A61 /* Localizable.strings in Resources */,
 				A459D1B116907D2C00604A61 /* banner@2x.png in Resources */,
+				A452987F16953DA000E1F81B /* blue_btn@2x.png in Resources */,
+				A452988B1695CBA300E1F81B /* Icon.png in Resources */,
+				A452988C1695CBA300E1F81B /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -996,7 +1028,6 @@
 				A4CBE762168EBD0900499E12 /* RegexKitLite.m in Sources */,
 				0C58004A167963BC006786CF /* main.m in Sources */,
 				0C58004E167963BC006786CF /* AppDelegate.m in Sources */,
-				0C58007A16796699006786CF /* LoginViewController.m in Sources */,
 				0C58008116796C05006786CF /* UserCenterViewController.m in Sources */,
 				0C58008816796D9C006786CF /* RegisterViewController.m in Sources */,
 				0C58008F16796DF8006786CF /* UserInfomationViewController.m in Sources */,
@@ -1041,6 +1072,11 @@
 				A4E9116A168F2FEB0081E66E /* HTMLNode.m in Sources */,
 				A4E9116B168F2FEB0081E66E /* HTMLParser.m in Sources */,
 				A459D1AF16907B4C00604A61 /* UINavigationController+CustomBackgroundColor.m in Sources */,
+				A4F86FB21691D2C4000BC05F /* TravelCompanionInfoViewController.m in Sources */,
+				A443230916928D5A009A32C4 /* LoginViewController.m in Sources */,
+				A443231216928ED7009A32C4 /* NGBackButton.m in Sources */,
+				A41D86DF169293E30053FC41 /* UIViewController+backButtonAction.m in Sources */,
+				A4E99C381692A78300DBE5EF /* NGCustomButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1092,8 +1128,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "${SDK_DIR}/usr/include/libxml2/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				PROVISIONING_PROFILE = "69F01F9D-5973-4130-89F6-AA012293C411";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "69F01F9D-5973-4130-89F6-AA012293C411";
+				PROVISIONING_PROFILE = "BA77CA38-3C96-4F9E-A441-6EB57A0279BF";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BA77CA38-3C96-4F9E-A441-6EB57A0279BF";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1117,8 +1153,8 @@
 				HEADER_SEARCH_PATHS = "${SDK_DIR}/usr/include/libxml2/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "69F01F9D-5973-4130-89F6-AA012293C411";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "69F01F9D-5973-4130-89F6-AA012293C411";
+				PROVISIONING_PROFILE = "BA77CA38-3C96-4F9E-A441-6EB57A0279BF";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BA77CA38-3C96-4F9E-A441-6EB57A0279BF";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;

@@ -26,11 +26,8 @@
 @synthesize requestImg;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    if ([[UIScreen mainScreen] bounds].size.height == 568.0) {
-        self = [super initWithNibName:@"LoginViewController_ip5" bundle:nibBundleOrNil];
-    }else{
-        self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    }
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    
     if (self) {
         // Custom initialization
         isCodeLoaded=NO;
@@ -71,8 +68,8 @@
     
     UIButton* btnLogin=[UIButton buttonWithType:UIButtonTypeRoundedRect];
     btnLogin.frame=CGRectMake(20, OffsetY+230, 280, 40);
-    [btnLogin setTitle:@"登  录" forState:UIControlStateNormal];
-//    [btnLogin setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"banner_bluebutton"]]];
+    [btnLogin setTitle:@"登  录" forState:UIControlStateNormal];    
+    [btnLogin setBackgroundImage:[UIImage imageNamed:@"blue_btn"] forState:UIControlStateNormal];
     [btnLogin addTarget:self action:@selector(onLoginClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btnLogin];
     
@@ -107,13 +104,13 @@
     
     
     
-    UITextView* tipsView=[[UITextView alloc] initWithFrame:CGRectMake(20, 360, 280, 100)];
+    UITextView* tipsView=[[UITextView alloc] initWithFrame:CGRectMake(20, self.view.bounds.size.height-100, 280, 100)];
     [self.view addSubview:tipsView];
     tipsView.backgroundColor=[UIColor clearColor];
     tipsView.textColor=[UIColor whiteColor];
-    tipsView.font=[UIFont systemFontOfSize:14];
+    tipsView.font=[UIFont systemFontOfSize:13];
     tipsView.text=@"友情提示：\n☞ 设置自动登录系统将保存你的账号信息\n☞ 自动登录将有助于你在站点繁忙的时候更有计划订到车票";
-    [tipsView setEditable:NO];
+    [tipsView setUserInteractionEnabled:NO];
     [tipsView release];
     
     
@@ -229,7 +226,7 @@
     
 
     
-    if (self.view.frame.origin.y==-OFFSET_Y) {
+    if (ScreenHeight<500&&self.view.frame.origin.y==-OFFSET_Y) {
         [UIView animateWithDuration:0.3 animations:^{
             self.view.frame=CGRectOffset(self.view.frame, 0, OFFSET_Y);
         }];
@@ -314,8 +311,6 @@
     
     //53174e1302ff09f8
     NSString* strF=@"loginRand=%@&refundLogin=N&refundFlag=Y&loginUser.user_name=%@&nameErrorFocus=&user.password=%@&passwordErrorFocus=&randCode=%@&randErrorFocus=focus";
-    
-    
     NSString* str=[NSString stringWithFormat:strF,loginRand,textName.text,textPwd.text,textCode.text];
     [req setPostBody:[NSMutableData dataWithData:[str dataUsingEncoding:NSUTF8StringEncoding]]]; 
     
@@ -424,10 +419,16 @@
     [[NSUserDefaults standardUserDefaults] setObject:nameStr forKey:@"userName"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 //    [GlobalClass sharedClass].userName=nameStr;     
-//    [GlobalClass sharedClass].isLoginIn=YES; 
+//    [GlobalClass sharedClass].isLoginIn=YES;
     
-    [((AppDelegate*)[UIApplication sharedApplication].delegate) didLoginIn];
     
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [((AppDelegate*)[UIApplication sharedApplication].delegate) didLoginIn];
+
+    });
+    
+    
+      
     
 
     
@@ -577,7 +578,7 @@
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    if(self.view.frame.origin.y==0)
+    if(self.view.frame.origin.y==0&&ScreenHeight<500)
     {
  
     [UIView animateWithDuration:0.3 animations:^{

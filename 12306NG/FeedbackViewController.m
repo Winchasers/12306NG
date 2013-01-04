@@ -16,26 +16,33 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    if ([[UIScreen mainScreen] bounds].size.height == 568.0) {
-        self = [super initWithNibName:@"FeedbackViewController_ip5" bundle:nibBundleOrNil];
-    }else{
-        self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    }
+
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
     }
     return self;
 }
+-(UIBarButtonItem*)editButtonItem
+{
+    NGCustomButton* subButton=[[NGCustomButton alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
+    [subButton addTarget:self action:@selector(sendClick) forControlEvents:UIControlEventTouchUpInside];
+    subButton.titleLabel.text=@"发送";
+    UIBarButtonItem* btn=[[UIBarButtonItem alloc] initWithCustomView:subButton];
+    return [btn autorelease];
+}
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.title=@"意见反馈";
     
-    UIBarButtonItem* sendButton=[[UIBarButtonItem alloc] initWithTitle:@"发送" style:UIBarButtonItemStylePlain target:self action:@selector(sendClick)];
-    [sendButton setEnabled:NO];
-    self.navigationItem.rightBarButtonItem= sendButton;   
-    [sendButton release];
+    [self showCustomBackButton];
+    
+     self.navigationItem.rightBarButtonItem= self.editButtonItem;
+    [self.navigationItem.rightBarButtonItem setEnabled:NO];
+    //[sendButton release];
 
     // Do any additional setup after loading the view from its nib.
     contentView=[[UITextView alloc] initWithFrame:CGRectMake(10, 10, self.view.frame.size.width-20, 150)];

@@ -30,14 +30,15 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-    //[Flurry startSession:@""];
+    [self test2];
+    [Flurry startSession:@"HMPD8ZD9D9RZ67J7SP7T"];
     
 //    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isAutoLogin"];
 //    [[NSUserDefaults standardUserDefaults] synchronize];
 //    [self test1];
     
 
-    
+         
     
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     self.window.backgroundColor=MAIN_BG_COLOR;
@@ -187,4 +188,13 @@
     [[[[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"%@",dict] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] autorelease] show];
 }
 
+
+-(void)test2
+{
+   NSString* str=@"%E8%AF%B7%E8%BE%93%E5%85%A5%E6%B1%89%E5%AD%97%E6%88%96%E6%8B%BC%E9%9F%B3%E9%A6%96%E5%AD%97%E6%AF%8D";
+    
+  LogInfo(@"%@",   [str stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]);
+    
+    
+}
 @end

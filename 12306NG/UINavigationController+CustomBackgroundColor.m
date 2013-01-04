@@ -10,6 +10,11 @@
 #import <QuartzCore/QuartzCore.h>
 
 
+#ifndef NAV_BG_IMAGE
+#define  NAV_BG_IMAGE [UIImage imageNamed:@"banner.png"]
+#endif
+
+
 @implementation UINavigationController(CustomBackgroundColor)
 
 - (id)init {

@@ -10,6 +10,11 @@
 #define _2306NG_AppDefine_h
 
 
+#import "NGCustomButton.h"
+#import "NGBackButton.h"
+#import "UIViewController+backButtonAction.h"
+
+
 
 #define DEBUG_MODE 0
 

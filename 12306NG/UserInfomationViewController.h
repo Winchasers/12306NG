@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIViewController+backButtonAction.h"
 
 
 
@@ -43,9 +44,12 @@ typedef enum
     
     UITextField* activeField;
     
+    BOOL isNeedsToReLoadWhileViewWillAppear;
+    
     
 
 }
 -(id)initWithUserInfoKey:(UserInfoKey)userInfoKey;
 @property(nonatomic,assign)UserInfoKey userInfoKey;
+@property(nonatomic,assign)BOOL isNeedsToReLoadWhileViewWillAppear;
 @end

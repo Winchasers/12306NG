@@ -19,18 +19,14 @@
 @synthesize tableArray,dataDict, mainTableView;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    if ([[UIScreen mainScreen] bounds].size.height == 568.0) {
-        self = [super initWithNibName:@"RegisterViewController_ip5" bundle:nibBundleOrNil];
-    }else{
-        self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    }
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
         self.tableArray=[NSMutableArray arrayWithObjects:
                          [NSMutableArray arrayWithObjects:
                           [NSMutableDictionary dictionaryWithObjectsAndKeys:@"用  户  名",@"title",@"name",@"id",@"",@"value",@"6-30位(字母、数字均可)",@"mask", nil],
                           [NSMutableDictionary dictionaryWithObjectsAndKeys:@"密       码",@"title",@"pwd",@"id",@"",@"value",@"至少6位(字母、数字均可)",@"mask" ,nil],
-                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"确认密码",@"title",@"pwd2",@"id",@"",@"value",@"",@"mask", nil],
+                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"确认密码",@"title",@"pwd2",@"id",@"",@"value",@"再次输入密码",@"mask", nil],
                           [NSMutableDictionary dictionaryWithObjectsAndKeys:@"查询密码",@"title",@"qpwd",@"id",@"",@"value",@"6位数字语音查询密码",@"mask", nil],
                           [NSMutableDictionary dictionaryWithObjectsAndKeys:@"确认密码",@"title",@"qpwd2",@"id",@"",@"value",@"请再次输入语音查询密码",@"mask", nil],
                           [NSMutableDictionary dictionaryWithObjectsAndKeys:@"验  证  码",@"title",@"code",@"id",@"",@"value",@"验证码点击可刷新",@"mask", nil],
@@ -45,12 +41,12 @@
                          
                          
                          [NSMutableArray arrayWithObjects:
-                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"姓       名",@"title",@"idName",@"id",@"",@"value",@"",@"mask", nil],
+                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"姓       名",@"title",@"idName",@"id",@"",@"value",@"请输入姓名",@"mask", nil],
                           [NSMutableDictionary dictionaryWithObjectsAndKeys:@"性       别",@"title",@"sex",@"id",@"",@"value",@"",@"mask", nil],
-                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"出生日期",@"title",@"birthday",@"id",@"",@"value",@"",@"mask", nil],
-                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"证件类型",@"title",@"idType",@"id",@"",@"value",@"",@"mask", nil],
-                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"证件号码",@"title",@"idNumber",@"id",@"",@"value",@"",@"mask", nil],
-                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"旅客类型",@"title",@"userType",@"id",@"",@"value",@"",@"mask", nil],
+                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"出生日期",@"title",@"birthday",@"id",@"1970-01-01",@"value",@"",@"mask", nil],
+                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"证件类型",@"title",@"idType",@"id",@"二代身份证",@"value",@"",@"mask", nil],
+                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"证件号码",@"title",@"idNumber",@"id",@"",@"value",@"请输入证件号码",@"mask", nil],
+                          [NSMutableDictionary dictionaryWithObjectsAndKeys:@"旅客类型",@"title",@"userType",@"id",@"成人",@"value",@"",@"mask", nil],
                           nil],
                          nil];
         self.dataDict=[NSMutableDictionary dictionary];
@@ -116,9 +112,18 @@
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     self.view.backgroundColor=[UIColor clearColor];
     self.title=NSLocalizedString(@"新用户注册", nil);
-    self.navigationItem.rightBarButtonItem=[[[UIBarButtonItem alloc] initWithTitle:@"提交" style:UIBarButtonItemStyleBordered target:self action:@selector(onSubmitClick)] autorelease];
+//    self.navigationItem.rightBarButtonItem=[[[UIBarButtonItem alloc] initWithTitle:@"提交" style:UIBarButtonItemStyleBordered target:self action:@selector(onSubmitClick)] autorelease];
+//    
+    NGCustomButton* subButton=[[NGCustomButton alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
+    [subButton addTarget:self action:@selector(onSubmitClick) forControlEvents:UIControlEventTouchUpInside];
+    subButton.titleLabel.text=@"提交";    
+    self.navigationItem.rightBarButtonItem=[[[UIBarButtonItem alloc] initWithCustomView:subButton] autorelease];
+    [subButton release];
     
-    CGRect rect=CGRectMake(0, 0, self.view.bounds.size.width,420);
+    //
+    [self showCustomBackButton];
+    
+    CGRect rect=CGRectMake(0, 0, self.view.bounds.size.width,self.view.bounds.size.height-44);
     self.mainTableView=[[[UITableView alloc] initWithFrame:rect style:UITableViewStyleGrouped] autorelease]  ;    
     [self.view addSubview:self.mainTableView];
     mainTableView.backgroundColor=[UIColor clearColor];
@@ -154,25 +159,67 @@
         cell=[[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
         cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
         
+        NSMutableDictionary* cellDict=[[tableArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+        cell.textLabel.text=[cellDict valueForKey:@"title"];
         
-        NSMutableDictionary* dataDic=[[tableArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-        cell.textLabel.text=[dataDic valueForKey:@"title"];
         cell.textLabel.textColor=[UIColor colorWithWhite:0.2 alpha:0.9];
         
-        // if (indexPath.section==0&&indexPath.row==0) {
+        NSString* itemID=[cellDict objectForKey:@"id"];
+        if ([itemID isEqualToString:@"sex"]) {
+            
+            
+            UISegmentedControl* segSexControl=[[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"男",@"女", nil]];
+            segSexControl.frame=CGRectMake(10, 15, 180, 30);
+            segSexControl.segmentedControlStyle=UISegmentedControlStylePlain;
+            [segSexControl addTarget:self action:@selector(changeSex:) forControlEvents:UIControlEventValueChanged];
+            segSexControl.selectedSegmentIndex=[[self.dataDict objectForKey:[cellDict objectForKey:@"id"]] isEqualToString:@"男"]?0:1;
+            cell.accessoryView=segSexControl;
+            //[segControl release];
+            
+            
+        }
+        else if ([itemID isEqualToString:@"birthday"]||[itemID isEqualToString:@"idType"]||[itemID isEqualToString:@"userType"])  {
+            
+            
+            
+            UIView* v=[[UIView alloc] initWithFrame:CGRectMake(0, 0,200, 30)];
+            
+            UILabel* labelValue=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 160, 30)];
+            labelValue.textAlignment=UITextAlignmentRight;
+            labelValue.textColor=[UIColor greenColor];
+            labelValue.text=[self.dataDict objectForKey:[cellDict objectForKey:@"id"]];
+            labelValue.backgroundColor=[UIColor clearColor];
+            [v addSubview:labelValue];
+            [labelValue release];
+            
+            UIButton* btn=[UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+            btn.frame=CGRectMake(170, 0, 30, 30);
+            [v addSubview:btn];
+            
+            
+            
+            cell.accessoryView=v;
+            [v release];
+            
+        }
         
+        else {
+            
+            
+            
+            UITextField* textName=[[UITextField alloc] initWithFrame:CGRectMake(0, 0, 200, 30)];
+            //textName.borderStyle=UITextBorderStyleLine;
+            textName.borderStyle=UITextBorderStyleNone;
+            textName.textColor=[UIColor greenColor];
+            textName.accessibilityLabel=[cellDict objectForKey:@"id"];
+            textName.text=[self.dataDict objectForKey:[cellDict objectForKey:@"id"]];
+            textName.placeholder=[cellDict objectForKey:@"mask"];
+            textName.contentVerticalAlignment=UIControlContentVerticalAlignmentCenter;
+            cell.accessoryView=textName;
+            textName.delegate=self;
+            [textName release];
+        }
         
-        UITextField* textName=[[UITextField alloc] initWithFrame:CGRectMake(0, 0, 200, 40)];    
-        textName.accessibilityLabel=[dataDic valueForKey:@"id"];    
-        textName.tag=tagIndex++;
-        textName.placeholder=[dataDic valueForKey:@"mask"];
-        textName.text=[dataDic valueForKey:@"value"];
-        textName.contentVerticalAlignment=UIControlContentVerticalAlignmentCenter;
-        textName.delegate=self;
-        textName.returnKeyType=UIReturnKeyNext;
-        cell.accessoryView=textName;
-        
-        NSLog(@"%d",textName.tag);
         
         
     }
@@ -189,9 +236,9 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     
-    UIView* v=[[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 40)];
+    UIView* v=[[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 30)];
     
-    UILabel* lb=[[UILabel alloc] initWithFrame:CGRectMake(30, 10, tableView.frame.size.width, 30)];
+    UILabel* lb=[[UILabel alloc] initWithFrame:CGRectMake(30, 0, tableView.frame.size.width, 30)];
     lb.backgroundColor=[UIColor clearColor];
     
     
@@ -215,7 +262,7 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section;
 {
-    return 40;
+    return 30;
 }
 
 
@@ -311,51 +358,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
- - (void)textFieldDidEndEditing:(UITextField *)textField;
- {
- 
- if ([[UIDevice currentDevice].systemVersion floatValue]<5.0) {
- 
- NSIndexPath* indexPath=   [mainTableView indexPathForRowAtPoint:[textField convertPoint:CGPointMake(10, 10) toView:self.mainTableView]];
- [self.dataDict setValue:textField.text forKey: [[[self.tableArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] objectForKey:@"id"]];
- 
- }
- else {
- 
- if (textField.accessibilityLabel&& ![textField.accessibilityLabel isEqualToString:@""]) {
- [self.dataDict setValue:textField.text forKey:textField.accessibilityLabel];
- }
- 
- }
- if (!isKeyBoardShow) {
- [UIView animateWithDuration:0.5 animations:^{
- self.mainTableView.frame=CGRectMake(0, 0, 320, 420);
- } ];
- }
- 
- 
- 
- }
- 
- 
- - (void)textFieldDidBeginEditing:(UITextField *)textField;           // became first responder
- {
- if (!isKeyBoardShow) {
- isKeyBoardShow=YES;
- [UIView animateWithDuration:0.3 animations:^{
- self.mainTableView.frame=CGRectMake(0, 0, 320, 420-215);
- //            NSIndexPath* indexPath=   [mainTableView indexPathForRowAtPoint:[textField convertPoint:CGPointMake(10, 10) toView:self.mainTableView]];        
- //            [self.mainTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:NO];
- 
- } ];
- }
- 
- NSIndexPath* indexPath=   [mainTableView indexPathForRowAtPoint:[textField convertPoint:CGPointMake(10, 10) toView:self.mainTableView]];        
- [self.mainTableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
- 
- } 
- */
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     if (textField.returnKeyType==UIReturnKeyNext) {
@@ -479,4 +481,16 @@
     }
 
 }
+
+-(void)changeSex:(UISegmentedControl*)segControl
+{
+    if(segControl.selectedSegmentIndex==0)
+    {
+        [self.dataDict setObject:@"男" forKey:@"sex"];
+        
+    }else {
+        [self.dataDict setObject:@"女" forKey:@"sex"];
+    }
+}
+
 @end

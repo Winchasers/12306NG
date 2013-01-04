@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "NGCustomButton.h"
 
 #import "UserCenterViewController.h"
 
@@ -38,11 +39,7 @@
 @synthesize tableArray,mainTableView;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    if ([[UIScreen mainScreen] bounds].size.height == 568.0) {
-        self = [super initWithNibName:@"UserCenterViewController_ip5" bundle:nibBundleOrNil];
-    }else{
-        self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    }
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
         self.tableArray=[NSMutableArray arrayWithObjects:
@@ -80,7 +77,11 @@
     // Do any additional setup after loading the view from its nib.
     self.view.backgroundColor=[UIColor clearColor];
     self.title=@"我的抢票助手";
-    self.navigationItem.leftBarButtonItem=[[[UIBarButtonItem alloc] initWithTitle:@"注销" style:UIBarButtonItemStyleBordered target:self action:@selector(Exit)] autorelease];
+    NGCustomButton* subButton=[[NGCustomButton alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
+    [subButton addTarget:self action:@selector(Exit) forControlEvents:UIControlEventTouchUpInside];
+    subButton.titleLabel.text=@"注销";
+    self.navigationItem.leftBarButtonItem=[[[UIBarButtonItem alloc] initWithCustomView:subButton] autorelease];
+    [subButton release];
     
     UILabel* lbl=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
     [lbl setText:[NSString stringWithFormat:@"[%@]",[[NSUserDefaults standardUserDefaults] objectForKey:@"userName"]]];

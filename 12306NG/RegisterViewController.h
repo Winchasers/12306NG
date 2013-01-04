@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIViewController+backButtonAction.h"
+#import "NGCustomButton.h"
 
 @interface RegisterViewController : UIViewController<UITextFieldDelegate>
 {
